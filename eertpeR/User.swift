@@ -10,4 +10,12 @@ import Foundation
 
 class User {
     
+    func login() {
+        
+    }
+    
+    func logout() {
+        
+    }
+    
 }
