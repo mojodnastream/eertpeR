@@ -48,15 +48,15 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated:Bool) {
         
-        let alert = UIAlertController(title: "Sup", message: "Hi Siser", preferredStyle: .alert)
-        self.present(alert, animated: true, completion: didLoadData)
-        
-        let okaction = UIAlertAction(title: "bug", style: .default) {
-            (action:UIAlertAction) in
-            print("presseded")
-            
-        }
-        alert.addAction(okaction)
+//        let alert = UIAlertController(title: "Sup", message: "Hi Siser", preferredStyle: .alert)
+//        self.present(alert, animated: true, completion: didLoadData)
+//        
+//        let okaction = UIAlertAction(title: "bug", style: .default) {
+//            (action:UIAlertAction) in
+//            print("presseded")
+//            
+//        }
+//        alert.addAction(okaction)
 
     }
     
