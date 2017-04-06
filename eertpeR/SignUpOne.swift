@@ -20,10 +20,10 @@ class signUpOne: UIViewController {
     }
     
     @IBOutlet weak var errorText: UILabel!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        // Do any additional setup after loading the view, typically from a nib.
+//    }
     
     //button click outlet to trigger signup function
     
@@ -42,7 +42,7 @@ class signUpOne: UIViewController {
             password.isSelected = true
             
         }
-        if !helpers.isValidEmail(testStr: username.text!) {
+        if !utils.isValidEmail(testStr: username.text!) {
      
             errorText.text = "Please make sure you enter a valid email"
             
@@ -50,9 +50,10 @@ class signUpOne: UIViewController {
         }
         
         
-        if errorText.text != "" {
+        if !(errorText.text?.isEmpty)! {
             
-            errorText.text = "Oops, somthing is just not working"
+            //errorText.text = "Oops, something is just not working"
+            print(errorText.text!)
         }
         else
         {
@@ -68,31 +69,19 @@ class signUpOne: UIViewController {
                 if signupError == nil  {
                     
                     print("good job")
-                    //performSegueWithIdentifier("jumpToStepTwo", sender: self)
+                    self.errorText.text = ""
+                    //performSegue(withIdentifier: "jumpToCreateProfile", sender: self)
                 }
                 else {
                     var er = "Oops, there is a problem, please try again"
                     er = (signupError?.localizedDescription)!
                     self.errorText.text = er
                 }
-                //else {
-                    
-//                    if let errorString = signupError!.userInfo?["error"] as? NSString {
-//                        
-//                        error = signupError as! String
-//                        print(errorString)
-//                        
-//                    } else {
-//                        
-//                        self.errorText.text = "Please try again later."
-//                        
-//                    }
-               // }
             }
         }
-//        if self.errorText.text == "" {
-//            performSegueWithIdentifier("jumpToStepTwo", sender: self)
-//        }
+        if (self.errorText.text?.isEmpty)! {
+            performSegue(withIdentifier: "jumpToCreateProfile", sender: self)
+        }
     }
     
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class helpers {
+class utils {
     
     static func isValidEmail(testStr:String) -> Bool {
         
@@ -18,5 +18,6 @@ class helpers {
         return result
         
     }
+    
     
 }

@@ -8,6 +8,6 @@
 
 import Foundation
 
-class APIManager {
+class apiManager {
     
 }

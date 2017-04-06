@@ -8,14 +8,8 @@
 
 import Foundation
 
-class User {
+class user {
     
-    func login() {
-        
-    }
     
-    func logout() {
-        
-    }
     
 }

@@ -13,7 +13,7 @@ class logIn: UIViewController {
     
     @IBAction func loginBtn(_ sender: UIButton) {
         userLoginError.text = ""
-        if helpers.isValidEmail(testStr: userLoginEmail.text!) {
+        if utils.isValidEmail(testStr: userLoginEmail.text!) {
             doLogin()
         }
         else {
