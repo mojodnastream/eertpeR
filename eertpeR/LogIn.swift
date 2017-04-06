@@ -12,8 +12,12 @@ import Parse
 class logIn: UIViewController {
     
     @IBAction func loginBtn(_ sender: UIButton) {
-        if isValidEmail(testStr: userLoginEmail.text!) {
+        userLoginError.text = ""
+        if helpers.isValidEmail(testStr: userLoginEmail.text!) {
             doLogin()
+        }
+        else {
+            userLoginError.text = "Please Enter a Valid Email Address"
         }
     }
     @IBOutlet weak var userLoginEmail: UITextField!
@@ -23,16 +27,16 @@ class logIn: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //loginButtonStyle.backgroundColor = UIColor.purple
+        
         loginButtonStyle.layer.cornerRadius = 5
         loginButtonStyle.layer.borderWidth = 1
         loginButtonStyle.layer.borderColor = UIColor.purple.cgColor
+        
         userLoginEmail.layer.borderWidth = 1
         userLoginEmail.layer.borderColor = UIColor.purple.cgColor
 
         userLoginPass.layer.borderWidth = 1
         userLoginPass.layer.borderColor = UIColor.purple.cgColor
-
 
     }
    
@@ -47,8 +51,6 @@ class logIn: UIViewController {
                 
                 print("logged in")
                 //self.performSegueWithIdentifier("jumpToHome", sender: self)
-                
-                
             }
             else {
                 print("no user buddy")
@@ -58,17 +60,8 @@ class logIn: UIViewController {
         
     }
     
-    //helpers
     func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         self.view.endEditing(true);
-    }
-    func isValidEmail(testStr:String) -> Bool {
-        
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        let range = testStr.range(of: emailRegEx, options: .regularExpression)
-        let result = range != nil ? true : false
-        return result
-        
     }
     
 }
