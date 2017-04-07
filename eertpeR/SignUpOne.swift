@@ -11,40 +11,38 @@ import Parse
 
 class signUpOne: UIViewController {
     
+    
+    @IBOutlet weak var signUpButtonStyle: UIButton!
     @IBOutlet weak var lastname: UITextField!
     @IBOutlet weak var firstname: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var passwordConfirm: UITextField!
     @IBOutlet weak var username: UITextField!
+    
+    @IBAction func alreadySignedUp(_ sender: UIButton) {
+        performSegue(withIdentifier: "alreadySignedUp", sender: self)
+    }
     @IBAction func signUpBtn(_ sender: UIButton) {
         signUp()
     }
     
     @IBOutlet weak var errorText: UILabel!
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view, typically from a nib.
-//    }
-    
-    //button click outlet to trigger signup function
     
     func signUp() {
         //var error = ""
         errorText.text = ""
         if firstname.text == "" || lastname.text == "" || username.text == "" || password.text == "" || passwordConfirm.text == "" {
-            errorText.text = "Pleae fill in all fields..."
+            errorText.text = "Pleae fill in all fields"
         }
         if password.text != passwordConfirm.text {
-            errorText.text = "Passwords Must Match..."
+            errorText.text = "Passwords must match"
             password.isSelected = true
         }
         if !utils.isValidEmail(testStr: username.text!) {
-            errorText.text = "Please make sure you enter a valid email"
+            errorText.text = "Please enter a valid email"
             username.isSelected = true
         }
         if !(errorText.text?.isEmpty)! {
-            
-            //errorText.text = "Oops, something is just not working"
             print(errorText.text!)
         }
         else
@@ -55,8 +53,6 @@ class signUpOne: UIViewController {
             user.signUpInBackground {
                 (succeeded, signupError) -> Void in
                 if signupError == nil  {
-                    
-                    print("good job")
                     self.errorText.text = ""
                     self.beginProfile()
                 }
@@ -92,8 +88,19 @@ class signUpOne: UIViewController {
 
     }
     
-    func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        self.view.endEditing(true);
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        signUpButtonStyle.layer.cornerRadius = 5
+        signUpButtonStyle.layer.borderWidth = 1
+        signUpButtonStyle.layer.borderColor = UIColor.purple.cgColor
+
+    }
+    
+        //button click outlet to trigger signup function
     
 }
