@@ -19,30 +19,18 @@ class ViewController: UIViewController {
     
     func addNewUser() {
         let users = PFObject(className: "Users")
-        
         users["name"] = "The Gary"
-        
         users.saveInBackground { (success, error) -> Void in
             
-            // added test for success 11th July 2016
-            
             if success {
-                
                 print("Object has been saved.")
-                
             } else {
-                
                 if error != nil {
-                    
                     print ("oops \(error)")
-                    
                 } else {
-                    
                     print ("No Errors")
                 }
-                
             }
-            
         }
     }
     

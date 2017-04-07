@@ -227,6 +227,8 @@
                     </view>
                     <connections>
                         <outlet property="errorText" destination="ewW-k0-KY8" id="VDY-qh-O7L"/>
+                        <outlet property="firstname" destination="TjH-4n-C2K" id="clG-UR-aBA"/>
+                        <outlet property="lastname" destination="U8Z-lC-sUV" id="7vZ-O7-T1s"/>
                         <outlet property="password" destination="Uke-0v-Y2L" id="VHO-dl-dEB"/>
                         <outlet property="passwordConfirm" destination="Xoc-7m-1RX" id="uyW-Vc-EWg"/>
                         <outlet property="username" destination="b9F-Pb-C9j" id="lr0-hP-uob"/>
@@ -347,6 +349,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iZN-qr-Dry"/>
+        <segue reference="2UR-ZK-JAT"/>
     </inferredMetricsTieBreakers>
 </document>
