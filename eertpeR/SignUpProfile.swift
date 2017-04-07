@@ -16,4 +16,9 @@ class signUpProfile: UIViewController {
         print("ima on complete profile screen siser")
     }
     
+    func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true);
+    }
+    
+    
 }

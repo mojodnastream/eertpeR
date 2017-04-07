@@ -84,4 +84,8 @@ class signUpOne: UIViewController {
         }
     }
     
+    func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        self.view.endEditing(true);
+    }
+    
 }

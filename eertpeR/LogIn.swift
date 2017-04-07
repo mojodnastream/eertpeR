@@ -25,6 +25,19 @@ class logIn: UIViewController {
     @IBOutlet weak var userLoginError: UILabel!
     @IBOutlet weak var loginButtonStyle: UIButton!
     
+    override func viewDidAppear(_ animated: Bool) {
+        //print(PFUser.current())
+       
+        
+        if PFUser.current()?.sessionToken != nil {
+            //print(PFUser.current()?.username ?? "bug")
+            
+            performSegue(withIdentifier: "loggedInGo", sender: self)
+            
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,7 +63,7 @@ class logIn: UIViewController {
             if error == nil {
                 
                 print("logged in")
-                //self.performSegueWithIdentifier("jumpToHome", sender: self)
+                self.performSegue(withIdentifier: "loggedInGo", sender: self)
             }
             else {
                 print("no user buddy")
