@@ -11,17 +11,57 @@ import Parse
 
 class signUpProfile: UIViewController {
     
+    @IBOutlet weak var userSignUpIssues: UILabel!
     @IBOutlet weak var userTitleRole: UITextField!
     @IBOutlet weak var userCompany: UITextField!
     @IBOutlet weak var userLocation: UITextField!
     @IBOutlet weak var signUpProfileStyle: UIButton!
+    
     @IBAction func signUpProfileBtn(_ sender: UIButton) {
+        validate()
+    }
+    
+    func validate() {
+        if userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) == "" || userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) == "" || userLocation.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) == "" {
+            
+            userSignUpIssues.text = "Please share a few more details."
+            print("was validated")
+        }
+        else {
+            completeSignUp()
+        }
+    }
+
+    func completeSignUp() {
+        print("got to completeSignUp")
+        let user = PFObject(className: "UserGig")
+        user["userTitle"] = userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+        user["userCompany"] = userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+        user["userLocation"] = userLocation.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+        user["userID"] = PFUser.current()?.objectId
+        user["isCurrent"] = true
+        user.saveInBackground { (success, error) -> Void in
+            
+            if success {
+                print("user Gig has been saved.")
+                self.performSegue(withIdentifier: "jumpToProfile", sender: self)
+                
+            } else {
+                if error != nil {
+                    print ("oops \(error)")
+                } else {
+                    print ("No Errors")
+                }
+            }
+        }
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
         
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         signUpProfileStyle.layer.cornerRadius = 5

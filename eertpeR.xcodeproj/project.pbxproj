@@ -20,7 +20,6 @@
 		487981B81E95535B00C60BCD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981B71E95535B00C60BCD /* SystemConfiguration.framework */; };
 		487981BA1E95539000C60BCD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981B91E95539000C60BCD /* AudioToolbox.framework */; };
 		48E4D3061D50F9B000F3EC76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D3051D50F9B000F3EC76 /* AppDelegate.swift */; };
-		48E4D3081D50F9B000F3EC76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D3071D50F9B000F3EC76 /* ViewController.swift */; };
 		48E4D30B1D50F9B000F3EC76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E4D3091D50F9B000F3EC76 /* Main.storyboard */; };
 		48E4D30E1D50F9B000F3EC76 /* eertpeR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D30C1D50F9B000F3EC76 /* eertpeR.xcdatamodeld */; };
 		48E4D3101D50F9B000F3EC76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48E4D30F1D50F9B000F3EC76 /* Assets.xcassets */; };
@@ -46,7 +45,6 @@
 		487981B91E95539000C60BCD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		48E4D3021D50F9B000F3EC76 /* eertpeR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eertpeR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E4D3051D50F9B000F3EC76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		48E4D3071D50F9B000F3EC76 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		48E4D30A1D50F9B000F3EC76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48E4D30D1D50F9B000F3EC76 /* eertpeR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eertpeR.xcdatamodel; sourceTree = "<group>"; };
 		48E4D30F1D50F9B000F3EC76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 		48E4D31C1D50F9E200F3EC76 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				48E4D3071D50F9B000F3EC76 /* ViewController.swift */,
 				482399B01E956A300031892C /* LogIn.swift */,
 				482399B21E956DD00031892C /* SignUpOne.swift */,
 				482399B61E96C9C40031892C /* SignUpProfile.swift */,
@@ -246,7 +243,6 @@
 				482399AF1E9569C50031892C /* Skills.swift in Sources */,
 				482399B31E956DD00031892C /* SignUpOne.swift in Sources */,
 				482399B91E96D4DD0031892C /* Profile.swift in Sources */,
-				48E4D3081D50F9B000F3EC76 /* ViewController.swift in Sources */,
 				482399B51E95DC030031892C /* Utils.swift in Sources */,
 				482399B71E96C9C40031892C /* SignUpProfile.swift in Sources */,
 				48E4D3221D50FC9F00F3EC76 /* APIManager.swift in Sources */,

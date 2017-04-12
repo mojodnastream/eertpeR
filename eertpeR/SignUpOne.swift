@@ -11,7 +11,6 @@ import Parse
 
 class signUpOne: UIViewController {
     
-    
     @IBOutlet weak var signUpButtonStyle: UIButton!
     @IBOutlet weak var lastname: UITextField!
     @IBOutlet weak var firstname: UITextField!
@@ -73,6 +72,7 @@ class signUpOne: UIViewController {
         user["firstname"] = firstname.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
         user["lastname"] = lastname.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
         user["email"] = username.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+        user["userID"] = PFUser.current()?.objectId
         user.saveInBackground { (success, error) -> Void in
             
             if success {
