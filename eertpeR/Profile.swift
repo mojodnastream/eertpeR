@@ -31,10 +31,13 @@ class profile: UIViewController {
     
     func loadProfile() {
         //eventually use the User Class, for now we favor speed to market
-        
+        loadUserInfo()
+        loadUserGig()
+    }
+    
+    func loadUserInfo() {
         var firstname = ""
         var lastname = ""
-        
         let query = PFQuery(className: "UserProfile")
         query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
         query.findObjectsInBackground {
@@ -59,6 +62,37 @@ class profile: UIViewController {
             }
         }
     }
+    
+    func loadUserGig() {
+        var company = ""
+        var titleRole = ""
+        let query = PFQuery(className: "UserGig")
+        query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
+        query.whereKey("isCurrent", equalTo: true)
+        query.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
+            if error == nil {
+                if let objects = objects! as [PFObject]? {
+                    for object in objects {
+                        company = (object["userCompany"] as? String!)!
+                        titleRole = (object["userTitle"] as? String!)!
+                        
+                        self.userCompany.text = company
+                        self.userTitleRole.text = titleRole
+                        
+                        //self.userFullName.text = object["lastname"] as! String!
+                        //self.userCompany.text = (object["userCompany"] as! String)
+                        //self.userTitleRole.text = object["userTitleRole"] as? String
+                    }
+                }
+            }
+            else {
+                
+                print("Top Level Loaded, ok siser")
+            }
+        }
+    }
+
     
     func loadSkills() {
         let querySkills = PFQuery(className: "UserSkills")
