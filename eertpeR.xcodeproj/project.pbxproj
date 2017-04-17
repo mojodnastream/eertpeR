@@ -13,6 +13,7 @@
 		482399B51E95DC030031892C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399B41E95DC030031892C /* Utils.swift */; };
 		482399B71E96C9C40031892C /* SignUpProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399B61E96C9C40031892C /* SignUpProfile.swift */; };
 		482399B91E96D4DD0031892C /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399B81E96D4DD0031892C /* Profile.swift */; };
+		482399BB1EA3CEC00031892C /* SignUpSkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399BA1EA3CEC00031892C /* SignUpSkills.swift */; };
 		487981B01E9552DA00C60BCD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981AE1E9552DA00C60BCD /* Bolts.framework */; };
 		487981B11E9552DA00C60BCD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981AF1E9552DA00C60BCD /* Parse.framework */; };
 		487981B41E95533D00C60BCD /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981B31E95533D00C60BCD /* libstdc++.6.tbd */; };
@@ -37,6 +38,7 @@
 		482399B41E95DC030031892C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		482399B61E96C9C40031892C /* SignUpProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpProfile.swift; sourceTree = "<group>"; };
 		482399B81E96D4DD0031892C /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		482399BA1EA3CEC00031892C /* SignUpSkills.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpSkills.swift; sourceTree = "<group>"; };
 		487981AE1E9552DA00C60BCD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = eertpeR/Bolts.framework; sourceTree = "<group>"; };
 		487981AF1E9552DA00C60BCD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = eertpeR/Parse.framework; sourceTree = "<group>"; };
 		487981B31E95533D00C60BCD /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
@@ -142,6 +144,7 @@
 				482399B21E956DD00031892C /* SignUpOne.swift */,
 				482399B61E96C9C40031892C /* SignUpProfile.swift */,
 				482399B81E96D4DD0031892C /* Profile.swift */,
+				482399BA1EA3CEC00031892C /* SignUpSkills.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				48E4D3221D50FC9F00F3EC76 /* APIManager.swift in Sources */,
 				48E4D3241D50FDD400F3EC76 /* RepStory.swift in Sources */,
 				48E4D3061D50F9B000F3EC76 /* AppDelegate.swift in Sources */,
+				482399BB1EA3CEC00031892C /* SignUpSkills.swift in Sources */,
 				482399B11E956A300031892C /* LogIn.swift in Sources */,
 				48E4D3201D50FAE900F3EC76 /* Constants.swift in Sources */,
 				48E4D3261D50FE0400F3EC76 /* User.swift in Sources */,

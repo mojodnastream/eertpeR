@@ -18,7 +18,8 @@ class signUpProfile: UIViewController {
     @IBOutlet weak var signUpProfileStyle: UIButton!
     
     @IBAction func signUpProfileBtn(_ sender: UIButton) {
-        validate()
+        //validate()
+        self.performSegue(withIdentifier: "jumpToSkills", sender: self)
     }
     
     func validate() {
@@ -44,7 +45,8 @@ class signUpProfile: UIViewController {
             
             if success {
                 print("user Gig has been saved.")
-                self.performSegue(withIdentifier: "jumpToProfile", sender: self)
+                
+                self.performSegue(withIdentifier: "jumpToSkills", sender: self)
                 
             } else {
                 if error != nil {

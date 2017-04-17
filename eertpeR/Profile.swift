@@ -47,12 +47,7 @@ class profile: UIViewController {
                     for object in objects {
                         firstname = (object["firstname"] as? String!)!
                         lastname = (object["lastname"] as? String!)!
-                        
                         self.userFullName.text = firstname + " " + lastname
-                        
-                        //self.userFullName.text = object["lastname"] as! String!
-                        //self.userCompany.text = (object["userCompany"] as! String)
-                        //self.userTitleRole.text = object["userTitleRole"] as? String
                     }
                 }
             }
@@ -76,13 +71,8 @@ class profile: UIViewController {
                     for object in objects {
                         company = (object["userCompany"] as? String!)!
                         titleRole = (object["userTitle"] as? String!)!
-                        
                         self.userCompany.text = company
                         self.userTitleRole.text = titleRole
-                        
-                        //self.userFullName.text = object["lastname"] as! String!
-                        //self.userCompany.text = (object["userCompany"] as! String)
-                        //self.userTitleRole.text = object["userTitleRole"] as? String
                     }
                 }
             }
