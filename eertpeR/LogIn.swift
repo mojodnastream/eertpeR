@@ -11,6 +11,9 @@ import Parse
 
 class logIn: UIViewController {
     
+    @IBAction func goToSearchBtn(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToSkills", sender: self)
+    }
     @IBOutlet weak var userLoginEmail: UITextField!
     @IBOutlet weak var userLoginPass: UITextField!
     @IBOutlet weak var userLoginError: UILabel!

@@ -6,14 +6,27 @@
 //  Copyright © 2017 Mojo Services. All rights reserved.
 //
 
- let skills = ["MATH"]
+ //let Skill = ["MATH"]
 
-//import Foundation
-//import Parse
-//
-//class skills {
+import Foundation
+import Parse
+
+class Skill {
+    
+    //var arrSkillsLoaded = [""]
+    
+//    // data encapsulation
+//    private(set) var skillName:String
+//    private(set) var skillCategory:String
 //    
-//    
+//    init(skillName:String, skillCategory:String) {
+//        
+//        self.skillName = skillName
+//        self.skillCategory = skillCategory
+//    }
+
+}
+    
 //    static func loadSkills() {
 //        var arrSkills = [""]
 //        var name = ""
@@ -37,5 +50,4 @@
 //            }
 //        }
 //    }
-//    
-//}
+

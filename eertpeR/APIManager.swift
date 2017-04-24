@@ -7,7 +7,12 @@
 //
 
 import Foundation
+import Parse
 
 class apiManager {
+    
+    func getSkills() {
+    
+    }
     
 }

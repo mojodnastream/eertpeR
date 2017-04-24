@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		482399AF1E9569C50031892C /* Skills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399AE1E9569C50031892C /* Skills.swift */; };
+		482399AF1E9569C50031892C /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399AE1E9569C50031892C /* Skill.swift */; };
 		482399B11E956A300031892C /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399B01E956A300031892C /* LogIn.swift */; };
 		482399B31E956DD00031892C /* SignUpOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399B21E956DD00031892C /* SignUpOne.swift */; };
 		482399B51E95DC030031892C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399B41E95DC030031892C /* Utils.swift */; };
@@ -32,7 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		482399AE1E9569C50031892C /* Skills.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skills.swift; sourceTree = "<group>"; };
+		482399AE1E9569C50031892C /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		482399B01E956A300031892C /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		482399B21E956DD00031892C /* SignUpOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpOne.swift; sourceTree = "<group>"; };
 		482399B41E95DC030031892C /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -123,7 +123,7 @@
 				48E4D3211D50FC9F00F3EC76 /* APIManager.swift */,
 				48E4D3231D50FDD400F3EC76 /* RepStory.swift */,
 				48E4D3251D50FE0400F3EC76 /* User.swift */,
-				482399AE1E9569C50031892C /* Skills.swift */,
+				482399AE1E9569C50031892C /* Skill.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -243,7 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48E4D30E1D50F9B000F3EC76 /* eertpeR.xcdatamodeld in Sources */,
-				482399AF1E9569C50031892C /* Skills.swift in Sources */,
+				482399AF1E9569C50031892C /* Skill.swift in Sources */,
 				482399B31E956DD00031892C /* SignUpOne.swift in Sources */,
 				482399B91E96D4DD0031892C /* Profile.swift in Sources */,
 				482399B51E95DC030031892C /* Utils.swift in Sources */,

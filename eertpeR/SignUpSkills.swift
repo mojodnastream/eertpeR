@@ -9,43 +9,96 @@
 import UIKit
 import Parse
 
-class signUpSkills: UIViewController {
+class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdating, UITableViewDataSource {
     
-    @IBOutlet weak var addSkills: UITextField!
-    @IBOutlet weak var signUpSkillsStyle: UIButton!
-    @IBAction func signUpSkills(_ sender: UIButton) {
+    var arrSkills = [String]()
+    var filteredTableData = [String]()
+    var resultSearchController = UISearchController(searchResultsController: nil)
+    
+    @IBOutlet var tableView: UITableView!
+   
+    func loadSkills() {
+        var name = ""
+
+        let getSkills = PFQuery(className: "SkillsLookUp")
+        getSkills.order(byAscending: "name")
+        getSkills.limit = 10000
+        getSkills.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
+            if error == nil {
+                if let objects = objects {
+                    for object in objects {
+                        name = object["name"] as! String
+                        self.arrSkills.append(name.lowercased())
+                    }
+                }
+            }
+            else {
+                
+                print("oh sisar, what up?")
+            }
+        }
     }
     
-//    func completeSignUp() {
-//        print("got to completeSignUp")
-//        let user = PFObject(className: "UserGig")
-//        user["userTitle"] = userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-//        user["userCompany"] = userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-//        user["userLocation"] = userLocation.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-//        user["userID"] = PFUser.current()?.objectId
-//        user["isCurrent"] = true
-//        user.saveInBackground { (success, error) -> Void in
-//            
-//            if success {
-//                print("user Gig has been saved.")
-//                self.performSegue(withIdentifier: "jumpToSkills", sender: self)
-//                
-//            } else {
-//                if error != nil {
-//                    print ("oops \(error)")
-//                } else {
-//                    print ("No Errors")
-//                }
-//            }
-//        }
-//        
-//    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        signUpSkillsStyle.layer.cornerRadius = 5
-        signUpSkillsStyle.layer.borderWidth = 1
-        signUpSkillsStyle.layer.borderColor = UIColor.purple.cgColor
+   
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        print("ima on complete skills screen siser")
+        if(resultSearchController.isActive) {
+            return filteredTableData.prefix(5).count
+        }
+        else {
+            return arrSkills.count
+        }
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SkillCell", for: indexPath as IndexPath) as UITableViewCell
+
+        
+        if (self.resultSearchController.isActive) {
+            
+            cell.textLabel?.text = filteredTableData.prefix(5)[indexPath.row]
+            
+        }
+        else {
+            cell.textLabel?.text = self.arrSkills[indexPath.row]
+
+        }
+        return cell
+    }
+
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            filteredTableData = searchText.isEmpty ? arrSkills : arrSkills.filter({(dataString: String) -> Bool in
+                return dataString.range(of: searchText, options: NSString.CompareOptions.caseInsensitive) != nil
+            })
+            
+            tableView.reloadData()
+        }
+    }
+    
+    override func viewDidLoad() {
+        //style the button
+        loadSkills()
+
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        
+        resultSearchController.searchResultsUpdater = self
+        resultSearchController.dimsBackgroundDuringPresentation = false
+        resultSearchController.searchBar.sizeToFit()
+        resultSearchController.hidesNavigationBarDuringPresentation = false
+        resultSearchController.searchBar.showsCancelButton = false
+        tableView.contentInset = UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0)
+        tableView.tableHeaderView = resultSearchController.searchBar
+        self.title = "Add a Few Skills"
+        
+        }
 }
