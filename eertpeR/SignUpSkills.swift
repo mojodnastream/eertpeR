@@ -18,6 +18,14 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
     
     @IBOutlet var tableView: UITableView!
    
+    @IBAction func doneBtn(_ sender: UIButton) {
+        finalizeSignUp()
+    }
+    
+    func finalizeSignUp() {
+        
+    }
+    
     func loadSkills() {
         var name = ""
         let getSkills = PFQuery(className: "SkillsLookUp")
@@ -46,12 +54,10 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
         if arrSkillsForUser.contains((cell?.textLabel?.text)!) {
             cell?.textLabel?.textColor = UIColor.white
             cell?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
-
         }
         else {
             cell?.textLabel?.textColor = UIColor.black
             cell?.backgroundColor = UIColor.white
-
         }
     }
     
@@ -68,15 +74,17 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
             cell?.textLabel?.textColor = UIColor.black
             cell?.backgroundColor = UIColor.white
             cell?.contentView.backgroundColor = UIColor.white
-
+//            cell?.accessoryType = .none
         }
         else {
             arrSkillsForUser.append(itemString)
             cell?.textLabel?.textColor = UIColor.white
-            //cell?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
+            cell?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
             cell?.contentView.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
+//            cell?.accessoryView?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
+//            cell?.accessoryView?.tintColor = UIColor.white
+//            cell?.accessoryType = .checkmark
         }
-
     }
    
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -86,10 +94,14 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if(resultSearchController.isActive) {
-            return arrSkillsSearchResults.prefix(5).count
+            if arrSkillsSearchResults.count > 0 {
+                return arrSkillsSearchResults.prefix(5).count
+            }
+            else {
+                return 1
+            }
         }
         else {
-            //return arrSkills.count
             return 0
         }
     }
@@ -101,29 +113,37 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
         if (self.resultSearchController.isActive) {
             cell.textLabel?.textAlignment = .center
             cell.textLabel?.font = UIFont(name:"HelveticaNeue", size:24)
-            cell.textLabel?.text = arrSkillsSearchResults.prefix(5)[indexPath.row]
-            
-            if arrSkillsForUser.contains(arrSkillsSearchResults.prefix(5)[indexPath.row]) {
-                //print(arrSkillsSearchResults.prefix(5)[indexPath.row])
-                cell.textLabel?.font = UIFont(name:"HelveticaNeue", size:24)
-                cell.textLabel?.textColor = UIColor.white
-                cell.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
+            if arrSkillsSearchResults.count > 0 {
+                cell.textLabel?.text = arrSkillsSearchResults.prefix(5)[indexPath.row]
+                if arrSkillsForUser.contains(arrSkillsSearchResults.prefix(5)[indexPath.row]) {
+                    //print(arrSkillsSearchResults.prefix(5)[indexPath.row])
+                    cell.textLabel?.textColor = UIColor.white
+                    cell.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
+//                    cell.accessoryView?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
+//                    cell.tintColor = UIColor.white
+//                    cell.accessoryType = .checkmark
+                }
+                else {
+                    cell.textLabel?.textColor = UIColor.black
+                    cell.backgroundColor = UIColor.white
+//                    cell.accessoryType = .none
+                }
             }
             else {
+                cell.textLabel?.text = resultSearchController.searchBar.text //"No Results"
                 cell.textLabel?.textColor = UIColor.black
                 cell.backgroundColor = UIColor.white
+//                cell.accessoryType = .none
             }
-            
         }
         return cell
     }
-
+   
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
             arrSkillsSearchResults = searchText.isEmpty ? arrSkills : arrSkills.filter({(dataString: String) -> Bool in
                 return dataString.range(of: searchText, options: NSString.CompareOptions.caseInsensitive) != nil
             })
-            
             tableView.reloadData()
         }
     }
