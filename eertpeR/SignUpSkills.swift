@@ -40,6 +40,21 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
         }
     }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        
+        if arrSkillsForUser.contains((cell?.textLabel?.text)!) {
+            cell?.textLabel?.textColor = UIColor.white
+            cell?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
+
+        }
+        else {
+            cell?.textLabel?.textColor = UIColor.black
+            cell?.backgroundColor = UIColor.white
+
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected row \(indexPath.row)")
         
@@ -50,14 +65,16 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
         if let index = arrSkillsForUser.index(of: itemString) {
                 arrSkillsForUser.remove(at: index)
             //print(arrSkillsSearchResults.prefix(5)[indexPath.row])
-            cell?.textLabel?.font = UIFont(name:"HelveticaNeue", size:24)
-            cell?.textLabel?.textColor = UIColor.white
-            cell?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
+            cell?.textLabel?.textColor = UIColor.black
+            cell?.backgroundColor = UIColor.white
+            cell?.contentView.backgroundColor = UIColor.white
+
         }
         else {
             arrSkillsForUser.append(itemString)
-            cell?.textLabel?.textColor = UIColor.black
-            cell?.backgroundColor = UIColor.white
+            cell?.textLabel?.textColor = UIColor.white
+            //cell?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
+            cell?.contentView.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
         }
 
     }
