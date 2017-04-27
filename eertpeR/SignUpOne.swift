@@ -27,6 +27,10 @@ class signUpOne: UIViewController {
     
     @IBOutlet weak var errorText: UILabel!
     
+    func lookUpUserName() {
+       // PFUser.
+    }
+    
     func signUp() {
         //var error = ""
         errorText.text = ""
@@ -54,16 +58,15 @@ class signUpOne: UIViewController {
                 if signupError == nil  {
                     self.errorText.text = ""
                     self.beginProfile()
+                    self.performSegue(withIdentifier: "jumpToCreateProfile", sender: self)
                 }
                 else {
                     var er = "Oops, there is a problem, please try again"
                     er = (signupError?.localizedDescription)!
+                    self.username.layer.borderWidth = 2.0
                     self.errorText.text = er
                 }
             }
-        }
-        if (self.errorText.text?.isEmpty)! {
-            performSegue(withIdentifier: "jumpToCreateProfile", sender: self)
         }
     }
     
@@ -90,7 +93,6 @@ class signUpOne: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        
     }
     
     override func viewDidLoad() {
@@ -98,9 +100,5 @@ class signUpOne: UIViewController {
         signUpButtonStyle.layer.cornerRadius = 5
         signUpButtonStyle.layer.borderWidth = 1
         signUpButtonStyle.layer.borderColor = UIColor.purple.cgColor
-
     }
-    
-        //button click outlet to trigger signup function
-    
 }

@@ -32,7 +32,7 @@ class logIn: UIViewController {
     func doLogin() {
         
         self.userLoginError.text = ""
-        PFUser.logInWithUsername(inBackground: userLoginEmail.text as String!, password:userLoginPass.text as String!) {
+        PFUser.logInWithUsername(inBackground: userLoginEmail.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) as String!, password:userLoginPass.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) as String!) {
             (user, error) -> Void in
             
             if error == nil {

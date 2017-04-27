@@ -11,19 +11,44 @@ import Parse
 
 class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdating, UITableViewDataSource {
     
-    var arrSkills = [String]()
-    var arrSkillsSearchResults = [String]()
-    var arrSkillsForUser = [String]()
     var resultSearchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet var tableView: UITableView!
-   
     @IBAction func doneBtn(_ sender: UIButton) {
         finalizeSignUp()
+        //add user added skills (not found in lookup table) to the skills lookup
+        //not sure i want to do this upon sign up though, let's think it through
     }
     
+    @IBOutlet var doneBtnStyle: UIButton!
     func finalizeSignUp() {
-        
+        if arrSkillsForUser.count > 0 {
+            for skill in arrSkillsForUser {
+                addSkillToProfile(skill: skill)
+            }
+        }
+        else {
+            print("you must choose at least one skill")
+        }
+        self.performSegue(withIdentifier: "skillsToProfile", sender: self)
+    }
+    
+    func addSkillToProfile(skill: String) {
+        let userSkills = PFObject(className: "UserSkills")
+        userSkills["userSkill"] = skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
+        userSkills["userID"] = PFUser.current()?.objectId
+        userSkills.saveInBackground { (success, error) -> Void in
+            
+            if success {
+                print("user skill \(skill) has been saved.")
+            } else {
+                if error != nil {
+                    print ("oops \(error)")
+                } else {
+                    print ("No Errors")
+                }
+            }
+        }
     }
     
     func loadSkills() {
@@ -37,7 +62,7 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
                 if let objects = objects {
                     for object in objects {
                         name = object["name"] as! String
-                        self.arrSkills.append(name.lowercased())
+                        arrSkills.append(name.lowercased())
                     }
                 }
             }
@@ -67,23 +92,17 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
         let cell = tableView.cellForRow(at: indexPath)
         let itemString = (cell?.textLabel?.text)! as String
         
-        //if arrSkillsForUser.contains((cell?.textLabel?.text)!) {
         if let index = arrSkillsForUser.index(of: itemString) {
-                arrSkillsForUser.remove(at: index)
-            //print(arrSkillsSearchResults.prefix(5)[indexPath.row])
+            arrSkillsForUser.remove(at: index)
             cell?.textLabel?.textColor = UIColor.black
             cell?.backgroundColor = UIColor.white
             cell?.contentView.backgroundColor = UIColor.white
-//            cell?.accessoryType = .none
         }
         else {
             arrSkillsForUser.append(itemString)
             cell?.textLabel?.textColor = UIColor.white
             cell?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
             cell?.contentView.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
-//            cell?.accessoryView?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
-//            cell?.accessoryView?.tintColor = UIColor.white
-//            cell?.accessoryType = .checkmark
         }
     }
    
@@ -119,21 +138,26 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
                     //print(arrSkillsSearchResults.prefix(5)[indexPath.row])
                     cell.textLabel?.textColor = UIColor.white
                     cell.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
-//                    cell.accessoryView?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
-//                    cell.tintColor = UIColor.white
-//                    cell.accessoryType = .checkmark
                 }
                 else {
                     cell.textLabel?.textColor = UIColor.black
                     cell.backgroundColor = UIColor.white
-//                    cell.accessoryType = .none
                 }
             }
             else {
                 cell.textLabel?.text = resultSearchController.searchBar.text //"No Results"
                 cell.textLabel?.textColor = UIColor.black
                 cell.backgroundColor = UIColor.white
-//                cell.accessoryType = .none
+            }
+        }
+        else {
+            if arrSkillsForUser.count > 0 {
+                cell.textLabel?.text = "You added \(arrSkillsForUser.count) skills"
+                cell.textLabel?.textColor = UIColor.black
+                cell.backgroundColor = UIColor.white
+            }
+            else {
+                
             }
         }
         return cell
@@ -154,6 +178,11 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
 
         tableView.delegate = self;
         tableView.dataSource = self;
+        
+        doneBtnStyle.layer.cornerRadius = 5
+        doneBtnStyle.layer.borderWidth = 1
+        doneBtnStyle.layer.borderColor = UIColor.purple.cgColor
+
         
         resultSearchController.searchResultsUpdater = self
         resultSearchController.dimsBackgroundDuringPresentation = false

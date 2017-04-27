@@ -33,6 +33,7 @@ class profile: UIViewController {
         //eventually use the User Class, for now we favor speed to market
         loadUserInfo()
         loadUserGig()
+        //loadSkills()
     }
     
     func loadUserInfo() {
