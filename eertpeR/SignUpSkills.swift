@@ -121,7 +121,7 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
             }
         }
         else {
-            return 0
+            return 1
         }
     }
     
@@ -151,6 +151,7 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
             }
         }
         else {
+            //print(arrSkillsForUser.count)
             if arrSkillsForUser.count > 0 {
                 cell.textLabel?.text = "You added \(arrSkillsForUser.count) skills"
                 cell.textLabel?.textColor = UIColor.black

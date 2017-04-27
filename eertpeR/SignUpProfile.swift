@@ -56,12 +56,10 @@ class signUpProfile: UIViewController {
                 }
             }
         }
-
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        
     }
     
     override func viewDidLoad() {
@@ -69,8 +67,7 @@ class signUpProfile: UIViewController {
         signUpProfileStyle.layer.cornerRadius = 5
         signUpProfileStyle.layer.borderWidth = 1
         signUpProfileStyle.layer.borderColor = UIColor.purple.cgColor
-        
-        print("ima on complete profile screen siser")
+        print("SignUpProfile Screen siser")
     }
     
 }

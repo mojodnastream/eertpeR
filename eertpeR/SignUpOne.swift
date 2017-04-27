@@ -11,21 +11,19 @@ import Parse
 
 class signUpOne: UIViewController {
     
+    @IBOutlet weak var errorText: UILabel!
     @IBOutlet weak var signUpButtonStyle: UIButton!
     @IBOutlet weak var lastname: UITextField!
     @IBOutlet weak var firstname: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var passwordConfirm: UITextField!
     @IBOutlet weak var username: UITextField!
-    
     @IBAction func alreadySignedUp(_ sender: UIButton) {
         performSegue(withIdentifier: "alreadySignedUp", sender: self)
     }
     @IBAction func signUpBtn(_ sender: UIButton) {
         signUp()
     }
-    
-    @IBOutlet weak var errorText: UILabel!
     
     func lookUpUserName() {
        // PFUser.
