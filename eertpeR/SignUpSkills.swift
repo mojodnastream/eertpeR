@@ -104,6 +104,10 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
             cell?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
             cell?.contentView.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
         }
+        if(!resultSearchController.isActive) {
+            tableView.reloadData()
+        }
+        
     }
    
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -121,7 +125,12 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
             }
         }
         else {
-            return 1
+            if (arrSkillsForUser.count > 0) {
+                return arrSkillsForUser.count + 1
+            }
+            else {
+                return 1
+            }
         }
     }
     
@@ -131,7 +140,7 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
         
         if (self.resultSearchController.isActive) {
             cell.textLabel?.textAlignment = .center
-            cell.textLabel?.font = UIFont(name:"HelveticaNeue", size:24)
+            cell.textLabel?.font = UIFont(name:"HelveticaNeue", size:20)
             if arrSkillsSearchResults.count > 0 {
                 cell.textLabel?.text = arrSkillsSearchResults.prefix(5)[indexPath.row]
                 if arrSkillsForUser.contains(arrSkillsSearchResults.prefix(5)[indexPath.row]) {
@@ -153,12 +162,21 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
         else {
             //print(arrSkillsForUser.count)
             if arrSkillsForUser.count > 0 {
-                cell.textLabel?.text = "You added \(arrSkillsForUser.count) skills"
-                cell.textLabel?.textColor = UIColor.black
-                cell.backgroundColor = UIColor.white
+                print("We are in Row \(indexPath.row) right now")
+                if(indexPath.row > 0) {
+                    cell.textLabel?.text = arrSkillsForUser[indexPath.row - 1]
+                    cell.textLabel?.textColor = UIColor.white
+                    cell.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
+                }
+                else {
+                    cell.textLabel?.text = "You added \(arrSkillsForUser.count) skills.  Tap to remove."
+                    cell.textLabel?.textColor = UIColor.black
+                    cell.backgroundColor = UIColor.white
+
+                }
             }
             else {
-                
+                //some sort of messaging needs to go here.
             }
         }
         return cell
@@ -176,6 +194,8 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
     override func viewDidLoad() {
         //style the button
         loadSkills()
+        
+        arrSkillsForUser.removeAll()
 
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -184,7 +204,6 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
         doneBtnStyle.layer.borderWidth = 1
         doneBtnStyle.layer.borderColor = UIColor.purple.cgColor
 
-        
         resultSearchController.searchResultsUpdater = self
         resultSearchController.dimsBackgroundDuringPresentation = false
         resultSearchController.searchBar.sizeToFit()
