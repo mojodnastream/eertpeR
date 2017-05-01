@@ -14,13 +14,13 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
     var resultSearchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var doneBtnStyle: UIButton!
     @IBAction func doneBtn(_ sender: UIButton) {
         finalizeSignUp()
         //add user added skills (not found in lookup table) to the skills lookup
         //not sure i want to do this upon sign up though, let's think it through
     }
     
-    @IBOutlet var doneBtnStyle: UIButton!
     func finalizeSignUp() {
         if arrSkillsForUser.count > 0 {
             for skill in arrSkillsForUser {
@@ -161,9 +161,12 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
         }
         else {
             //print(arrSkillsForUser.count)
+            cell.textLabel?.font = UIFont(name:"HelveticaNeue", size:20)
             if arrSkillsForUser.count > 0 {
+                arrSkillsForUser.sort()
                 print("We are in Row \(indexPath.row) right now")
                 if(indexPath.row > 0) {
+                    cell.textLabel?.textAlignment = .center
                     cell.textLabel?.text = arrSkillsForUser[indexPath.row - 1]
                     cell.textLabel?.textColor = UIColor.white
                     cell.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
@@ -176,7 +179,9 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
                 }
             }
             else {
-                //some sort of messaging needs to go here.
+                cell.textLabel?.text = "Please add at least 1 skill to complete your account setup"
+                cell.textLabel?.textColor = UIColor.black
+                cell.backgroundColor = UIColor.white
             }
         }
         return cell
@@ -195,15 +200,19 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
         //style the button
         loadSkills()
         
+        //clear array in case the app crashed in the middle of sign up
         arrSkillsForUser.removeAll()
 
+        //establish data delegates from the tableview
         tableView.delegate = self;
         tableView.dataSource = self;
         
+        //style the Done Buttona
         doneBtnStyle.layer.cornerRadius = 5
         doneBtnStyle.layer.borderWidth = 1
         doneBtnStyle.layer.borderColor = UIColor.purple.cgColor
-
+        
+        //set up the search box
         resultSearchController.searchResultsUpdater = self
         resultSearchController.dimsBackgroundDuringPresentation = false
         resultSearchController.searchBar.sizeToFit()
