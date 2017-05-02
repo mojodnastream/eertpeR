@@ -219,6 +219,7 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
         resultSearchController.hidesNavigationBarDuringPresentation = false
         resultSearchController.searchBar.placeholder = "Search Skills"
         resultSearchController.searchBar.showsCancelButton = false
+        resultSearchController.searchBar.setValue("Done", forKey: "_cancelButtonText")
         tableView.contentInset = UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0)
         tableView.tableHeaderView = resultSearchController.searchBar
     }

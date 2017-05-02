@@ -11,7 +11,8 @@ import Parse
 
 class profile: UIViewController {
     
-    @IBOutlet weak var userFullName: UILabel!
+    @IBOutlet var userFullName: UILabel!
+    @IBOutlet var userLine: UILabel!
     @IBOutlet weak var userTitleRole: UILabel!
     @IBOutlet weak var userCompany: UILabel!
     
@@ -49,6 +50,8 @@ class profile: UIViewController {
                         firstname = (object["firstname"] as? String!)!
                         lastname = (object["lastname"] as? String!)!
                         self.userFullName.text = firstname + " " + lastname
+                        //self.userFullName.sizeToFit()
+                        //self.userFullName.layoutIfNeeded()
                     }
                 }
             }
@@ -74,6 +77,8 @@ class profile: UIViewController {
                         titleRole = (object["userTitle"] as? String!)!
                         self.userCompany.text = company
                         self.userTitleRole.text = titleRole
+                        //self.userCompany.sizeToFit()
+                        //self.userTitleRole.sizeToFit()
                     }
                 }
             }
@@ -117,6 +122,13 @@ class profile: UIViewController {
         
         //profileImage.layer.cornerRadius = profileImage.frame.size.width/2
         //profileImage.clipsToBounds = true
+
+        //userFullName.layer.zPosition = 1.0
+        
+        //userCompany.sizeToFit()
+        
+        //userTitleRole.sizeToFit()
+        
         
     }
 }

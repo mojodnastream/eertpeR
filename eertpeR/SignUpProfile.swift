@@ -46,7 +46,11 @@ class signUpProfile: UIViewController {
             if success {
                 print("user Gig has been saved.")
                 
-                self.performSegue(withIdentifier: "jumpToSkills", sender: self)
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "jumpToSkillsScreen", sender: self)
+                }
+                
+                print("just passed the segue")
                 
             } else {
                 if error != nil {
