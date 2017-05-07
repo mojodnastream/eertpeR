@@ -11,10 +11,14 @@ import Parse
 
 class profile: UIViewController {
     
+    @IBOutlet var userBadgesCount: UILabel!
+    @IBOutlet var userSkillsCount: UILabel!
     @IBOutlet var userFullName: UILabel!
     @IBOutlet var userLine: UILabel!
     @IBOutlet weak var userTitleRole: UILabel!
     @IBOutlet weak var userCompany: UILabel!
+    var arrUserSkills = [String]()
+    var arrUserBadges = [String]()
     
     @IBAction func logOut(_ sender: UIButton) {
         doLogOut()
@@ -34,7 +38,35 @@ class profile: UIViewController {
         //eventually use the User Class, for now we favor speed to market
         loadUserInfo()
         loadUserGig()
-        //loadSkills()
+        loadSkills()
+        loadBadges()
+    }
+    
+    func loadBadges() {
+        var badge = ""
+        let queryBadges = PFQuery(className: "UserBadges")
+        queryBadges.order(byAscending: "userBadge")
+        queryBadges.whereKey("userID", equalTo:PFUser.current()!.objectId!)
+        queryBadges.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
+            if error == nil {
+                if let objects = objects! as [PFObject]? {
+                    for object in objects {
+                        badge = object["userBadge"] as! String
+                        self.arrUserBadges.append(badge.lowercased())
+                    }
+                    print("BADGES Loaded, ok siser")
+                    self.userBadgesCount.text = "You have \(self.arrUserBadges.count) badges"
+                    print(self.arrUserBadges.count)
+                }
+            }
+            else {
+                print("Error happened \(error)")
+                
+            }
+        }
+
+        
     }
     
     func loadUserInfo() {
@@ -88,23 +120,28 @@ class profile: UIViewController {
             }
         }
     }
-
     
     func loadSkills() {
+        var name = ""
         let querySkills = PFQuery(className: "UserSkills")
+        querySkills.order(byAscending: "userSkill")
         querySkills.whereKey("userID", equalTo:PFUser.current()!.objectId!)
         querySkills.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
             if error == nil {
-//                if let objects = objects! as [PFObject]? {
-//                    for object in objects {
-//                        //self.userTitleRole.text = object["userTitleRole"] as! String?
-//                    }
-//                }
+                if let objects = objects! as [PFObject]? {
+                    for object in objects {
+                        name = object["userSkill"] as! String
+                        self.arrUserSkills.append(name.lowercased())
+                    }
+                    print("Skills Loaded, ok siser")
+                    self.userSkillsCount.text = "You have \(self.arrUserSkills.count) skills"
+                    print(self.arrUserSkills.count)
+                }
             }
             else {
-                
-                print("Skills Loaded, ok siser")
+                print("Error happened \(error)")
+
             }
         }
     }
@@ -116,6 +153,9 @@ class profile: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("ima on full profile screen siser")
+        
+        //arrSkillsForUser.removeAll()
+        //arrSkills.removeAll()
         loadProfile()
     }
     override func viewDidLayoutSubviews() {

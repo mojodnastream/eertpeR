@@ -507,58 +507,76 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVk-0b-hlZ">
-                                <rect key="frame" x="16" y="63" width="343" height="43"/>
+                                <rect key="frame" x="16" y="91" width="343" height="43"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="43" id="tgG-HT-vCV"/>
+                                    <constraint firstAttribute="height" constant="43" id="NNY-DD-k5N"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place of Business" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VM-ml-ivf">
-                                <rect key="frame" x="16" y="105" width="343" height="42"/>
+                                <rect key="frame" x="16" y="133" width="343" height="42"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="Fei-t7-CBM"/>
+                                    <constraint firstAttribute="height" constant="42" id="Xwy-UZ-Mib"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNk-rM-gHH">
-                                <rect key="frame" x="16" y="18" width="343" height="37"/>
+                                <rect key="frame" x="16" y="46" width="343" height="37"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="HcZ-89-PUQ"/>
+                                    <constraint firstAttribute="height" constant="37" id="njx-qN-8ze"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skills" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-Gt-SNr">
+                                <rect key="frame" x="16" y="198" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Badges" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhq-zM-JJq">
+                                <rect key="frame" x="16" y="249" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tNk-rM-gHH" firstAttribute="trailing" secondItem="o6Z-WW-0pe" secondAttribute="trailingMargin" id="3pM-QS-4id"/>
-                            <constraint firstItem="tNk-rM-gHH" firstAttribute="trailing" secondItem="uVk-0b-hlZ" secondAttribute="trailing" id="Ta2-ed-z8a"/>
-                            <constraint firstItem="uVk-0b-hlZ" firstAttribute="leading" secondItem="4VM-ml-ivf" secondAttribute="leading" id="VdO-6N-jsj"/>
+                            <constraint firstItem="uVk-0b-hlZ" firstAttribute="leading" secondItem="4VM-ml-ivf" secondAttribute="leading" id="1y9-6c-oQA"/>
+                            <constraint firstItem="tNk-rM-gHH" firstAttribute="top" secondItem="xEq-7c-BTh" secondAttribute="bottom" constant="26" id="4qr-rd-r5z"/>
+                            <constraint firstItem="uVk-0b-hlZ" firstAttribute="top" secondItem="tNk-rM-gHH" secondAttribute="bottom" constant="8" symbolic="YES" id="AhG-xK-R8C"/>
+                            <constraint firstItem="tNk-rM-gHH" firstAttribute="trailing" secondItem="uVk-0b-hlZ" secondAttribute="trailing" id="HLH-ZB-Mz9"/>
+                            <constraint firstItem="tNk-rM-gHH" firstAttribute="leading" secondItem="uVk-0b-hlZ" secondAttribute="leading" id="Pjf-UI-559"/>
+                            <constraint firstItem="4VM-ml-ivf" firstAttribute="top" secondItem="tNk-rM-gHH" secondAttribute="bottom" constant="50" id="T9k-uP-I4d"/>
+                            <constraint firstItem="tNk-rM-gHH" firstAttribute="trailing" secondItem="o6Z-WW-0pe" secondAttribute="trailingMargin" id="XDG-KX-2Mp"/>
+                            <constraint firstItem="jUO-Gt-SNr" firstAttribute="leading" secondItem="4VM-ml-ivf" secondAttribute="leading" id="XGQ-9Q-epO"/>
                             <constraint firstAttribute="trailing" secondItem="NRV-uK-5VG" secondAttribute="trailing" id="Xk5-rg-Dfw"/>
-                            <constraint firstItem="tNk-rM-gHH" firstAttribute="leading" secondItem="uVk-0b-hlZ" secondAttribute="leading" id="YGB-80-jku"/>
-                            <constraint firstItem="uVk-0b-hlZ" firstAttribute="top" secondItem="tNk-rM-gHH" secondAttribute="bottom" constant="8" symbolic="YES" id="a6y-Je-GUQ"/>
-                            <constraint firstItem="uVk-0b-hlZ" firstAttribute="trailing" secondItem="4VM-ml-ivf" secondAttribute="trailing" id="a9S-FK-BqT"/>
                             <constraint firstItem="NRV-uK-5VG" firstAttribute="bottom" secondItem="5Cx-TB-Cz5" secondAttribute="top" id="bIv-8R-J6z"/>
-                            <constraint firstItem="4VM-ml-ivf" firstAttribute="top" secondItem="tNk-rM-gHH" secondAttribute="bottom" constant="50" id="e5h-EL-2OG"/>
-                            <constraint firstItem="tNk-rM-gHH" firstAttribute="top" secondItem="o6Z-WW-0pe" secondAttribute="topMargin" constant="18" id="iex-54-ynx"/>
-                            <constraint firstItem="tNk-rM-gHH" firstAttribute="leading" secondItem="o6Z-WW-0pe" secondAttribute="leadingMargin" id="l8p-ou-fDT"/>
+                            <constraint firstItem="uVk-0b-hlZ" firstAttribute="trailing" secondItem="4VM-ml-ivf" secondAttribute="trailing" id="kEV-Ky-N50"/>
+                            <constraint firstItem="jUO-Gt-SNr" firstAttribute="top" secondItem="4VM-ml-ivf" secondAttribute="bottom" constant="23" id="xYa-uy-stN"/>
+                            <constraint firstItem="tNk-rM-gHH" firstAttribute="leading" secondItem="o6Z-WW-0pe" secondAttribute="leadingMargin" id="xwr-RP-6kc"/>
+                            <constraint firstItem="jUO-Gt-SNr" firstAttribute="trailing" secondItem="4VM-ml-ivf" secondAttribute="trailing" id="yrW-i6-lV8"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="userBadgesCount" destination="Xhq-zM-JJq" id="FwE-Ms-xfv"/>
                         <outlet property="userCompany" destination="4VM-ml-ivf" id="ZkC-VX-NpR"/>
                         <outlet property="userFullName" destination="tNk-rM-gHH" id="1I9-9O-oao"/>
+                        <outlet property="userSkillsCount" destination="jUO-Gt-SNr" id="fuq-4z-Nrd"/>
                         <outlet property="userTitleRole" destination="uVk-0b-hlZ" id="5eo-68-u2d"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="jumpToLogin" id="fKb-4f-zra"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nhy-8F-uG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2377" y="-322"/>
+            <point key="canvasLocation" x="2524" y="-322.48875562218893"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

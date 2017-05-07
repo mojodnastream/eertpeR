@@ -202,6 +202,7 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
         
         //clear array in case the app crashed in the middle of sign up
         arrSkillsForUser.removeAll()
+        arrSkills.removeAll()
 
         //establish data delegates from the tableview
         tableView.delegate = self;
