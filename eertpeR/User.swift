@@ -27,10 +27,11 @@ class getUsers {
                         arrSearchResults.append("\(firstname) \(lastname)")
                     }
                 }
+                print("User Search Array Loaded, ok siser")
+                print("arrSearchResults Total Count from getUsers \(arrSearchResults.count)")
             }
             else {
-                
-                print("User Search Array Loaded, ok siser")
+                  print("Error Happened: \(error)")
             }
         }
     }

@@ -11,25 +11,28 @@
 import Foundation
 import Parse
 
-class Skill {
+class getSkills {
     static func loadSkillInfo() {
         arrSkillsSearchResults.removeAll()
         var skill = ""
-        let query = PFQuery(className: "UserSkills")
-        query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
+        let query = PFQuery(className: "SkillsLookUp")
+        //query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
+        query.limit = 1000
         query.findObjectsInBackground {
             (objects: [PFObject]?, error: Error?) -> Void in
             if error == nil {
                 if let objects = objects! as [PFObject]? {
                     for object in objects {
-                        skill = (object["userSkill"] as? String!)!
+                        skill = (object["name"] as? String!)!
                         arrSkillsSearchResults.append(skill)
                     }
                 }
+                print("Skill Search Array Loaded, ok siser")
+                print("arrSkillsSearchResults Total Count from getSkills \(arrSkillsSearchResults.count)")
             }
             else {
                 
-                print("Skill Search Array Loaded, ok siser")
+                print("Error Happened: \(error)")
             }
         }
     }

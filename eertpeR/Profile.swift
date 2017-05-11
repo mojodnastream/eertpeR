@@ -153,6 +153,8 @@ class profile: UIViewController {
         //arrSkillsForUser.removeAll()
         //arrSkills.removeAll()
         loadProfile()
+        getSkills.loadSkillInfo()
+        getUsers.loadUserInfo()
     }
     override func viewDidLayoutSubviews() {
         //profileImage.layer.cornerRadius = profileImage.frame.size.width/2

@@ -9,18 +9,19 @@
 import UIKit
 import Parse
 
-class userSearch: UITableViewController, UISearchResultsUpdating {
+class userSearch: UIViewController, UISearchResultsUpdating, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var tableView: UITableView!
     var resultSearchController = UISearchController(searchResultsController: nil)
-    var arrSearchResults = [String]()
+    //var arrSearchResults = [String]()
     
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.textLabel?.textColor = UIColor.black
         cell?.backgroundColor = UIColor.white
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected row \(indexPath.row)")
         
         //let cell = tableView.cellForRow(at: indexPath)
@@ -32,11 +33,11 @@ class userSearch: UITableViewController, UISearchResultsUpdating {
         
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if(resultSearchController.isActive) {
             if arrSearchResults.count > 0 {
@@ -51,7 +52,7 @@ class userSearch: UITableViewController, UISearchResultsUpdating {
         }
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath as IndexPath) as UITableViewCell
         
@@ -74,7 +75,7 @@ class userSearch: UITableViewController, UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text {
-            arrSearchResults = searchText.isEmpty ? arrSkills : arrSkills.filter({(dataString: String) -> Bool in
+            arrSearchResults = searchText.isEmpty ? arrSearchResults : arrSearchResults.filter({(dataString: String) -> Bool in
                 return dataString.range(of: searchText, options: NSString.CompareOptions.caseInsensitive) != nil
             })
             tableView.reloadData()
@@ -82,8 +83,10 @@ class userSearch: UITableViewController, UISearchResultsUpdating {
     }
     
     override func viewDidLoad() {
-        
+        tableView.delegate = self;
+        tableView.dataSource = self;
         //set up the search box
+        
         resultSearchController.searchResultsUpdater = self
         resultSearchController.dimsBackgroundDuringPresentation = false
         resultSearchController.searchBar.sizeToFit()
@@ -91,8 +94,14 @@ class userSearch: UITableViewController, UISearchResultsUpdating {
         resultSearchController.searchBar.placeholder = "Search Skills"
         resultSearchController.searchBar.showsCancelButton = false
         resultSearchController.searchBar.setValue("Done", forKey: "_cancelButtonText")
-        tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         tableView.tableHeaderView = resultSearchController.searchBar
+        //definesPresentationContext = true
+        self.extendedLayoutIncludesOpaqueBars = true
+        getSkills.loadSkillInfo()
+        getUsers.loadUserInfo()
+        print("Users Array Count \(arrSearchResults.count)")
+        print("Skills Array Count \(arrSkillsSearchResults.count)")
     }
 
 }
