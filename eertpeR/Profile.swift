@@ -62,11 +62,8 @@ class profile: UIViewController {
             }
             else {
                 print("Error happened \(error)")
-                
             }
         }
-
-        
     }
     
     func loadUserInfo() {
@@ -148,27 +145,20 @@ class profile: UIViewController {
     
      override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("ima on full profile screen siser")
-        
         //arrSkillsForUser.removeAll()
         //arrSkills.removeAll()
         loadProfile()
     }
     override func viewDidLayoutSubviews() {
-        
         //profileImage.layer.cornerRadius = profileImage.frame.size.width/2
         //profileImage.clipsToBounds = true
-
         //userFullName.layer.zPosition = 1.0
-        
         //userCompany.sizeToFit()
-        
         //userTitleRole.sizeToFit()
-        
-        
     }
 }

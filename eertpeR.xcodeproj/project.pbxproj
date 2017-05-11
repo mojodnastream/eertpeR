@@ -20,6 +20,7 @@
 		487981B61E95534D00C60BCD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981B51E95534D00C60BCD /* libsqlite3.tbd */; };
 		487981B81E95535B00C60BCD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981B71E95535B00C60BCD /* SystemConfiguration.framework */; };
 		487981BA1E95539000C60BCD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981B91E95539000C60BCD /* AudioToolbox.framework */; };
+		48B495841EC19E5E00F86CDC /* UserSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B495831EC19E5E00F86CDC /* UserSearch.swift */; };
 		48E4D3061D50F9B000F3EC76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D3051D50F9B000F3EC76 /* AppDelegate.swift */; };
 		48E4D30B1D50F9B000F3EC76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E4D3091D50F9B000F3EC76 /* Main.storyboard */; };
 		48E4D30E1D50F9B000F3EC76 /* eertpeR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D30C1D50F9B000F3EC76 /* eertpeR.xcdatamodeld */; };
@@ -45,6 +46,7 @@
 		487981B51E95534D00C60BCD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		487981B71E95535B00C60BCD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		487981B91E95539000C60BCD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		48B495831EC19E5E00F86CDC /* UserSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearch.swift; sourceTree = "<group>"; };
 		48E4D3021D50F9B000F3EC76 /* eertpeR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eertpeR.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E4D3051D50F9B000F3EC76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E4D30A1D50F9B000F3EC76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				482399B61E96C9C40031892C /* SignUpProfile.swift */,
 				482399B81E96D4DD0031892C /* Profile.swift */,
 				482399BA1EA3CEC00031892C /* SignUpSkills.swift */,
+				48B495831EC19E5E00F86CDC /* UserSearch.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			files = (
 				48E4D30E1D50F9B000F3EC76 /* eertpeR.xcdatamodeld in Sources */,
 				482399AF1E9569C50031892C /* Skill.swift in Sources */,
+				48B495841EC19E5E00F86CDC /* UserSearch.swift in Sources */,
 				482399B31E956DD00031892C /* SignUpOne.swift in Sources */,
 				482399B91E96D4DD0031892C /* Profile.swift in Sources */,
 				482399B51E95DC030031892C /* Utils.swift in Sources */,

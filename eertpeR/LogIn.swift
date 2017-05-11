@@ -30,7 +30,6 @@ class logIn: UIViewController {
     }
     
     func doLogin() {
-        
         self.userLoginError.text = ""
         PFUser.logInWithUsername(inBackground: userLoginEmail.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) as String!, password:userLoginPass.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) as String!) {
             (user, error) -> Void in
@@ -67,16 +66,9 @@ class logIn: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         //print(PFUser.current())
-        
-        
         if PFUser.current()?.sessionToken != nil {
             //print(PFUser.current()?.username ?? "bug")
-            
             performSegue(withIdentifier: "loggedInGo", sender: self)
-            
         }
-        
     }
-
-    
 }
