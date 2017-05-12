@@ -24,11 +24,10 @@ class getUsers {
                     for object in objects {
                         firstname = (object["firstname"] as? String!)!
                         lastname = (object["lastname"] as? String!)!
-                        arrSearchResults.append("\(firstname) \(lastname)")
+                        arrSearchResults.append("Member~\(firstname) \(lastname)")
                     }
                 }
                 print("User Search Array Loaded, ok siser")
-                print("arrSearchResults Total Count from getUsers \(arrSearchResults.count)")
             }
             else {
                   print("Error Happened: \(error)")

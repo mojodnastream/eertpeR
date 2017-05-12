@@ -13,7 +13,7 @@ import Parse
 
 class getSkills {
     static func loadSkillInfo() {
-        arrSkillsSearchResults.removeAll()
+        //arrSkillsSearchResults.removeAll()
         var skill = ""
         let query = PFQuery(className: "SkillsLookUp")
         //query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
@@ -24,11 +24,11 @@ class getSkills {
                 if let objects = objects! as [PFObject]? {
                     for object in objects {
                         skill = (object["name"] as? String!)!
-                        arrSkillsSearchResults.append(skill)
+                        arrSearchResults.append("Skill~\(skill)")
                     }
                 }
                 print("Skill Search Array Loaded, ok siser")
-                print("arrSkillsSearchResults Total Count from getSkills \(arrSkillsSearchResults.count)")
+                print("arrSkillsSearchResults Total Count from getSkills \(arrSearchResults.count)")
             }
             else {
                 
