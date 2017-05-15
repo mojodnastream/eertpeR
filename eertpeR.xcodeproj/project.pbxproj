@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		482135E01EC7BDBE00296104 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482135DF1EC7BDBE00296104 /* Search.swift */; };
+		482135E21EC833AF00296104 /* SearchDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482135E11EC833AF00296104 /* SearchDetail.swift */; };
 		482399AF1E9569C50031892C /* Skill.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399AE1E9569C50031892C /* Skill.swift */; };
 		482399B11E956A300031892C /* LogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399B01E956A300031892C /* LogIn.swift */; };
 		482399B31E956DD00031892C /* SignUpOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399B21E956DD00031892C /* SignUpOne.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		482135DF1EC7BDBE00296104 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		482135E11EC833AF00296104 /* SearchDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDetail.swift; sourceTree = "<group>"; };
 		482399AE1E9569C50031892C /* Skill.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Skill.swift; sourceTree = "<group>"; };
 		482399B01E956A300031892C /* LogIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogIn.swift; sourceTree = "<group>"; };
 		482399B21E956DD00031892C /* SignUpOne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpOne.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 				482399B81E96D4DD0031892C /* Profile.swift */,
 				482399BA1EA3CEC00031892C /* SignUpSkills.swift */,
 				48B495831EC19E5E00F86CDC /* UserSearch.swift */,
+				482135DF1EC7BDBE00296104 /* Search.swift */,
+				482135E11EC833AF00296104 /* SearchDetail.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -251,12 +257,14 @@
 				482399B31E956DD00031892C /* SignUpOne.swift in Sources */,
 				482399B91E96D4DD0031892C /* Profile.swift in Sources */,
 				482399B51E95DC030031892C /* Utils.swift in Sources */,
+				482135E21EC833AF00296104 /* SearchDetail.swift in Sources */,
 				482399B71E96C9C40031892C /* SignUpProfile.swift in Sources */,
 				48E4D3221D50FC9F00F3EC76 /* APIManager.swift in Sources */,
 				48E4D3241D50FDD400F3EC76 /* RepStory.swift in Sources */,
 				48E4D3061D50F9B000F3EC76 /* AppDelegate.swift in Sources */,
 				482399BB1EA3CEC00031892C /* SignUpSkills.swift in Sources */,
 				482399B11E956A300031892C /* LogIn.swift in Sources */,
+				482135E01EC7BDBE00296104 /* Search.swift in Sources */,
 				48E4D3201D50FAE900F3EC76 /* Constants.swift in Sources */,
 				48E4D3261D50FE0400F3EC76 /* User.swift in Sources */,
 			);

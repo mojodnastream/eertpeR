@@ -20,6 +20,13 @@ class profile: UIViewController {
     var arrUserSkills = [String]()
     var arrUserBadges = [String]()
     
+    
+    @IBAction func goToSearch(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "showSearch", sender: self)
+    }
+
+ 
+    
     @IBAction func logOut(_ sender: UIButton) {
         doLogOut()
     }

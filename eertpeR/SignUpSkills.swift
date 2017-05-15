@@ -188,7 +188,7 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
     }
    
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text {
+        if let searchText = searchController.searchBar.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) {
             arrSkillsSearchResults = searchText.isEmpty ? arrSkills : arrSkills.filter({(dataString: String) -> Bool in
                 return dataString.range(of: searchText, options: NSString.CompareOptions.caseInsensitive) != nil
             })

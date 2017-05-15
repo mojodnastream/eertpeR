@@ -1,4 +1,12 @@
 //
+//  Search.swift
+//  eertpeR
+//
+//  Created by Gary Nothom on 5/13/17.
+//  Copyright © 2017 Mojo Services. All rights reserved.
+//
+
+//
 //  UserLookUp.swift
 //  eertpeR
 //
@@ -9,27 +17,19 @@
 import UIKit
 import Parse
 
-/////////////////////////////
-//DEPRICATED/////////////////
-/////////////////////////////
-
-
-
-
-
-class userSearch: UIViewController, UISearchResultsUpdating, UITableViewDelegate, UITableViewDataSource {
+class search: UITableViewController, UISearchResultsUpdating {
     
-    @IBOutlet var tableView: UITableView!
+    //@IBOutlet var tableView: UITableView!
     var resultSearchController = UISearchController(searchResultsController: nil)
     var arrFilteredSearchResults = [String]()
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
         cell?.textLabel?.textColor = UIColor.black
         cell?.backgroundColor = UIColor.white
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected row \(indexPath.row)")
         
         //let cell = tableView.cellForRow(at: indexPath)
@@ -40,11 +40,11 @@ class userSearch: UIViewController, UISearchResultsUpdating, UITableViewDelegate
         }
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(resultSearchController.isActive) {
             if arrFilteredSearchResults.count > 0 {
                 return arrFilteredSearchResults.count
@@ -58,15 +58,15 @@ class userSearch: UIViewController, UISearchResultsUpdating, UITableViewDelegate
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var name = String()
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath as IndexPath) as UITableViewCell
         //cell.textLabel?.textAlignment = .center
         cell.textLabel?.font = UIFont(name:"HelveticaNeue", size:20)
         if (self.resultSearchController.isActive) {
-            print(arrFilteredSearchResults.count)
             if (resultSearchController.searchBar.text?.characters.count)! > 0 {
                 if arrFilteredSearchResults.count > 0 {
+                    print("searchreslts count \(arrFilteredSearchResults.count)")
                     name = utils.getResultName(arrayString: arrFilteredSearchResults[indexPath.row])
                     cell.textLabel?.text = name
                     cell.detailTextLabel?.text = utils.getResultType(arrayString: arrFilteredSearchResults[indexPath.row])
@@ -75,22 +75,25 @@ class userSearch: UIViewController, UISearchResultsUpdating, UITableViewDelegate
                 }
             }
             else {
+                //if indexPath.row == 0 {
                 cell.textLabel?.text = "" //"No Results"
                 cell.detailTextLabel?.text = ""
-//                if indexPath.row == 0 {
-//                    cell.textLabel?.text = "Oops, we can't find any of those" //"No Results"
-//                    cell.detailTextLabel?.text = ""
-//                    cell.textLabel?.textColor = UIColor.black
-//                    cell.backgroundColor = UIColor.white
-//                }
-//                else {
-//                    cell.textLabel?.text = "" //"No Results"
-//                    cell.detailTextLabel?.text = ""
-//                }
+                //}
+                //                if indexPath.row == 0 {
+                //                    cell.textLabel?.text = "Oops, we can't find any of those" //"No Results"
+                //                    cell.detailTextLabel?.text = ""
+                //                    cell.textLabel?.textColor = UIColor.black
+                //                    cell.backgroundColor = UIColor.white
+                //                }
+                //                else {
+                //                    cell.textLabel?.text = "" //"No Results"
+                //                    cell.detailTextLabel?.text = ""
+                //                }
             }
         }
         else {
-            cell.textLabel?.text = "Search for Stuff" //"No Results"
+            //default page view when no active search is underway
+            cell.textLabel?.text = "" //"No Results"
             cell.detailTextLabel?.text = ""
             cell.textLabel?.textColor = UIColor.black
             cell.backgroundColor = UIColor.white
@@ -99,9 +102,10 @@ class userSearch: UIViewController, UISearchResultsUpdating, UITableViewDelegate
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        if let searchText = searchController.searchBar.text {
+        if let searchText = searchController.searchBar.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) {
+            print(searchText.characters.count)
             arrFilteredSearchResults = searchText.isEmpty ? arrSearchResults : arrSearchResults.filter({(dataString: String) -> Bool in
-                return dataString.range(of: searchText, options: NSString.CompareOptions.caseInsensitive) != nil
+                return dataString.range(of: searchText.trimmingCharacters(in: NSCharacterSet.whitespaces), options: NSString.CompareOptions.caseInsensitive) != nil
             })
             tableView.reloadData()
         }
@@ -110,8 +114,8 @@ class userSearch: UIViewController, UISearchResultsUpdating, UITableViewDelegate
     override func viewDidLoad() {
         getUsers.loadUserInfo()
         getSkills.loadSkillInfo()
-        tableView.delegate = self;
-        tableView.dataSource = self;
+        //tableView.delegate = self;
+        //tableView.dataSource = self;
         //set up the search box
         
         resultSearchController.searchResultsUpdater = self
@@ -130,5 +134,6 @@ class userSearch: UIViewController, UISearchResultsUpdating, UITableViewDelegate
         print("Users Array Count \(arrSearchResults.count)")
         print("Skills Array Count \(arrSkillsSearchResults.count)")
     }
-
+    
 }
+
