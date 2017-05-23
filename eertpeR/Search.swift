@@ -5,8 +5,6 @@
 //  Created by Gary Nothom on 5/13/17.
 //  Copyright © 2017 Mojo Services. All rights reserved.
 //
-
-//
 //  UserLookUp.swift
 //  eertpeR
 //
@@ -19,7 +17,7 @@ import Parse
 
 class search: UITableViewController, UISearchResultsUpdating {
     
-    //@IBOutlet var tableView: UITableView!
+    var userID:String!
     var resultSearchController = UISearchController(searchResultsController: nil)
     var arrFilteredSearchResults = [String]()
     
@@ -30,10 +28,11 @@ class search: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected row \(indexPath.row)")
+        //send data to the detail screen
+        userID = utils.getResultID(arrayString: arrFilteredSearchResults[indexPath.row])
         
-        //let cell = tableView.cellForRow(at: indexPath)
-        //let itemString = (cell?.textLabel?.text)! as String
+        //fire the segue prep
+        self.performSegue(withIdentifier: "showDetails", sender: self)
         
         if(!resultSearchController.isActive) {
             tableView.reloadData()
@@ -66,7 +65,7 @@ class search: UITableViewController, UISearchResultsUpdating {
         if (self.resultSearchController.isActive) {
             if (resultSearchController.searchBar.text?.characters.count)! > 0 {
                 if arrFilteredSearchResults.count > 0 {
-                    print("searchreslts count \(arrFilteredSearchResults.count)")
+                    //print("searchreslts count \(arrFilteredSearchResults.count)")
                     name = utils.getResultName(arrayString: arrFilteredSearchResults[indexPath.row])
                     cell.textLabel?.text = name
                     cell.detailTextLabel?.text = utils.getResultType(arrayString: arrFilteredSearchResults[indexPath.row])
@@ -75,20 +74,8 @@ class search: UITableViewController, UISearchResultsUpdating {
                 }
             }
             else {
-                //if indexPath.row == 0 {
                 cell.textLabel?.text = "" //"No Results"
                 cell.detailTextLabel?.text = ""
-                //}
-                //                if indexPath.row == 0 {
-                //                    cell.textLabel?.text = "Oops, we can't find any of those" //"No Results"
-                //                    cell.detailTextLabel?.text = ""
-                //                    cell.textLabel?.textColor = UIColor.black
-                //                    cell.backgroundColor = UIColor.white
-                //                }
-                //                else {
-                //                    cell.textLabel?.text = "" //"No Results"
-                //                    cell.detailTextLabel?.text = ""
-                //                }
             }
         }
         else {
@@ -103,7 +90,7 @@ class search: UITableViewController, UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) {
-            print(searchText.characters.count)
+            //print(searchText.characters.count)
             arrFilteredSearchResults = searchText.isEmpty ? arrSearchResults : arrSearchResults.filter({(dataString: String) -> Bool in
                 return dataString.range(of: searchText.trimmingCharacters(in: NSCharacterSet.whitespaces), options: NSString.CompareOptions.caseInsensitive) != nil
             })
@@ -111,12 +98,21 @@ class search: UITableViewController, UISearchResultsUpdating {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        resultSearchController.searchBar.isHidden = true
+        let viewController = segue.destination as! SearchDetail
+        // your new view controller should have property that will store passed value
+        //print(userID)
+        viewController.passedValue = userID
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        resultSearchController.searchBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         getUsers.loadUserInfo()
         getSkills.loadSkillInfo()
-        //tableView.delegate = self;
-        //tableView.dataSource = self;
-        //set up the search box
         
         resultSearchController.searchResultsUpdater = self
         resultSearchController.dimsBackgroundDuringPresentation = false
@@ -127,12 +123,9 @@ class search: UITableViewController, UISearchResultsUpdating {
         resultSearchController.searchBar.placeholder = "Search Skills"
         resultSearchController.searchBar.showsCancelButton = false
         resultSearchController.searchBar.setValue("Done", forKey: "_cancelButtonText")
-        //resultSearchController.searchBar.scopeButtonTitles = ["Users", "Skills"]
-        //resultSearchController.searchBar.delegate = self
+        resultSearchController.definesPresentationContext = true
         tableView.tableHeaderView = resultSearchController.searchBar
         self.extendedLayoutIncludesOpaqueBars = true
-        print("Users Array Count \(arrSearchResults.count)")
-        print("Skills Array Count \(arrSkillsSearchResults.count)")
     }
     
 }

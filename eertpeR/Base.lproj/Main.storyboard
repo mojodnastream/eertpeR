@@ -677,9 +677,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Tng-Yb-f7a" kind="show" id="zMn-Zc-HYA"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -688,6 +685,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Search" id="8r5-SO-CSm"/>
+                    <connections>
+                        <segue destination="Tng-Yb-f7a" kind="show" identifier="showDetails" id="89c-J2-tFa"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtM-6n-XKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -743,7 +743,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fKb-4f-zra"/>
         <segue reference="iZN-qr-Dry"/>
+        <segue reference="fKb-4f-zra"/>
     </inferredMetricsTieBreakers>
 </document>

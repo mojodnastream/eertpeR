@@ -15,6 +15,7 @@ class getSkills {
     static func loadSkillInfo() {
         //arrSkillsSearchResults.removeAll()
         var skill = ""
+        //var skillID = ""
         let query = PFQuery(className: "SkillsLookUp")
         //query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
         query.limit = 1000
@@ -24,7 +25,8 @@ class getSkills {
                 if let objects = objects! as [PFObject]? {
                     for object in objects {
                         skill = (object["name"] as? String!)!
-                        arrSearchResults.append("Skill~\(skill)")
+                        //skillID = (object["objectId"] as? String!)!
+                        arrSearchResults.append("Skill~\(skill)*\(skill)")
                     }
                 }
                 print("Skill Search Array Loaded, ok siser")

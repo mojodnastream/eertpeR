@@ -10,5 +10,11 @@ import UIKit
 import Parse
 
 class SearchDetail: UIViewController {
+    var passedValue = ""
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print(passedValue)
+    }
     
 }
