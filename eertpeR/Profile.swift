@@ -62,9 +62,7 @@ class profile: UIViewController {
                         badge = object["userBadge"] as! String
                         self.arrUserBadges.append(badge.lowercased())
                     }
-                    print("BADGES Loaded, ok siser")
                     self.userBadgesCount.text = "You have \(self.arrUserBadges.count) badges"
-                    print(self.arrUserBadges.count)
                 }
             }
             else {
@@ -138,9 +136,7 @@ class profile: UIViewController {
                         name = object["userSkill"] as! String
                         self.arrUserSkills.append(name.lowercased())
                     }
-                    print("Skills Loaded, ok siser")
                     self.userSkillsCount.text = "You have \(self.arrUserSkills.count) skills"
-                    print(self.arrUserSkills.count)
                 }
             }
             else {

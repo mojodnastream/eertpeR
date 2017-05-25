@@ -10,11 +10,33 @@ import UIKit
 import Parse
 
 class SearchDetail: UIViewController {
-    var passedValue = ""
+    var passUserID:String!
+    var passUserName:String!
+    var passType:String!
+    var userRep:String!
+    
+    func setUserVars() {
+        userRep = getUsers.userBadges
+        print(userRep)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(passedValue)
+        print(passUserID)
+        print(passUserName)
+        print(passType)
+        
+        if passType == "Member" {
+            getUsers.getMemberProfile()
+            setUserVars();
+        }
+        else {
+            getSkills.getSkillProfile()
+        }
+        
+        
     }
+    
     
 }

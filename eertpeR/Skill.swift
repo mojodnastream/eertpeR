@@ -12,6 +12,11 @@ import Foundation
 import Parse
 
 class getSkills {
+    
+    static func getSkillProfile() {
+        
+    }
+    
     static func loadSkillInfo() {
         //arrSkillsSearchResults.removeAll()
         var skill = ""

@@ -12,7 +12,12 @@ import Parse
 class getUsers {
     
     static let jsonObject: NSMutableDictionary = NSMutableDictionary()
-
+    
+    static var userBadges = ""
+    
+    static func getMemberProfile() {
+        userBadges = "Gek Ya"
+    }
     
     static func loadUserInfo() {
         

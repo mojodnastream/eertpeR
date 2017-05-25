@@ -18,6 +18,8 @@ import Parse
 class search: UITableViewController, UISearchResultsUpdating {
     
     var userID:String!
+    var userName:String!
+    var recordType:String!
     var resultSearchController = UISearchController(searchResultsController: nil)
     var arrFilteredSearchResults = [String]()
     
@@ -30,6 +32,8 @@ class search: UITableViewController, UISearchResultsUpdating {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //send data to the detail screen
         userID = utils.getResultID(arrayString: arrFilteredSearchResults[indexPath.row])
+        userName = utils.getResultName(arrayString: arrFilteredSearchResults[indexPath.row])
+        recordType = utils.getResultType(arrayString: arrFilteredSearchResults[indexPath.row])
         
         //fire the segue prep
         self.performSegue(withIdentifier: "showDetails", sender: self)
@@ -99,11 +103,16 @@ class search: UITableViewController, UISearchResultsUpdating {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // get stuff ready for the detail page
+        
+        //hide the search bar
         resultSearchController.searchBar.isHidden = true
-        let viewController = segue.destination as! SearchDetail
-        // your new view controller should have property that will store passed value
-        //print(userID)
-        viewController.passedValue = userID
+        
+        //connect to the detail vc and send any needed data
+        let vcDetail = segue.destination as! SearchDetail
+        vcDetail.passUserID = userID
+        vcDetail.passUserName = userName
+        vcDetail.passType = recordType
     }
     
     override func viewWillAppear(_ animated: Bool) {
