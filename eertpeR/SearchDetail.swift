@@ -13,11 +13,14 @@ class SearchDetail: UIViewController {
     var passUserID:String!
     var passUserName:String!
     var passType:String!
+    var userBadges:String!
     var userRep:String!
     
     func setUserVars() {
-        userRep = getUsers.userBadges
+        userRep = getUsers.userRep
+        userBadges = getUsers.userBadges
         print(userRep)
+        print(userBadges)
         
     }
     
@@ -28,7 +31,7 @@ class SearchDetail: UIViewController {
         print(passType)
         
         if passType == "Member" {
-            getUsers.getMemberProfile()
+            getUsers.getMemberProfile(userId: passUserID)
             setUserVars();
         }
         else {

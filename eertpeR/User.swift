@@ -14,9 +14,30 @@ class getUsers {
     static let jsonObject: NSMutableDictionary = NSMutableDictionary()
     
     static var userBadges = ""
+    static var userRep = ""
     
-    static func getMemberProfile() {
+    static func getMemberProfile(userId:String) {
         userBadges = "Gek Ya"
+        userRep = "Solid"
+        
+        let query = PFQuery(className: "UserProfile")
+        //query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
+        query.findObjectsInBackground {
+            (objects: [PFObject]?, error: Error?) -> Void in
+            if error == nil {
+                if let objects = objects! as [PFObject]? {
+                    for object in objects {
+                        
+                    }
+                }
+                
+                print("User Search Array Loaded, ok siser")
+            }
+            else {
+                print("Error Happened: \(error)")
+            }
+        }
+
     }
     
     static func loadUserInfo() {
@@ -39,34 +60,9 @@ class getUsers {
                         userid = (object["userID"] as? String!)!
                         name = "\(firstname) \(lastname)"
                         arrSearchResults.append("Member~\(name)*\(userid)")
-                        
-                        
-//                        jsonObject.setValue(name, forKey: "name")
-//                        jsonObject.setValue(userid, forKey: "userid")
-//                        let jsonData: NSData
-//                        
-//                        do {
-//                            jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions()) as NSData
-//                            jsonString += NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as! String
-//                           
-//                            
-//                        } catch _ {
-//                            print ("JSON Failure")
-//                        }
                     }
                 }
-               // let data = NSJSONSerialization.dataWithJSONObject(arrSearchResults, options: nil, error: nil)
-//                let jsonData: NSData
-                
-//                do {
-//                    jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions()) as NSData
-//                    jsonString = NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as! String
-//                    print("json string = \(jsonString)")
-//                    
-//                } catch _ {
-//                    print ("JSON Failure")
-//                }
-//                 print("json string = \(jsonString)")
+
                 print("User Search Array Loaded, ok siser")
             }
             else {
@@ -75,41 +71,6 @@ class getUsers {
         }
     }
 }
-//    static func downToJSON(name: String, ID: String) {
-//        
-//        jsonObject.setValue(name, forKey: ID)
-//        
-//        let jsonData: NSData
-//        
-//        do {
-//            jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions()) as NSData
-//            let jsonString = NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as! String
-//            print("json string = \(jsonString)")
-//            
-//        } catch _ {
-//            print ("JSON Failure")
-//        }
-//        
-//    }
-    
-//    static func doMeSomeJson() {
-//        do {
-//        
-//        //Convert to Data
-//        let jsonData = try JSONSerialization.data(withJSONObject: arrSearchResults, options: JSONSerialization.WritingOptions.prettyPrinted)
-//        
-//        //Convert back to string. Usually only do this for debugging
-//        if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
-//            
-//            print(JSONString)
-//        }
-//        
-//        } catch {
-//            print("errors happened")
-//            }
-//
-//        }
-//}
 
 
 //class user {
