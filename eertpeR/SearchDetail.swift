@@ -21,7 +21,6 @@ class SearchDetail: UIViewController {
         userBadges = getUsers.userBadges
         print(userRep)
         print(userBadges)
-        
     }
     
     override func viewDidLoad() {
@@ -37,9 +36,5 @@ class SearchDetail: UIViewController {
         else {
             getSkills.getSkillProfile()
         }
-        
-        
     }
-    
-    
 }

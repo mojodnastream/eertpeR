@@ -12,7 +12,6 @@ import Parse
 class getUsers {
     
     static let jsonObject: NSMutableDictionary = NSMutableDictionary()
-    
     static var userBadges = ""
     static var userRep = ""
     
@@ -30,14 +29,11 @@ class getUsers {
                         
                     }
                 }
-                
-                print("User Search Array Loaded, ok siser")
             }
             else {
                 print("Error Happened: \(error)")
             }
         }
-
     }
     
     static func loadUserInfo() {
