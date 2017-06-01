@@ -30,7 +30,7 @@ class search: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //send data to the detail screen
+        //send data to the detail screen about the requested entity
         userID = utils.getResultID(arrayString: arrFilteredSearchResults[indexPath.row])
         userName = utils.getResultName(arrayString: arrFilteredSearchResults[indexPath.row])
         recordType = utils.getResultType(arrayString: arrFilteredSearchResults[indexPath.row])
@@ -129,7 +129,7 @@ class search: UITableViewController, UISearchResultsUpdating {
         resultSearchController.searchBar.tintColor = UIColor.white
         resultSearchController.searchBar.barTintColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
         resultSearchController.hidesNavigationBarDuringPresentation = false
-        resultSearchController.searchBar.placeholder = "Search Skills"
+        resultSearchController.searchBar.placeholder = "Search the Reptree"
         resultSearchController.searchBar.showsCancelButton = false
         resultSearchController.searchBar.setValue("Done", forKey: "_cancelButtonText")
         resultSearchController.definesPresentationContext = true

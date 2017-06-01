@@ -13,7 +13,7 @@ import Parse
 
 class getSkills {
     
-    static func getSkillProfile() {
+    static func getSkillProfile(skill: String) {
         
     }
     
