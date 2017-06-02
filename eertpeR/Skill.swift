@@ -17,6 +17,7 @@ class getSkills {
         
     }
     
+    
     static func loadSkillInfo() {
         //arrSkillsSearchResults.removeAll()
         var skill = ""

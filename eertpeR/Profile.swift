@@ -20,13 +20,19 @@ class profile: UIViewController {
     var arrUserSkills = [String]()
     var arrUserBadges = [String]()
     
+    //use this for the profile pic
+    override func viewDidLayoutSubviews() {
+        //profileImage.layer.cornerRadius = profileImage.frame.size.width/2
+        //profileImage.clipsToBounds = true
+        //userFullName.layer.zPosition = 1.0
+        //userCompany.sizeToFit()
+        //userTitleRole.sizeToFit()
+    }
     
     @IBAction func goToSearch(_ sender: UIButton) {
         self.performSegue(withIdentifier: "showSearch", sender: self)
     }
 
- 
-    
     @IBAction func logOut(_ sender: UIButton) {
         doLogOut()
     }
@@ -158,12 +164,5 @@ class profile: UIViewController {
         loadProfile()
         getSkills.loadSkillInfo()
         getUsers.loadUserInfo()
-    }
-    override func viewDidLayoutSubviews() {
-        //profileImage.layer.cornerRadius = profileImage.frame.size.width/2
-        //profileImage.clipsToBounds = true
-        //userFullName.layer.zPosition = 1.0
-        //userCompany.sizeToFit()
-        //userTitleRole.sizeToFit()
     }
 }

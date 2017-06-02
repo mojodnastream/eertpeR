@@ -15,9 +15,12 @@ class getUsers {
     static var userBadges = ""
     static var userRep = ""
     
+    
+    
     static func getMemberProfile(userId:String) {
         userBadges = "Gek Ya"
         userRep = "Solid"
+        
         
         let query = PFQuery(className: "UserProfile")
         //query.whereKey("userID", equalTo:PFUser.current()!.objectId!)

@@ -16,6 +16,7 @@
 		482399B71E96C9C40031892C /* SignUpProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399B61E96C9C40031892C /* SignUpProfile.swift */; };
 		482399B91E96D4DD0031892C /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399B81E96D4DD0031892C /* Profile.swift */; };
 		482399BB1EA3CEC00031892C /* SignUpSkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399BA1EA3CEC00031892C /* SignUpSkills.swift */; };
+		484AAD791EE2134100766430 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 484AAD781EE2134100766430 /* profile.png */; };
 		487981B01E9552DA00C60BCD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981AE1E9552DA00C60BCD /* Bolts.framework */; };
 		487981B11E9552DA00C60BCD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981AF1E9552DA00C60BCD /* Parse.framework */; };
 		487981B41E95533D00C60BCD /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981B31E95533D00C60BCD /* libstdc++.6.tbd */; };
@@ -44,6 +45,7 @@
 		482399B61E96C9C40031892C /* SignUpProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpProfile.swift; sourceTree = "<group>"; };
 		482399B81E96D4DD0031892C /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		482399BA1EA3CEC00031892C /* SignUpSkills.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpSkills.swift; sourceTree = "<group>"; };
+		484AAD781EE2134100766430 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		487981AE1E9552DA00C60BCD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = eertpeR/Bolts.framework; sourceTree = "<group>"; };
 		487981AF1E9552DA00C60BCD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = eertpeR/Parse.framework; sourceTree = "<group>"; };
 		487981B31E95533D00C60BCD /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
@@ -81,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		484AAD771EE212DE00766430 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				484AAD781EE2134100766430 /* profile.png */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		487981B21E95533D00C60BCD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +124,7 @@
 		48E4D3041D50F9B000F3EC76 /* eertpeR */ = {
 			isa = PBXGroup;
 			children = (
+				484AAD771EE212DE00766430 /* Assets */,
 				48E4D31E1D50FAC900F3EC76 /* Utils */,
 				48E4D31C1D50F9E200F3EC76 /* Controller */,
 				48E4D31A1D50F9CF00F3EC76 /* Model */,
@@ -241,6 +252,7 @@
 				48E4D3131D50F9B000F3EC76 /* LaunchScreen.storyboard in Resources */,
 				48E4D3101D50F9B000F3EC76 /* Assets.xcassets in Resources */,
 				48E4D30B1D50F9B000F3EC76 /* Main.storyboard in Resources */,
+				484AAD791EE2134100766430 /* profile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

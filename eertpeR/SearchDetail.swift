@@ -17,9 +17,18 @@ class SearchDetail: UIViewController {
     var userRep:String!
     
     
+    @IBOutlet var userProfileIMG: UIImageView!
     @IBOutlet weak var entityName: UILabel!
     
     var passSkillID:String!
+    
+    //use this for the profile pic
+    override func viewDidLayoutSubviews() {
+
+        userProfileIMG.layer.cornerRadius = userProfileIMG.frame.size.width/2
+        userProfileIMG.clipsToBounds = true
+        
+    }
     
     func setUserVars() {
         //what to show when a member is loaded from the search page

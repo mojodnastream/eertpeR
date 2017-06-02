@@ -43,6 +43,12 @@ class search: UITableViewController, UISearchResultsUpdating {
         }
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == arrFilteredSearchResults.count-1 { //you might decide to load sooner than -1 I guess...
+            print("was up \(indexPath.row)")
+        }
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
