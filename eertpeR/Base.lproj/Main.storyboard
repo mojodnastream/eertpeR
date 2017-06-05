@@ -701,6 +701,7 @@
                     <navigationItem key="navigationItem" title="Search" id="8r5-SO-CSm"/>
                     <connections>
                         <segue destination="Tng-Yb-f7a" kind="show" identifier="showDetails" id="89c-J2-tFa"/>
+                        <segue destination="JOo-dD-mnA" kind="show" identifier="showSkillDetails" id="vTs-su-de8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtM-6n-XKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -775,7 +776,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pId-H8-wx3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4898.3999999999996" y="-636.4317841079461"/>
+            <point key="canvasLocation" x="4937" y="-923"/>
+        </scene>
+        <!--Skillz-->
+        <scene sceneID="CS3-A7-FCD">
+            <objects>
+                <viewController title="Skillz" id="JOo-dD-mnA" customClass="SearchDetailSkills" customModule="eertpeR" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sVn-Pm-iI6"/>
+                        <viewControllerLayoutGuide type="bottom" id="nnR-6H-xgI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="23l-vQ-p9r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pcO-N9-rlk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4937" y="-221"/>
         </scene>
     </scenes>
     <resources>

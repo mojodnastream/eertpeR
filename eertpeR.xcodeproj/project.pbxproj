@@ -17,6 +17,7 @@
 		482399B91E96D4DD0031892C /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399B81E96D4DD0031892C /* Profile.swift */; };
 		482399BB1EA3CEC00031892C /* SignUpSkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399BA1EA3CEC00031892C /* SignUpSkills.swift */; };
 		484AAD791EE2134100766430 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 484AAD781EE2134100766430 /* profile.png */; };
+		484AAD7B1EE61B9100766430 /* SearchDetailSkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484AAD7A1EE61B9100766430 /* SearchDetailSkills.swift */; };
 		487981B01E9552DA00C60BCD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981AE1E9552DA00C60BCD /* Bolts.framework */; };
 		487981B11E9552DA00C60BCD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981AF1E9552DA00C60BCD /* Parse.framework */; };
 		487981B41E95533D00C60BCD /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981B31E95533D00C60BCD /* libstdc++.6.tbd */; };
@@ -46,6 +47,7 @@
 		482399B81E96D4DD0031892C /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		482399BA1EA3CEC00031892C /* SignUpSkills.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpSkills.swift; sourceTree = "<group>"; };
 		484AAD781EE2134100766430 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
+		484AAD7A1EE61B9100766430 /* SearchDetailSkills.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDetailSkills.swift; sourceTree = "<group>"; };
 		487981AE1E9552DA00C60BCD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = eertpeR/Bolts.framework; sourceTree = "<group>"; };
 		487981AF1E9552DA00C60BCD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = eertpeR/Parse.framework; sourceTree = "<group>"; };
 		487981B31E95533D00C60BCD /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
@@ -165,6 +167,7 @@
 				48B495831EC19E5E00F86CDC /* UserSearch.swift */,
 				482135DF1EC7BDBE00296104 /* Search.swift */,
 				482135E11EC833AF00296104 /* SearchDetail.swift */,
+				484AAD7A1EE61B9100766430 /* SearchDetailSkills.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				482399B11E956A300031892C /* LogIn.swift in Sources */,
 				482135E01EC7BDBE00296104 /* Search.swift in Sources */,
 				48E4D3201D50FAE900F3EC76 /* Constants.swift in Sources */,
+				484AAD7B1EE61B9100766430 /* SearchDetailSkills.swift in Sources */,
 				48E4D3261D50FE0400F3EC76 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

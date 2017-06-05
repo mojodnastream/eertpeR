@@ -36,10 +36,34 @@ class search: UITableViewController, UISearchResultsUpdating {
         recordType = utils.getResultType(arrayString: arrFilteredSearchResults[indexPath.row])
         
         //fire the segue prep
-        self.performSegue(withIdentifier: "showDetails", sender: self)
+        if recordType == "Member" {
+            self.performSegue(withIdentifier: "showDetails", sender: self)
+        }
+        else {
+            self.performSegue(withIdentifier: "showSkillDetails", sender: self)
+        }
         
         if(!resultSearchController.isActive) {
             tableView.reloadData()
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // get stuff ready for the detail page
+        
+        //hide the search bar
+        resultSearchController.searchBar.isHidden = true
+        
+        //connect to the detail vc and send any needed data
+        if recordType == "Member" {
+            let vcDetail = segue.destination as! SearchDetail
+            vcDetail.passUserID = userID
+            vcDetail.passUserName = userName
+            vcDetail.passType = recordType
+        }
+        else {
+            let vcDetailSkills = segue.destination as! SearchDetailSkills
+            vcDetailSkills.passSkillID = "Swift"
         }
     }
     
@@ -106,19 +130,6 @@ class search: UITableViewController, UISearchResultsUpdating {
             })
             tableView.reloadData()
         }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // get stuff ready for the detail page
-        
-        //hide the search bar
-        resultSearchController.searchBar.isHidden = true
-        
-        //connect to the detail vc and send any needed data
-        let vcDetail = segue.destination as! SearchDetail
-        vcDetail.passUserID = userID
-        vcDetail.passUserName = userName
-        vcDetail.passType = recordType
     }
     
     override func viewWillAppear(_ animated: Bool) {
