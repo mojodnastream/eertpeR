@@ -698,7 +698,13 @@
                             <outlet property="delegate" destination="DJ4-Dp-JL6" id="ibO-gO-0FO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search" id="8r5-SO-CSm"/>
+                    <navigationItem key="navigationItem" title="Search" id="8r5-SO-CSm">
+                        <barButtonItem key="leftBarButtonItem" title="Home" id="Obn-kN-tlx">
+                            <connections>
+                                <segue destination="zCg-Ma-061" kind="show" identifier="goToProfile" id="EwH-YS-fop"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="Tng-Yb-f7a" kind="show" identifier="showDetails" id="89c-J2-tFa"/>
                         <segue destination="JOo-dD-mnA" kind="show" identifier="showSkillDetails" id="vTs-su-de8"/>
@@ -801,7 +807,7 @@
         <image name="profile.png" width="240" height="220"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iZN-qr-Dry"/>
+        <segue reference="EwH-YS-fop"/>
         <segue reference="fKb-4f-zra"/>
     </inferredMetricsTieBreakers>
 </document>

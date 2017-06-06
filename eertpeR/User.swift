@@ -12,15 +12,15 @@ import Parse
 class getUsers {
     
     static let jsonObject: NSMutableDictionary = NSMutableDictionary()
-    static var userBadges = ""
-    static var userRep = ""
+    static var userBadges = [String]()
+    static var userRep = [String]()
+    static let profileUserPosition = ""
+    static let profileUserLocation = ""
+    static let profileUserProfilePhoto = ""
     
     
     
     static func getMemberProfile(userId:String) {
-        userBadges = "Gek Ya"
-        userRep = "Solid"
-        
         
         let query = PFQuery(className: "UserProfile")
         //query.whereKey("userID", equalTo:PFUser.current()!.objectId!)

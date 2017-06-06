@@ -14,7 +14,7 @@ import Parse
 class getSkills {
     
     static func getSkillProfile(skill: String) {
-        
+        print("get info about \(skill) please")
     }
     
     

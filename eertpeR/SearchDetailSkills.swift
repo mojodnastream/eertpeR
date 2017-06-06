@@ -14,20 +14,15 @@ class SearchDetailSkills: UIViewController {
     
     var passSkillID:String!
     
-    //use this for the profile pic
-    override func viewDidLayoutSubviews() {
-        
-    }
-    
     func setSkillVars() {
         //what to show when a skill is selected from the search page
-        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
             getSkills.getSkillProfile(skill: passSkillID)
             print(passSkillID)
-
+        
+        self.title = passSkillID
     }
 }

@@ -15,13 +15,14 @@
 import UIKit
 import Parse
 
-class search: UITableViewController, UISearchResultsUpdating {
+class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
     
     var userID:String!
     var userName:String!
-    var recordType:String!
+    var recordType = ""
     var resultSearchController = UISearchController(searchResultsController: nil)
     var arrFilteredSearchResults = [String]()
+    var segFlag = false
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
@@ -35,12 +36,18 @@ class search: UITableViewController, UISearchResultsUpdating {
         userName = utils.getResultName(arrayString: arrFilteredSearchResults[indexPath.row])
         recordType = utils.getResultType(arrayString: arrFilteredSearchResults[indexPath.row])
         
+        print("the row is \(indexPath.row)")
+        
         //fire the segue prep
         if recordType == "Member" {
             self.performSegue(withIdentifier: "showDetails", sender: self)
         }
-        else {
+        else if recordType == "Skill" {
             self.performSegue(withIdentifier: "showSkillDetails", sender: self)
+        }
+        else {
+            self.performSegue(withIdentifier: "goToProfile", sender: self)
+            segFlag = true
         }
         
         if(!resultSearchController.isActive) {
@@ -55,15 +62,17 @@ class search: UITableViewController, UISearchResultsUpdating {
         resultSearchController.searchBar.isHidden = true
         
         //connect to the detail vc and send any needed data
-        if recordType == "Member" {
-            let vcDetail = segue.destination as! SearchDetail
-            vcDetail.passUserID = userID
-            vcDetail.passUserName = userName
-            vcDetail.passType = recordType
-        }
-        else {
-            let vcDetailSkills = segue.destination as! SearchDetailSkills
-            vcDetailSkills.passSkillID = "Swift"
+        if segFlag == false {
+            if recordType == "Member" {
+                let vcDetail = segue.destination as! SearchDetail
+                vcDetail.passUserID = userID
+                vcDetail.passUserName = userName
+                vcDetail.passType = recordType
+            }
+            else if recordType == "Skill" {
+                let vcDetailSkills = segue.destination as! SearchDetailSkills
+                vcDetailSkills.passSkillID = userName
+            }
         }
     }
     
@@ -136,6 +145,11 @@ class search: UITableViewController, UISearchResultsUpdating {
         resultSearchController.searchBar.isHidden = false
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        print("i did appear")
+        recordType = ""
+    }
+    
     override func viewDidLoad() {
         getUsers.loadUserInfo()
         getSkills.loadSkillInfo()
@@ -153,6 +167,5 @@ class search: UITableViewController, UISearchResultsUpdating {
         tableView.tableHeaderView = resultSearchController.searchBar
         self.extendedLayoutIncludesOpaqueBars = true
     }
-    
 }
 

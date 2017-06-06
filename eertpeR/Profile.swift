@@ -165,4 +165,7 @@ class profile: UIViewController {
         getSkills.loadSkillInfo()
         getUsers.loadUserInfo()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
 }
