@@ -32,6 +32,7 @@
 		48E4D3221D50FC9F00F3EC76 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D3211D50FC9F00F3EC76 /* APIManager.swift */; };
 		48E4D3241D50FDD400F3EC76 /* RepStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D3231D50FDD400F3EC76 /* RepStory.swift */; };
 		48E4D3261D50FE0400F3EC76 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D3251D50FE0400F3EC76 /* User.swift */; };
+		79D068E81FE988A30059B23C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79D068E71FE988A20059B23C /* GoogleService-Info.plist */; };
 		7B13E993B1DC046EF0EE48B0 /* libPods-eertpeR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 729CFF212E2B7C29D91DBB0B /* libPods-eertpeR.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		48E4D3231D50FDD400F3EC76 /* RepStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepStory.swift; sourceTree = "<group>"; };
 		48E4D3251D50FE0400F3EC76 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		729CFF212E2B7C29D91DBB0B /* libPods-eertpeR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-eertpeR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79D068E71FE988A20059B23C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99E3EEF8BF54A076FB42F0A3 /* Pods-eertpeR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eertpeR.release.xcconfig"; path = "Pods/Target Support Files/Pods-eertpeR/Pods-eertpeR.release.xcconfig"; sourceTree = "<group>"; };
 		BE14C4FB754C16E153172F7E /* Pods-eertpeR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eertpeR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eertpeR/Pods-eertpeR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,6 +185,7 @@
 		48E4D31D1D50FA3B00F3EC76 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				79D068E71FE988A20059B23C /* GoogleService-Info.plist */,
 				48E4D30C1D50F9B000F3EC76 /* eertpeR.xcdatamodeld */,
 				48E4D3051D50F9B000F3EC76 /* AppDelegate.swift */,
 				48E4D30F1D50F9B000F3EC76 /* Assets.xcassets */,
@@ -265,6 +268,7 @@
 			files = (
 				48E4D3131D50F9B000F3EC76 /* LaunchScreen.storyboard in Resources */,
 				48E4D3101D50F9B000F3EC76 /* Assets.xcassets in Resources */,
+				79D068E81FE988A30059B23C /* GoogleService-Info.plist in Resources */,
 				48E4D30B1D50F9B000F3EC76 /* Main.storyboard in Resources */,
 				484AAD791EE2134100766430 /* profile.png in Resources */,
 			);
@@ -482,9 +486,9 @@
 					"$(PROJECT_DIR)/eertpeR",
 				);
 				INFOPLIST_FILE = eertpeR/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gary.mojo.eertpeR;
+				PRODUCT_BUNDLE_IDENTIFIER = com.repgarden.eertpeR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -501,9 +505,9 @@
 					"$(PROJECT_DIR)/eertpeR",
 				);
 				INFOPLIST_FILE = eertpeR/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.gary.mojo.eertpeR;
+				PRODUCT_BUNDLE_IDENTIFIER = com.repgarden.eertpeR;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;

@@ -9,7 +9,7 @@
  //let Skill = ["MATH"]
 
 import Foundation
-import Parse
+//import Parse
 
 class getSkills {
     

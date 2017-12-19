@@ -8,7 +8,7 @@
 
 
 import UIKit
-import Parse
+//import Parse
 
 class SearchDetailSkills: UIViewController {
     
