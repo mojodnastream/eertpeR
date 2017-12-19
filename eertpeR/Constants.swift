@@ -20,10 +20,5 @@ var arrSkills = [String]()
 var arrSkillsSearchResults = [String]()
 var arrSkillsForUser = [String]()
 var arrBadges = [String]()
-
-//struct SearchItems {
-//    let category : String
-//    let name : String
-//}
 var arrSearchResults = [String]()
 

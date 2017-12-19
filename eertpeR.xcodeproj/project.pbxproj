@@ -18,8 +18,6 @@
 		482399BB1EA3CEC00031892C /* SignUpSkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482399BA1EA3CEC00031892C /* SignUpSkills.swift */; };
 		484AAD791EE2134100766430 /* profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 484AAD781EE2134100766430 /* profile.png */; };
 		484AAD7B1EE61B9100766430 /* SearchDetailSkills.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484AAD7A1EE61B9100766430 /* SearchDetailSkills.swift */; };
-		487981B01E9552DA00C60BCD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981AE1E9552DA00C60BCD /* Bolts.framework */; };
-		487981B11E9552DA00C60BCD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981AF1E9552DA00C60BCD /* Parse.framework */; };
 		487981B41E95533D00C60BCD /* libstdc++.6.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981B31E95533D00C60BCD /* libstdc++.6.tbd */; };
 		487981B61E95534D00C60BCD /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981B51E95534D00C60BCD /* libsqlite3.tbd */; };
 		487981B81E95535B00C60BCD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487981B71E95535B00C60BCD /* SystemConfiguration.framework */; };
@@ -34,6 +32,7 @@
 		48E4D3221D50FC9F00F3EC76 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D3211D50FC9F00F3EC76 /* APIManager.swift */; };
 		48E4D3241D50FDD400F3EC76 /* RepStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D3231D50FDD400F3EC76 /* RepStory.swift */; };
 		48E4D3261D50FE0400F3EC76 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D3251D50FE0400F3EC76 /* User.swift */; };
+		7B13E993B1DC046EF0EE48B0 /* libPods-eertpeR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 729CFF212E2B7C29D91DBB0B /* libPods-eertpeR.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,8 +47,6 @@
 		482399BA1EA3CEC00031892C /* SignUpSkills.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpSkills.swift; sourceTree = "<group>"; };
 		484AAD781EE2134100766430 /* profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profile.png; sourceTree = "<group>"; };
 		484AAD7A1EE61B9100766430 /* SearchDetailSkills.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchDetailSkills.swift; sourceTree = "<group>"; };
-		487981AE1E9552DA00C60BCD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = eertpeR/Bolts.framework; sourceTree = "<group>"; };
-		487981AF1E9552DA00C60BCD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = eertpeR/Parse.framework; sourceTree = "<group>"; };
 		487981B31E95533D00C60BCD /* libstdc++.6.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.tbd"; path = "usr/lib/libstdc++.6.tbd"; sourceTree = SDKROOT; };
 		487981B51E95534D00C60BCD /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		487981B71E95535B00C60BCD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -66,6 +63,9 @@
 		48E4D3211D50FC9F00F3EC76 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		48E4D3231D50FDD400F3EC76 /* RepStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepStory.swift; sourceTree = "<group>"; };
 		48E4D3251D50FE0400F3EC76 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		729CFF212E2B7C29D91DBB0B /* libPods-eertpeR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-eertpeR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		99E3EEF8BF54A076FB42F0A3 /* Pods-eertpeR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eertpeR.release.xcconfig"; path = "Pods/Target Support Files/Pods-eertpeR/Pods-eertpeR.release.xcconfig"; sourceTree = "<group>"; };
+		BE14C4FB754C16E153172F7E /* Pods-eertpeR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eertpeR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eertpeR/Pods-eertpeR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,14 +77,22 @@
 				487981B81E95535B00C60BCD /* SystemConfiguration.framework in Frameworks */,
 				487981B61E95534D00C60BCD /* libsqlite3.tbd in Frameworks */,
 				487981B41E95533D00C60BCD /* libstdc++.6.tbd in Frameworks */,
-				487981B11E9552DA00C60BCD /* Parse.framework in Frameworks */,
-				487981B01E9552DA00C60BCD /* Bolts.framework in Frameworks */,
+				7B13E993B1DC046EF0EE48B0 /* libPods-eertpeR.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		008E3C622DF8C43B6E905A25 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BE14C4FB754C16E153172F7E /* Pods-eertpeR.debug.xcconfig */,
+				99E3EEF8BF54A076FB42F0A3 /* Pods-eertpeR.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		484AAD771EE212DE00766430 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,12 +104,11 @@
 		487981B21E95533D00C60BCD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				487981AE1E9552DA00C60BCD /* Bolts.framework */,
-				487981AF1E9552DA00C60BCD /* Parse.framework */,
 				487981B91E95539000C60BCD /* AudioToolbox.framework */,
 				487981B71E95535B00C60BCD /* SystemConfiguration.framework */,
 				487981B51E95534D00C60BCD /* libsqlite3.tbd */,
 				487981B31E95533D00C60BCD /* libstdc++.6.tbd */,
+				729CFF212E2B7C29D91DBB0B /* libPods-eertpeR.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -112,6 +119,7 @@
 				48E4D3041D50F9B000F3EC76 /* eertpeR */,
 				48E4D3031D50F9B000F3EC76 /* Products */,
 				487981B21E95533D00C60BCD /* Frameworks */,
+				008E3C622DF8C43B6E905A25 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -199,9 +207,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48E4D3171D50F9B000F3EC76 /* Build configuration list for PBXNativeTarget "eertpeR" */;
 			buildPhases = (
+				C7ACD6FA2E6040FFBBFD23B1 /* [CP] Check Pods Manifest.lock */,
 				48E4D2FE1D50F9B000F3EC76 /* Sources */,
 				48E4D2FF1D50F9B000F3EC76 /* Frameworks */,
 				48E4D3001D50F9B000F3EC76 /* Resources */,
+				4466D150B6226D2619A6803A /* [CP] Embed Pods Frameworks */,
+				6D868949AB435AF9D5A340B7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,6 +271,57 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4466D150B6226D2619A6803A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eertpeR/Pods-eertpeR-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6D868949AB435AF9D5A340B7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-eertpeR/Pods-eertpeR-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C7ACD6FA2E6040FFBBFD23B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-eertpeR-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		48E4D2FE1D50F9B000F3EC76 /* Sources */ = {
@@ -412,6 +474,7 @@
 		};
 		48E4D3181D50F9B000F3EC76 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE14C4FB754C16E153172F7E /* Pods-eertpeR.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -430,6 +493,7 @@
 		};
 		48E4D3191D50F9B000F3EC76 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99E3EEF8BF54A076FB42F0A3 /* Pods-eertpeR.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
