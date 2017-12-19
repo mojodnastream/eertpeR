@@ -136,6 +136,7 @@
 		48E4D3041D50F9B000F3EC76 /* eertpeR */ = {
 			isa = PBXGroup;
 			children = (
+				79D068E71FE988A20059B23C /* GoogleService-Info.plist */,
 				484AAD771EE212DE00766430 /* Assets */,
 				48E4D31E1D50FAC900F3EC76 /* Utils */,
 				48E4D31C1D50F9E200F3EC76 /* Controller */,
@@ -185,7 +186,6 @@
 		48E4D31D1D50FA3B00F3EC76 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				79D068E71FE988A20059B23C /* GoogleService-Info.plist */,
 				48E4D30C1D50F9B000F3EC76 /* eertpeR.xcdatamodeld */,
 				48E4D3051D50F9B000F3EC76 /* AppDelegate.swift */,
 				48E4D30F1D50F9B000F3EC76 /* Assets.xcassets */,

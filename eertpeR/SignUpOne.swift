@@ -7,7 +7,8 @@
 //
 
 import UIKit
-//import Parse
+import Firebase
+import FirebaseAuth
 
 class signUpOne: UIViewController {
     
@@ -23,10 +24,6 @@ class signUpOne: UIViewController {
     }
     @IBAction func signUpBtn(_ sender: UIButton) {
         signUp()
-    }
-    
-    func lookUpUserName() {
-       // PFUser.
     }
     
     func signUp() {
@@ -48,45 +45,34 @@ class signUpOne: UIViewController {
         }
         else
         {
-//            let user = PFUser()
-//            user.username = username.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-//            user.password = password.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-//            user.signUpInBackground {
-//                (succeeded, signupError) -> Void in
-//                if signupError == nil  {
-//                    self.errorText.text = ""
-//                    self.beginProfile()
-//                    self.performSegue(withIdentifier: "jumpToCreateProfile", sender: self)
-//                }
-//                else {
-//                    var er = "Oops, there is a problem, please try again"
-//                    er = (signupError?.localizedDescription)!
-//                    self.username.layer.borderWidth = 2.0
-//                    self.errorText.text = er
-//                }
-//            }
+            FIRAuth.auth()?.createUser(withEmail: username.text!, password: password.text!, completion: { (user: FIRUser?, error) in
+                if error == nil {
+                    print("registration successful")
+                    self.beginProfile()
+                }else{
+                    print("\(error?.localizedDescription ?? "an error occurred, and there was not lcoal description")")
+                }
+            })
         }
     }
     
     func beginProfile() {
-//        let user = PFObject(className: "UserProfile")
-//        user["firstname"] = firstname.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-//        user["lastname"] = lastname.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-//        user["email"] = username.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-//        user["userID"] = PFUser.current()?.objectId
-//        user.saveInBackground { (success, error) -> Void in
-//
-//            if success {
-//                print("Object has been saved.")
-//            } else {
-//                if error != nil {
-//                    print ("oops \(error ?? "an error happened")")
-//                } else {
-//                    print ("No Errors")
-//                }
-//            }
-//        }
-
+        
+        let user = FIRAuth.auth()?.currentUser
+        if let user = user {
+            let changeRequest = user.profileChangeRequest()
+            
+            changeRequest.displayName = "\(firstname.text!) \(lastname.text!)"
+            //changeRequest.photoURL = NSURL(string: "https://example.com/jane-q-user/profile.jpg")
+            changeRequest.commitChanges { error in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    print("Profile updated with \(self.firstname.text!) \(self.lastname.text!)")
+                    self.performSegue(withIdentifier: "jumpToCreateProfile", sender: self)
+                }
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

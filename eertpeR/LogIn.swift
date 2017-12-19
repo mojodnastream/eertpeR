@@ -7,7 +7,8 @@
 //
 
 import UIKit
-//import Parse
+import Firebase
+import FirebaseAuth
 
 class logIn: UIViewController {
     
@@ -65,14 +66,12 @@ class logIn: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
-        //FIREBASE
-//        if Auth.auth().currentUser != nil {
-//            // User is signed in.
-//            // ...
-//        } else {
-//            // No user is signed in.
-//            // ...
-//        }
+        //FIREBASE User Check
+        if FIRAuth.auth()?.currentUser != nil {
+            print("user is signed in")
+        } else {
+            print("No user is signed in")
+        }
         
         
         //print(PFUser.current())
