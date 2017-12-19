@@ -40,7 +40,7 @@ class getSkills {
             }
             else {
                 
-                print("Error Happened: \(error)")
+                print("Error Happened: \(error ?? <#default value#>)")
             }
         }
     }

@@ -65,7 +65,7 @@ class userSearch: UIViewController, UISearchResultsUpdating, UITableViewDelegate
         cell.textLabel?.font = UIFont(name:"HelveticaNeue", size:20)
         if (self.resultSearchController.isActive) {
             print(arrFilteredSearchResults.count)
-            if (resultSearchController.searchBar.text?.characters.count)! > 0 {
+            if (resultSearchController.searchBar.text?.count)! > 0 {
                 if arrFilteredSearchResults.count > 0 {
                     name = utils.getResultName(arrayString: arrFilteredSearchResults[indexPath.row])
                     cell.textLabel?.text = name

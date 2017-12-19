@@ -35,13 +35,13 @@ class utils {
     static func getResultID(arrayString:String) -> String {
         var index = arrayString.indexDistance(of: "*")
         index = index! + 1
-        let theResult = arrayString.substring(start:index!,end: arrayString.characters.count)
+        let theResult = arrayString.substring(start:index!,end: arrayString.count)
         return theResult
     }
 }
 extension String {
     func indexDistance(of character: Character) -> Int? {
-        guard let index = characters.index(of: character) else { return nil }
+        guard let index = index(of: character) else { return nil }
         return distance(from: startIndex, to: index)
     }
     func substring(start: Int, end: Int) -> String {
@@ -50,14 +50,14 @@ extension String {
         }
         let startIndex = self.index(self.startIndex, offsetBy: start)
         let endIndex = self.index(self.startIndex, offsetBy: end)
-        return self[startIndex..<endIndex]
+        return String(self[startIndex..<endIndex])
     }
     func index(of string: String, options: CompareOptions = .literal) -> Index? {
         return range(of: string, options: options)?.lowerBound
     }
 
     func strlen() -> Int {
-        return self.characters.count
+        return self.count
     }
 }
 

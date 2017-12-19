@@ -106,7 +106,7 @@ class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
         //cell.textLabel?.textAlignment = .center
         cell.textLabel?.font = UIFont(name:"HelveticaNeue", size:20)
         if (self.resultSearchController.isActive) {
-            if (resultSearchController.searchBar.text?.characters.count)! > 0 {
+            if (resultSearchController.searchBar.text?.count)! > 0 {
                 if arrFilteredSearchResults.count > 0 {
                     //print("searchreslts count \(arrFilteredSearchResults.count)")
                     name = utils.getResultName(arrayString: arrFilteredSearchResults[indexPath.row])

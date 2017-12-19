@@ -65,10 +65,20 @@ class logIn: UIViewController {
         
     }
     override func viewDidAppear(_ animated: Bool) {
+        //FIREBASE
+//        if Auth.auth().currentUser != nil {
+//            // User is signed in.
+//            // ...
+//        } else {
+//            // No user is signed in.
+//            // ...
+//        }
+        
+        
         //print(PFUser.current())
-        if PFUser.current()?.sessionToken != nil {
-            //print(PFUser.current()?.username ?? "bug")
-            performSegue(withIdentifier: "loggedInGo", sender: self)
-        }
+//        if PFUser.current()?.sessionToken != nil {
+//            //print(PFUser.current()?.username ?? "bug")
+//            performSegue(withIdentifier: "loggedInGo", sender: self)
+//        }
     }
 }

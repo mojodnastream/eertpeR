@@ -22,21 +22,21 @@ class getUsers {
     
     static func getMemberProfile(userId:String) {
         
-        let query = PFQuery(className: "UserProfile")
-        //query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
-        query.findObjectsInBackground {
-            (objects: [PFObject]?, error: Error?) -> Void in
-            if error == nil {
-                if let objects = objects! as [PFObject]? {
-                    for object in objects {
-                        
-                    }
-                }
-            }
-            else {
-                print("Error Happened: \(error)")
-            }
-        }
+//        let query = PFQuery(className: "UserProfile")
+//        //query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
+//        query.findObjectsInBackground {
+//            (objects: [PFObject]?, error: Error?) -> Void in
+//            if error == nil {
+//                if let objects = objects! as [PFObject]? {
+//                    for object in objects {
+//
+//                    }
+//                }
+//            }
+//            else {
+//                print("Error Happened: \(error)")
+//            }
+//        }
     }
     
     static func loadUserInfo() {
@@ -65,7 +65,7 @@ class getUsers {
                 print("User Search Array Loaded, ok siser")
             }
             else {
-                  print("Error Happened: \(error)")
+                //print("Error Happened: \(error ?? "an error happened")")
             }
         }
     }

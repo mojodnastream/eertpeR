@@ -72,7 +72,7 @@ class profile: UIViewController {
                 }
             }
             else {
-                print("Error happened \(error)")
+                print("Error happened \(error ?? "Error Happeneds" as! Error)")
             }
         }
     }
@@ -146,7 +146,7 @@ class profile: UIViewController {
                 }
             }
             else {
-                print("Error happened \(error)")
+                print("Error happened \(error ?? "stuff happened" as! Error)")
 
             }
         }

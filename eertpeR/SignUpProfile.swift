@@ -54,7 +54,7 @@ class signUpProfile: UIViewController {
                 
             } else {
                 if error != nil {
-                    print ("oops \(error)")
+                    print ("oops \(error ?? "an error happened")")
                 } else {
                     print ("No Errors")
                 }

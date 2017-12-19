@@ -43,7 +43,7 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
                 print("user skill \(skill) has been saved.")
             } else {
                 if error != nil {
-                    print ("oops \(error)")
+                    print ("oops \(error ?? "an error happened")")
                 } else {
                     print ("No Errors")
                 }

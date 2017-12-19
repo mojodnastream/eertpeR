@@ -69,23 +69,23 @@ class signUpOne: UIViewController {
     }
     
     func beginProfile() {
-        let user = PFObject(className: "UserProfile")
-        user["firstname"] = firstname.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-        user["lastname"] = lastname.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-        user["email"] = username.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-        user["userID"] = PFUser.current()?.objectId
-        user.saveInBackground { (success, error) -> Void in
-            
-            if success {
-                print("Object has been saved.")
-            } else {
-                if error != nil {
-                    print ("oops \(error)")
-                } else {
-                    print ("No Errors")
-                }
-            }
-        }
+//        let user = PFObject(className: "UserProfile")
+//        user["firstname"] = firstname.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+//        user["lastname"] = lastname.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+//        user["email"] = username.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+//        user["userID"] = PFUser.current()?.objectId
+//        user.saveInBackground { (success, error) -> Void in
+//
+//            if success {
+//                print("Object has been saved.")
+//            } else {
+//                if error != nil {
+//                    print ("oops \(error ?? "an error happened")")
+//                } else {
+//                    print ("No Errors")
+//                }
+//            }
+//        }
 
     }
     
