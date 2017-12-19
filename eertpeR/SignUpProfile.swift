@@ -35,31 +35,31 @@ class signUpProfile: UIViewController {
 
     func completeSignUp() {
         print("got to completeSignUp")
-        let user = PFObject(className: "UserGig")
-        user["userTitle"] = userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-        user["userCompany"] = userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-        user["userLocation"] = userLocation.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-        user["userID"] = PFUser.current()?.objectId
-        user["isCurrent"] = true
-        user.saveInBackground { (success, error) -> Void in
-            
-            if success {
-                print("user Gig has been saved.")
-                
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "jumpToSkillsScreen", sender: self)
-                }
-                
-                print("just passed the segue")
-                
-            } else {
-                if error != nil {
-                    print ("oops \(error ?? "an error happened")")
-                } else {
-                    print ("No Errors")
-                }
-            }
-        }
+//        let user = PFObject(className: "UserGig")
+//        user["userTitle"] = userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+//        user["userCompany"] = userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+//        user["userLocation"] = userLocation.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+//        user["userID"] = PFUser.current()?.objectId
+//        user["isCurrent"] = true
+//        user.saveInBackground { (success, error) -> Void in
+//
+//            if success {
+//                print("user Gig has been saved.")
+//
+//                DispatchQueue.main.async {
+//                    self.performSegue(withIdentifier: "jumpToSkillsScreen", sender: self)
+//                }
+//
+//                print("just passed the segue")
+//
+//            } else {
+//                if error != nil {
+//                    //print ("oops \(error ?? "an error happened")")
+//                } else {
+//                    print ("No Errors")
+//                }
+//            }
+//        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -20,31 +20,31 @@ class getSkills {
     
     static func loadSkillInfo() {
         //arrSkillsSearchResults.removeAll()
-        var skill = ""
-        //var skillID = ""
-        let query = PFQuery(className: "SkillsLookUp")
-        //query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
-        query.limit = 1000
-        query.findObjectsInBackground {
-            (objects: [PFObject]?, error: Error?) -> Void in
-            if error == nil {
-                if let objects = objects! as [PFObject]? {
-                    for object in objects {
-                        skill = (object["name"] as? String!)!
-                        //skillID = (object["objectId"] as? String!)!
-                        arrSearchResults.append("Skill~\(skill)*\(skill)")
-                    }
-                }
-                print("Skill Search Array Loaded, ok siser")
-                print("arrSkillsSearchResults Total Count from getSkills \(arrSearchResults.count)")
-            }
-            else {
-                
-                print("Error Happened: \(error ?? <#default value#>)")
-            }
-        }
+//        var skill = ""
+//        //var skillID = ""
+//        let query = PFQuery(className: "SkillsLookUp")
+//        //query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
+//        query.limit = 1000
+//        query.findObjectsInBackground {
+//            (objects: [PFObject]?, error: Error?) -> Void in
+//            if error == nil {
+//                if let objects = objects! as [PFObject]? {
+//                    for object in objects {
+//                        skill = (object["name"] as? String!)!
+//                        //skillID = (object["objectId"] as? String!)!
+//                        arrSearchResults.append("Skill~\(skill)*\(skill)")
+//                    }
+//                }
+//                print("Skill Search Array Loaded, ok siser")
+//                print("arrSkillsSearchResults Total Count from getSkills \(arrSearchResults.count)")
+//            }
+//            else {
+//
+//                //print("Error Happened: \(error ?? <#default value#>)")
+//            }
+//        }
+//    }
     }
-
 }
     
     //var arrSkillsLoaded = [""]

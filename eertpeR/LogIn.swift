@@ -30,20 +30,20 @@ class logIn: UIViewController {
     }
     
     func doLogin() {
-        self.userLoginError.text = ""
-        PFUser.logInWithUsername(inBackground: userLoginEmail.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) as String!, password:userLoginPass.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) as String!) {
-            (user, error) -> Void in
-            
-            if error == nil {
-                
-                print("logged in")
-                self.performSegue(withIdentifier: "loggedInGo", sender: self)
-            }
-            else {
-                print("no user buddy")
-                self.userLoginError.text = "Login Error, Please Try Again"
-            }
-        }
+//        self.userLoginError.text = ""
+//        PFUser.logInWithUsername(inBackground: userLoginEmail.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) as String!, password:userLoginPass.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) as String!) {
+//            (user, error) -> Void in
+//            
+//            if error == nil {
+//                
+//                print("logged in")
+//                self.performSegue(withIdentifier: "loggedInGo", sender: self)
+//            }
+//            else {
+//                print("no user buddy")
+//                self.userLoginError.text = "Login Error, Please Try Again"
+//            }
+//        }
     }
   
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -34,43 +34,43 @@ class signUpSkills: UIViewController, UITableViewDelegate, UISearchResultsUpdati
     }
     
     func addSkillToProfile(skill: String) {
-        let userSkills = PFObject(className: "UserSkills")
-        userSkills["userSkill"] = skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
-        userSkills["userID"] = PFUser.current()?.objectId
-        userSkills.saveInBackground { (success, error) -> Void in
-            
-            if success {
-                print("user skill \(skill) has been saved.")
-            } else {
-                if error != nil {
-                    print ("oops \(error ?? "an error happened")")
-                } else {
-                    print ("No Errors")
-                }
-            }
-        }
+//        let userSkills = PFObject(className: "UserSkills")
+//        userSkills["userSkill"] = skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
+//        userSkills["userID"] = PFUser.current()?.objectId
+//        userSkills.saveInBackground { (success, error) -> Void in
+//
+//            if success {
+//                print("user skill \(skill) has been saved.")
+//            } else {
+//                if error != nil {
+//                    //print ("oops \(error ?? "an error happened")")
+//                } else {
+//                    print ("No Errors")
+//                }
+//            }
+//        }
     }
     
     func loadSkills() {
-        var name = ""
-        let getSkills = PFQuery(className: "SkillsLookUp")
-        getSkills.order(byAscending: "name")
-        getSkills.limit = 10000
-        getSkills.findObjectsInBackground {
-            (objects: [PFObject]?, error: Error?) -> Void in
-            if error == nil {
-                if let objects = objects {
-                    for object in objects {
-                        name = object["name"] as! String
-                        arrSkills.append(name.lowercased())
-                    }
-                }
-            }
-            else {
-                
-                print(error?.localizedDescription ?? "An error has occurred")
-            }
-        }
+//        var name = ""
+//        let getSkills = PFQuery(className: "SkillsLookUp")
+//        getSkills.order(byAscending: "name")
+//        getSkills.limit = 10000
+//        getSkills.findObjectsInBackground {
+//            (objects: [PFObject]?, error: Error?) -> Void in
+//            if error == nil {
+//                if let objects = objects {
+//                    for object in objects {
+//                        name = object["name"] as! String
+//                        arrSkills.append(name.lowercased())
+//                    }
+//                }
+//            }
+//            else {
+//
+//                print(error?.localizedDescription ?? "An error has occurred")
+//            }
+//        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

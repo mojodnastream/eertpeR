@@ -42,33 +42,33 @@ class getUsers {
     static func loadUserInfo() {
         
         arrSearchResults.removeAll()
-        var userid = ""
-        var firstname = ""
-        var lastname = ""
-        var name = ""
-        //var jsonString = ""
-        let query = PFQuery(className: "UserProfile")
+//        var userid = ""
+//        var firstname = ""
+//        var lastname = ""
+//        var name = ""
+//        //var jsonString = ""
+//        let query = PFQuery(className: "UserProfile")
         //query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
-        query.findObjectsInBackground {
-            (objects: [PFObject]?, error: Error?) -> Void in
-            if error == nil {
-                if let objects = objects! as [PFObject]? {
-                    for object in objects {
-                        firstname = (object["firstname"] as? String!)!
-                        lastname = (object["lastname"] as? String!)!
-                        userid = (object["userID"] as? String!)!
-                        name = "\(firstname) \(lastname)"
-                        arrSearchResults.append("Member~\(name)*\(userid)")
-                    }
-                }
-
-                print("User Search Array Loaded, ok siser")
-            }
-            else {
-                //print("Error Happened: \(error ?? "an error happened")")
-            }
-        }
-    }
+//        query.findObjectsInBackground {
+//            (objects: [PFObject]?, error: Error?) -> Void in
+//            if error == nil {
+//                if let objects = objects! as [PFObject]? {
+//                    for object in objects {
+//                        firstname = (object["firstname"] as? String!)!
+//                        lastname = (object["lastname"] as? String!)!
+//                        userid = (object["userID"] as? String!)!
+//                        name = "\(firstname) \(lastname)"
+//                        arrSearchResults.append("Member~\(name)*\(userid)")
+//                    }
+//                }
+//
+//                print("User Search Array Loaded, ok siser")
+//            }
+//            else {
+//                //print("Error Happened: \(error ?? "an error happened")")
+//            }
+//        }
+//    }
 }
 
 
@@ -91,4 +91,4 @@ class getUsers {
 //        self.userCompany = userCompany
 //        self.userLocation = userLocation
 //    }
-//}
+}

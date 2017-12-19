@@ -48,23 +48,23 @@ class signUpOne: UIViewController {
         }
         else
         {
-            let user = PFUser()
-            user.username = username.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-            user.password = password.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-            user.signUpInBackground {
-                (succeeded, signupError) -> Void in
-                if signupError == nil  {
-                    self.errorText.text = ""
-                    self.beginProfile()
-                    self.performSegue(withIdentifier: "jumpToCreateProfile", sender: self)
-                }
-                else {
-                    var er = "Oops, there is a problem, please try again"
-                    er = (signupError?.localizedDescription)!
-                    self.username.layer.borderWidth = 2.0
-                    self.errorText.text = er
-                }
-            }
+//            let user = PFUser()
+//            user.username = username.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+//            user.password = password.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+//            user.signUpInBackground {
+//                (succeeded, signupError) -> Void in
+//                if signupError == nil  {
+//                    self.errorText.text = ""
+//                    self.beginProfile()
+//                    self.performSegue(withIdentifier: "jumpToCreateProfile", sender: self)
+//                }
+//                else {
+//                    var er = "Oops, there is a problem, please try again"
+//                    er = (signupError?.localizedDescription)!
+//                    self.username.layer.borderWidth = 2.0
+//                    self.errorText.text = er
+//                }
+//            }
         }
     }
     
