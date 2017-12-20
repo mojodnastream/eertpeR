@@ -11,3 +11,14 @@ import Foundation
 
 typealias JSONDictionary = [String: AnyObject]
 typealias JSONArray = Array<AnyObject>
+
+let WIFI = "WIFI Available"
+let NOACCESS = "No Internet Access"
+let WWAN = "Cellular Access Available"
+
+var arrSkills = [String]()
+var arrSkillsSearchResults = [String]()
+var arrSkillsForUser = [String]()
+var arrBadges = [String]()
+var arrSearchResults = [String]()
+
