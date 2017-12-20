@@ -7,9 +7,11 @@
 //
 
 import UIKit
-//import Parse
+import Firebase
 
 class signUpProfile: UIViewController {
+    
+    var refUserProfile: FIRDatabaseReference!
     
     @IBOutlet weak var userSignUpIssues: UILabel!
     @IBOutlet weak var userTitleRole: UITextField!
@@ -20,6 +22,16 @@ class signUpProfile: UIViewController {
     @IBAction func signUpProfileBtn(_ sender: UIButton) {
         validate()
         //self.performSegue(withIdentifier: "jumpToSkills", sender: self)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        refUserProfile = FIRDatabase.database().reference().child("Profile");
+        
+        signUpProfileStyle.layer.cornerRadius = 5
+        signUpProfileStyle.layer.borderWidth = 1
+        signUpProfileStyle.layer.borderColor = UIColor.purple.cgColor
+        print("SignUpProfile Screen siser")
     }
     
     func validate() {
@@ -35,43 +47,29 @@ class signUpProfile: UIViewController {
 
     func completeSignUp() {
         print("got to completeSignUp")
-//        let user = PFObject(className: "UserGig")
-//        user["userTitle"] = userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-//        user["userCompany"] = userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-//        user["userLocation"] = userLocation.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
-//        user["userID"] = PFUser.current()?.objectId
-//        user["isCurrent"] = true
-//        user.saveInBackground { (success, error) -> Void in
-//
-//            if success {
-//                print("user Gig has been saved.")
-//
-//                DispatchQueue.main.async {
-//                    self.performSegue(withIdentifier: "jumpToSkillsScreen", sender: self)
-//                }
-//
-//                print("just passed the segue")
-//
-//            } else {
-//                if error != nil {
-//                    //print ("oops \(error ?? "an error happened")")
-//                } else {
-//                    print ("No Errors")
-//                }
-//            }
-//        }
+        
+        //generating a new key inside artists node
+        //and also getting the generated key
+        let key = FIRAuth.auth()?.currentUser?.email
+        
+        //creating artist with the given values
+        let profile = ["id": FIRAuth.auth()?.currentUser?.email,
+                      "title": userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces),
+                      "company": userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+                      ]
+        
+        //adding the artist inside the generated unique key
+        refUserProfile.child(key!).setValue(profile, withCompletionBlock: { (error, snapshot) in
+            if error != nil {
+                print(error?.localizedDescription ?? "No error description available")
+            } else {
+                self.performSegue(withIdentifier: "jumpToSkillsScreen", sender: self)
+            }
+        })
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        signUpProfileStyle.layer.cornerRadius = 5
-        signUpProfileStyle.layer.borderWidth = 1
-        signUpProfileStyle.layer.borderColor = UIColor.purple.cgColor
-        print("SignUpProfile Screen siser")
     }
     
 }
