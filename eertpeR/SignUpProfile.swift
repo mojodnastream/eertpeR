@@ -17,20 +17,18 @@ class signUpProfile: UIViewController {
     @IBOutlet weak var userTitleRole: UITextField!
     @IBOutlet weak var userCompany: UITextField!
     @IBOutlet weak var userLocation: UITextField!
-    @IBOutlet weak var signUpProfileStyle: UIButton!
-    
-    @IBAction func signUpProfileBtn(_ sender: UIButton) {
+    //@IBOutlet weak var signUpProfileStyle: UIButton!
+    @IBAction func signUpProfileBtn(_ sender: UIBarButtonItem) {
         validate()
-        //self.performSegue(withIdentifier: "jumpToSkills", sender: self)
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         refUserProfile = FIRDatabase.database().reference().child("Profile");
-        
-        signUpProfileStyle.layer.cornerRadius = 5
-        signUpProfileStyle.layer.borderWidth = 1
-        signUpProfileStyle.layer.borderColor = UIColor.purple.cgColor
+        self.setNeedsStatusBarAppearanceUpdate()
+
         print("SignUpProfile Screen siser")
     }
     
@@ -50,7 +48,7 @@ class signUpProfile: UIViewController {
         
         //generating a new key inside artists node
         //and also getting the generated key
-        let key = FIRAuth.auth()?.currentUser?.email
+        let key = refUserProfile.childByAutoId().key
         
         //creating artist with the given values
         let profile = ["id": FIRAuth.auth()?.currentUser?.email,
@@ -59,7 +57,7 @@ class signUpProfile: UIViewController {
                       ]
         
         //adding the artist inside the generated unique key
-        refUserProfile.child(key!).setValue(profile, withCompletionBlock: { (error, snapshot) in
+        refUserProfile.child(key).setValue(profile, withCompletionBlock: { (error, snapshot) in
             if error != nil {
                 print(error?.localizedDescription ?? "No error description available")
             } else {
