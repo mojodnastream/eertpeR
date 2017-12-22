@@ -17,7 +17,6 @@ class signUpProfile: UIViewController {
     @IBOutlet weak var userTitleRole: UITextField!
     @IBOutlet weak var userCompany: UITextField!
     @IBOutlet weak var userLocation: UITextField!
-    //@IBOutlet weak var signUpProfileStyle: UIButton!
     @IBAction func signUpProfileBtn(_ sender: UIBarButtonItem) {
         validate()
     }
@@ -26,7 +25,7 @@ class signUpProfile: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        refUserProfile = FIRDatabase.database().reference().child("Profile");
+        refUserProfile = FIRDatabase.database().reference().child("Profiles");
         self.setNeedsStatusBarAppearanceUpdate()
 
         print("SignUpProfile Screen siser")
@@ -48,7 +47,7 @@ class signUpProfile: UIViewController {
         
         //generating a new key inside artists node
         //and also getting the generated key
-        let key = refUserProfile.childByAutoId().key
+        let key = FIRAuth.auth()?.currentUser?.uid
         
         //creating artist with the given values
         let profile = ["id": FIRAuth.auth()?.currentUser?.email,
@@ -57,7 +56,7 @@ class signUpProfile: UIViewController {
                       ]
         
         //adding the artist inside the generated unique key
-        refUserProfile.child(key).setValue(profile, withCompletionBlock: { (error, snapshot) in
+        refUserProfile.child(key!).setValue(profile, withCompletionBlock: { (error, snapshot) in
             if error != nil {
                 print(error?.localizedDescription ?? "No error description available")
             } else {

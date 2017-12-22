@@ -11,20 +11,19 @@ import Firebase
 
 class signUpSkills: UITableViewController, UISearchResultsUpdating {
     
-    
+   
     var resultSearchController = UISearchController(searchResultsController: nil)
-    var refUserSkill = FIRDatabase.database().reference(withPath: "Profile");
-    
+   
     @IBAction func btnComplete(_ sender: UIBarButtonItem) {
         finalizeSignUp()
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    //override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 
     override func viewDidLoad() {
         
         self.setNeedsStatusBarAppearanceUpdate()
-
+        
         //style the button
         loadSkills()
         
@@ -34,6 +33,8 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         
         navigationController?.navigationBar.barTintColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
         navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.barStyle = .blackTranslucent
        
         //set up the search box
         resultSearchController.searchResultsUpdater = self
@@ -68,22 +69,24 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     }
     
     func addSkillToProfile(skill: String) {
+
+        let fbUserProfileId = FIRAuth.auth()?.currentUser?.uid 
+        let refUserSkill = FIRDatabase.database().reference().child("Profiles").child(fbUserProfileId!);
         
-        let theSkill = refUserSkill.child("Skills")
-        
-        let key = theSkill.childByAutoId().key
+        let newSkill = skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
+        let key = newSkill.addingPercentEncoding(withAllowedCharacters: .alphanumerics)  //theSkill.childByAutoId().key
         
         //creating artist with the given values
         let skillToAdd = ["id": key,
-                       "skill": skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
+                       "skill": newSkill
         ]
         
         //adding the artist inside the generated unique key
-        theSkill.child(key).setValue(skillToAdd, withCompletionBlock: { (error, snapshot) in
+        refUserSkill.child("Skills").child(key!).setValue(skillToAdd, withCompletionBlock: { (error, snapshot) in
             if error != nil {
                 print(error?.localizedDescription ?? "No error description available")
             } else {
-                print("added skill \(skill) to profile")
+                print("added skill \(newSkill) to profile")
             }
         })
     }
