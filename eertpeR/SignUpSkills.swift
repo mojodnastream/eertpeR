@@ -11,15 +11,12 @@ import Firebase
 
 class signUpSkills: UITableViewController, UISearchResultsUpdating {
     
-   
     var resultSearchController = UISearchController(searchResultsController: nil)
-   
+    
     @IBAction func btnComplete(_ sender: UIBarButtonItem) {
         finalizeSignUp()
     }
-    
-    //override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
-
+   
     override func viewDidLoad() {
         
         self.setNeedsStatusBarAppearanceUpdate()
@@ -30,12 +27,13 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         //clear array in case the app crashed in the middle of sign up
         arrSkillsForUser.removeAll()
         arrSkills.removeAll()
+        arrSkills = ["swift", "objective-c", "mysql", "java", "iOS"]
         
         navigationController?.navigationBar.barTintColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         navigationController?.navigationBar.barStyle = .blackTranslucent
-       
+        
         //set up the search box
         resultSearchController.searchResultsUpdater = self
         resultSearchController.dimsBackgroundDuringPresentation = false
@@ -69,8 +67,8 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     }
     
     func addSkillToProfile(skill: String) {
-
-        let fbUserProfileId = FIRAuth.auth()?.currentUser?.uid 
+        
+        let fbUserProfileId = FIRAuth.auth()?.currentUser?.uid
         let refUserSkill = FIRDatabase.database().reference().child("Profiles").child(fbUserProfileId!);
         
         let newSkill = skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
@@ -78,7 +76,7 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         
         //creating artist with the given values
         let skillToAdd = ["id": key,
-                       "skill": newSkill
+                          "skill": newSkill
         ]
         
         //adding the artist inside the generated unique key
@@ -92,25 +90,37 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     }
     
     func loadSkills() {
-//        var name = ""
-//        let getSkills = PFQuery(className: "SkillsLookUp")
-//        getSkills.order(byAscending: "name")
-//        getSkills.limit = 10000
-//        getSkills.findObjectsInBackground {
-//            (objects: [PFObject]?, error: Error?) -> Void in
-//            if error == nil {
-//                if let objects = objects {
-//                    for object in objects {
-//                        name = object["name"] as! String
-//                        arrSkills.append(name.lowercased())
-//                    }
-//                }
-//            }
-//            else {
-//
-//                print(error?.localizedDescription ?? "An error has occurred")
-//            }
-//        }
+        //        var name = ""
+        //        let getSkills = PFQuery(className: "SkillsLookUp")
+        //        getSkills.order(byAscending: "name")
+        //        getSkills.limit = 10000
+        //        getSkills.findObjectsInBackground {
+        //            (objects: [PFObject]?, error: Error?) -> Void in
+        //            if error == nil {
+        //                if let objects = objects {
+        //                    for object in objects {
+        //                        name = object["name"] as! String
+        //                        arrSkills.append(name.lowercased())
+        //                    }
+        //                }
+        //            }
+        //            else {
+        //
+        //                print(error?.localizedDescription ?? "An error has occurred")
+        //            }
+        //        }
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let headerView = view as? UITableViewHeaderFooterView {
+            headerView.textLabel?.textAlignment = .center
+        }
+    }
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Search Skills & Tap to + or -"
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -127,31 +137,30 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected row \(indexPath.row)")
+        print("didselectrow at row \(indexPath.row)")
+        //if indexPath.row > 0 {
+            let cell = tableView.cellForRow(at: indexPath)
+            let itemString = (cell?.textLabel?.text)! as String
+            if !itemString.contains("Your Skills") {
+                if let index = arrSkillsForUser.index(of: itemString) {
+                    arrSkillsForUser.remove(at: index)
+                    cell?.textLabel?.textColor = UIColor.black
+                    cell?.backgroundColor = UIColor.white
+                    cell?.contentView.backgroundColor = UIColor.white
+                }
+                else {
+                    if !itemString.isEmpty {
+                        arrSkillsForUser.append(itemString)
+                        cell?.textLabel?.textColor = UIColor.white
+                        cell?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
+                        cell?.contentView.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
+                    }
+                }
+                if(!resultSearchController.isActive) {
+                    tableView.reloadData()
+                }
+            }
         
-        let cell = tableView.cellForRow(at: indexPath)
-        let itemString = (cell?.textLabel?.text)! as String
-        
-        if let index = arrSkillsForUser.index(of: itemString) {
-            arrSkillsForUser.remove(at: index)
-            cell?.textLabel?.textColor = UIColor.black
-            cell?.backgroundColor = UIColor.white
-            cell?.contentView.backgroundColor = UIColor.white
-        }
-        else {
-            arrSkillsForUser.append(itemString)
-            cell?.textLabel?.textColor = UIColor.white
-            cell?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
-            cell?.contentView.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
-        }
-        if(!resultSearchController.isActive) {
-            tableView.reloadData()
-        }
-        
-    }
-   
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -175,7 +184,7 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        print("didselectrow at row \(indexPath.row)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "SkillCell", for: indexPath as IndexPath) as UITableViewCell
         
         if (self.resultSearchController.isActive) {
@@ -184,7 +193,6 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
             if arrSkillsSearchResults.count > 0 {
                 cell.textLabel?.text = arrSkillsSearchResults.prefix(5)[indexPath.row]
                 if arrSkillsForUser.contains(arrSkillsSearchResults.prefix(5)[indexPath.row]) {
-                    //print(arrSkillsSearchResults.prefix(5)[indexPath.row])
                     cell.textLabel?.textColor = UIColor.white
                     cell.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
                 }
@@ -212,21 +220,21 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
                     cell.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
                 }
                 else {
-                    cell.textLabel?.text = "You added \(arrSkillsForUser.count) skills.  Tap to remove."
+                    cell.textLabel?.text = "Your Skills"
                     cell.textLabel?.textColor = UIColor.black
                     cell.backgroundColor = UIColor.white
 
                 }
             }
             else {
-                cell.textLabel?.text = "Please add at least 1 skill to complete your account setup"
+                cell.textLabel?.text = ""
                 cell.textLabel?.textColor = UIColor.black
                 cell.backgroundColor = UIColor.white
             }
         }
         return cell
     }
-   
+    
     func updateSearchResults(for searchController: UISearchController) {
         if let searchText = searchController.searchBar.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) {
             arrSkillsSearchResults = searchText.isEmpty ? arrSkills : arrSkills.filter({(dataString: String) -> Bool in
@@ -236,3 +244,5 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         }
     }
 }
+
+
