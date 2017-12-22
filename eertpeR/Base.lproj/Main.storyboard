@@ -425,7 +425,7 @@
             </objects>
             <point key="canvasLocation" x="188" y="422.33883058470769"/>
         </scene>
-        <!--Skills-->
+        <!--Reptree Add Skills-->
         <scene sceneID="1W1-Y7-330">
             <objects>
                 <tableViewController id="LIL-dj-fot" customClass="signUpSkills" customModule="eertpeR" customModuleProvider="target" sceneMemberID="viewController">
@@ -448,8 +448,8 @@
                             <outlet property="delegate" destination="LIL-dj-fot" id="Anp-gY-fIq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Skills" largeTitleDisplayMode="always" id="e6F-Oa-X5p">
-                        <barButtonItem key="rightBarButtonItem" title="Finish Sign Up" id="Mhy-hb-iFH">
+                    <navigationItem key="navigationItem" title="Reptree Add Skills" largeTitleDisplayMode="always" id="e6F-Oa-X5p">
+                        <barButtonItem key="rightBarButtonItem" title="Finish &gt;" id="Mhy-hb-iFH">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="btnComplete:" destination="LIL-dj-fot" id="Pey-mn-5fy"/>
@@ -462,7 +462,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C59-v5-nub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894" y="439"/>
+            <point key="canvasLocation" x="852" y="422"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="o64-ek-7LL">
