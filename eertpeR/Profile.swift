@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Parse
+import Firebase
 
 class profile: UIViewController {
     
@@ -38,13 +38,13 @@ class profile: UIViewController {
     }
     
     func doLogOut() {
-//        PFUser.logOutInBackground(block: { (error) -> Void in
-//            if error != nil {
-//                print(error?.localizedDescription ?? "oops")
-//            } else {
-//                self.performSegue(withIdentifier: "jumpToLogin", sender: self)
-//            }
-//        })
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+            self.performSegue(withIdentifier: "jumpToLogin", sender: self)
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
     }
     
     func loadProfile() {
