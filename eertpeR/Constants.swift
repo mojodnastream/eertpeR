@@ -22,3 +22,7 @@ var arrSkillsForUser = [String]()
 var arrBadges = [String]()
 var arrSearchResults = [String]()
 
+var userRealName = ""
+var userEmail = ""
+var userID = ""
+
