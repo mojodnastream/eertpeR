@@ -20,6 +20,9 @@ class profile: UIViewController {
     var arrUserSkills = [String]()
     var arrUserBadges = [String]()
     
+    let userProfileDetailRef = FIRDatabase.database().reference(withPath: "Profiles").child(userID)
+
+    
     //use this for the profile pic
     override func viewDidLayoutSubviews() {
         //profileImage.layer.cornerRadius = profileImage.frame.size.width/2
@@ -55,6 +58,26 @@ class profile: UIViewController {
         loadBadges()
     }
     
+    func loadUserInfo() {
+        userFullName.text = userRealName
+        
+        //user = User(uid: userID, email: FIRAuth.auth()?.currentUser?.email)
+        userProfileDetailRef.child("Skills").observe(.value, with: {
+            snapshot in
+            print(snapshot)
+        })
+        
+        userProfileDetailRef.observe(.value) {
+            snapshot in
+            let values = snapshot.value as! [String: AnyObject]
+            let company = values["company"] as! String
+            let title = values["title"] as! String
+
+            self.userTitleRole.text = title
+            self.userCompany.text = company
+        }
+    }
+    
     func loadBadges() {
 //        var badge = ""
 //        let queryBadges = PFQuery(className: "UserBadges")
@@ -73,31 +96,6 @@ class profile: UIViewController {
 //            }
 //            else {
 //                print("Error happened \(error ?? "Error Happeneds" as! Error)")
-//            }
-//        }
-    }
-    
-    func loadUserInfo() {
-//        var firstname = ""
-//        var lastname = ""
-//        let query = PFQuery(className: "UserProfile")
-//        query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
-//        query.findObjectsInBackground {
-//            (objects: [PFObject]?, error: Error?) -> Void in
-//            if error == nil {
-//                if let objects = objects! as [PFObject]? {
-//                    for object in objects {
-//                        firstname = (object["firstname"] as? String!)!
-//                        lastname = (object["lastname"] as? String!)!
-//                        self.userFullName.text = firstname + " " + lastname
-//                        //self.userFullName.sizeToFit()
-//                        //self.userFullName.layoutIfNeeded()
-//                    }
-//                }
-//            }
-//            else {
-//
-//                print("Top Level Loaded, ok siser")
 //            }
 //        }
     }
@@ -158,12 +156,11 @@ class profile: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ima on full profile screen siser")
         //arrSkillsForUser.removeAll()
         //arrSkills.removeAll()
         loadProfile()
         getSkills.loadSkillInfo()
-        getUsers.loadUserInfo()
+        //loadUserInfo()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true

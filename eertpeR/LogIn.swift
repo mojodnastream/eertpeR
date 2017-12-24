@@ -12,14 +12,13 @@ import FirebaseAuth
 
 class logIn: UIViewController {
     
-    @IBAction func goToSearchBtn(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "goToSkills", sender: self)
-    }
     @IBOutlet weak var userLoginEmail: UITextField!
     @IBOutlet weak var userLoginPass: UITextField!
     @IBOutlet weak var userLoginError: UILabel!
     @IBOutlet weak var loginButtonStyle: UIButton!
-    
+    @IBAction func goToSearchBtn(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "goToSkills", sender: self)
+    }
     @IBAction func loginBtn(_ sender: UIButton) {
         userLoginError.text = ""
         if utils.isValidEmail(testStr: userLoginEmail.text!) {
@@ -35,6 +34,9 @@ class logIn: UIViewController {
             if error == nil {
                 //Print into the console if successfully logged in
                 print("You have successfully logged in")
+                userRealName = (FIRAuth.auth()?.currentUser?.displayName)!
+                userEmail = (FIRAuth.auth()?.currentUser?.email)!
+                userID = (FIRAuth.auth()?.currentUser?.uid)!
                 self.performSegue(withIdentifier: "loggedInGo", sender: self)
             }
             else {
@@ -65,16 +67,12 @@ class logIn: UIViewController {
         //FIREBASE User Check
         if FIRAuth.auth()?.currentUser != nil {
             print("user is signed in")
+            userRealName = (FIRAuth.auth()?.currentUser?.displayName)!
+            userEmail = (FIRAuth.auth()?.currentUser?.email)!
+            userID = (FIRAuth.auth()?.currentUser?.uid)!
             performSegue(withIdentifier: "loggedInGo", sender: self)
         } else {
             print("No user is signed in")
         }
-        
-        
-        //print(PFUser.current())
-//        if PFUser.current()?.sessionToken != nil {
-//            //print(PFUser.current()?.username ?? "bug")
-//            performSegue(withIdentifier: "loggedInGo", sender: self)
-//        }
     }
 }
