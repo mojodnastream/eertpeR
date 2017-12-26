@@ -79,75 +79,15 @@ class profile: UIViewController {
     }
     
     func loadBadges() {
-//        var badge = ""
-//        let queryBadges = PFQuery(className: "UserBadges")
-//        queryBadges.order(byAscending: "userBadge")
-//        queryBadges.whereKey("userID", equalTo:PFUser.current()!.objectId!)
-//        queryBadges.findObjectsInBackground {
-//            (objects: [PFObject]?, error: Error?) -> Void in
-//            if error == nil {
-//                if let objects = objects! as [PFObject]? {
-//                    for object in objects {
-//                        badge = object["userBadge"] as! String
-//                        self.arrUserBadges.append(badge.lowercased())
-//                    }
-//                    self.userBadgesCount.text = "You have \(self.arrUserBadges.count) badges"
-//                }
-//            }
-//            else {
-//                print("Error happened \(error ?? "Error Happeneds" as! Error)")
-//            }
-//        }
+
     }
     
     func loadUserGig() {
-//        var company = ""
-//        var titleRole = ""
-//        let query = PFQuery(className: "UserGig")
-//        query.whereKey("userID", equalTo:PFUser.current()!.objectId!)
-//        query.whereKey("isCurrent", equalTo: true)
-//        query.findObjectsInBackground {
-//            (objects: [PFObject]?, error: Error?) -> Void in
-//            if error == nil {
-//                if let objects = objects! as [PFObject]? {
-//                    for object in objects {
-//                        company = (object["userCompany"] as? String!)!
-//                        titleRole = (object["userTitle"] as? String!)!
-//                        self.userCompany.text = company
-//                        self.userTitleRole.text = titleRole
-//                        //self.userCompany.sizeToFit()
-//                        //self.userTitleRole.sizeToFit()
-//                    }
-//                }
-//            }
-//            else {
-//
-//                print("Top Level Loaded, ok siser")
-//            }
-//        }
+
     }
     
     func loadSkills() {
-//        var name = ""
-//        let querySkills = PFQuery(className: "UserSkills")
-//        querySkills.order(byAscending: "userSkill")
-//        querySkills.whereKey("userID", equalTo:PFUser.current()!.objectId!)
-//        querySkills.findObjectsInBackground {
-//            (objects: [PFObject]?, error: Error?) -> Void in
-//            if error == nil {
-//                if let objects = objects! as [PFObject]? {
-//                    for object in objects {
-//                        name = object["userSkill"] as! String
-//                        self.arrUserSkills.append(name.lowercased())
-//                    }
-//                    self.userSkillsCount.text = "You have \(self.arrUserSkills.count) skills"
-//                }
-//            }
-//            else {
-//                print("Error happened \(error ?? "stuff happened" as! Error)")
-//
-//            }
-//        }
+
     }
     
      override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
