@@ -19,6 +19,7 @@ let WWAN = "Cellular Access Available"
 var arrSkills = [String]()
 var arrSkillsSearchResults = [String]()
 var arrSkillsForUser = [String]()
+var arrSkillsSignUp = [String]()
 var arrBadges = [String]()
 var arrSearchResults = [String]()
 
