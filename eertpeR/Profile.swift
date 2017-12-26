@@ -44,6 +44,9 @@ class profile: UIViewController {
         let firebaseAuth = FIRAuth.auth()
         do {
             try firebaseAuth?.signOut()
+            userID = ""
+            userEmail = ""
+            userRealName = ""
             self.performSegue(withIdentifier: "jumpToLogin", sender: self)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
@@ -64,6 +67,16 @@ class profile: UIViewController {
         //user = User(uid: userID, email: FIRAuth.auth()?.currentUser?.email)
         userProfileDetailRef.child("Skills").observe(.value, with: {
             snapshot in
+            guard snapshot.exists() else {
+                print("no data yet - grab skills from the array is this is the initial sign up load")
+                if arrSkillsSignUp.count > 0 {
+                    print("Skills I sugned Up with \(arrSkillsSignUp.count)")
+                }
+                else {
+                    print("no skills from sign up")
+                }
+                return
+            }
             print(snapshot)
         })
         
@@ -96,6 +109,8 @@ class profile: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("made it to profile with user id \(userID)")
         //arrSkillsForUser.removeAll()
         //arrSkills.removeAll()
         loadProfile()

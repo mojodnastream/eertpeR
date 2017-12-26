@@ -26,16 +26,13 @@ class signUpProfile: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         refUserProfile = FIRDatabase.database().reference().child("Profiles");
+        
         self.setNeedsStatusBarAppearanceUpdate()
-
-        print("SignUpProfile Screen siser")
     }
     
     func validate() {
         if userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) == "" || userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) == "" || userLocation.text?.trimmingCharacters(in: NSCharacterSet.whitespaces) == "" {
-            
             userSignUpIssues.text = "Please share a few more details."
-            print("was validated")
         }
         else {
             completeSignUp()
@@ -43,11 +40,13 @@ class signUpProfile: UIViewController {
     }
 
     func completeSignUp() {
-        print("got to completeSignUp")
         
         //generating a new key inside artists node
         //and also getting the generated key
         let key = FIRAuth.auth()?.currentUser?.uid
+        userRealName = (FIRAuth.auth()?.currentUser?.displayName)!
+        userEmail = (FIRAuth.auth()?.currentUser?.email)!
+        userID = (FIRAuth.auth()?.currentUser?.uid)!
         
         //creating artist with the given values
         let profile = ["id": FIRAuth.auth()?.currentUser?.email,

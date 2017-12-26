@@ -21,13 +21,12 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         
         self.setNeedsStatusBarAppearanceUpdate()
         
-        //style the button
-        loadSkills()
-        
         //clear array in case the app crashed in the middle of sign up
         arrSkillsForUser.removeAll()
         arrSkills.removeAll()
-        arrSkills = ["swift", "objective-c", "mysql", "java", "iOS"]
+        
+        //style the button
+        loadSkills()
         
         navigationController?.navigationBar.barTintColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
         navigationController?.navigationBar.isTranslucent = false
@@ -67,12 +66,12 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     }
     
     func addSkillToProfile(skill: String) {
-        
+        print("the user id: \(userID)")
         let fbUserProfileId = FIRAuth.auth()?.currentUser?.uid
         let refUserSkill = FIRDatabase.database().reference().child("Profiles").child(fbUserProfileId!);
         
         let newSkill = skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
-        let key = newSkill.addingPercentEncoding(withAllowedCharacters: .alphanumerics)  //theSkill.childByAutoId().key
+        let key = refUserSkill.childByAutoId().key //newSkill.addingPercentEncoding(withAllowedCharacters: .alphanumerics)  //
         
         //creating artist with the given values
         let skillToAdd = ["id": key,
@@ -80,40 +79,26 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         ]
         
         //adding the artist inside the generated unique key
-        refUserSkill.child("Skills").child(key!).setValue(skillToAdd, withCompletionBlock: { (error, snapshot) in
+        refUserSkill.child("Skills").child(key).setValue(skillToAdd, withCompletionBlock: { (error, snapshot) in
             if error != nil {
                 print(error?.localizedDescription ?? "No error description available")
             } else {
                 print("added skill \(newSkill) to profile")
+                arrSkillsSignUp.append(newSkill.lowercased())
             }
         })
     }
     
     func loadSkills() {
-        //        var name = ""
-        //        let getSkills = PFQuery(className: "SkillsLookUp")
-        //        getSkills.order(byAscending: "name")
-        //        getSkills.limit = 10000
-        //        getSkills.findObjectsInBackground {
-        //            (objects: [PFObject]?, error: Error?) -> Void in
-        //            if error == nil {
-        //                if let objects = objects {
-        //                    for object in objects {
-        //                        name = object["name"] as! String
-        //                        arrSkills.append(name.lowercased())
-        //                    }
-        //                }
-        //            }
-        //            else {
-        //
-        //                print(error?.localizedDescription ?? "An error has occurred")
-        //            }
-        //        }
+        arrSkills = ["swift", "objective-c", "mysql", "java", "iOS", "Javascript", "react.js", "data modeling", "data mining", "machine learning"]
     }
+    
+    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+  
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let headerView = view as? UITableViewHeaderFooterView {
             headerView.textLabel?.textAlignment = .center
@@ -137,7 +122,7 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("didselectrow at row \(indexPath.row)")
+        //print("didselectrow at row \(indexPath.row)")
         //if indexPath.row > 0 {
             let cell = tableView.cellForRow(at: indexPath)
             let itemString = (cell?.textLabel?.text)! as String
@@ -167,7 +152,7 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         
         if(resultSearchController.isActive) {
             if arrSkillsSearchResults.count > 0 {
-                return arrSkillsSearchResults.prefix(5).count
+                return arrSkillsSearchResults.prefix(10).count
             }
             else {
                 return 1
@@ -184,15 +169,15 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("didselectrow at row \(indexPath.row)")
+        //print("didselectrow at row \(indexPath.row)")
         let cell = tableView.dequeueReusableCell(withIdentifier: "SkillCell", for: indexPath as IndexPath) as UITableViewCell
         
         if (self.resultSearchController.isActive) {
             cell.textLabel?.textAlignment = .center
             cell.textLabel?.font = UIFont(name:"HelveticaNeue", size:20)
             if arrSkillsSearchResults.count > 0 {
-                cell.textLabel?.text = arrSkillsSearchResults.prefix(5)[indexPath.row]
-                if arrSkillsForUser.contains(arrSkillsSearchResults.prefix(5)[indexPath.row]) {
+                cell.textLabel?.text = arrSkillsSearchResults.prefix(10)[indexPath.row]
+                if arrSkillsForUser.contains(arrSkillsSearchResults.prefix(10)[indexPath.row]) {
                     cell.textLabel?.textColor = UIColor.white
                     cell.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
                 }
@@ -208,11 +193,11 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
             }
         }
         else {
-            print(arrSkillsForUser.count)
+            //print(arrSkillsForUser.count)
             cell.textLabel?.font = UIFont(name:"HelveticaNeue", size:20)
             if arrSkillsForUser.count > 0 {
                 arrSkillsForUser.sort()
-                print("We are in Row \(indexPath.row) right now")
+                //print("We are in Row \(indexPath.row) right now")
                 if(indexPath.row > 0) {
                     cell.textLabel?.textAlignment = .center
                     cell.textLabel?.text = arrSkillsForUser[indexPath.row - 1]
@@ -240,6 +225,7 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
             arrSkillsSearchResults = searchText.isEmpty ? arrSkills : arrSkills.filter({(dataString: String) -> Bool in
                 return dataString.range(of: searchText, options: NSString.CompareOptions.caseInsensitive) != nil
             })
+            arrSearchResults.sort()
             tableView.reloadData()
         }
     }
