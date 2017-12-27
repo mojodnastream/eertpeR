@@ -362,7 +362,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w1B-u0-fVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="188" y="422.33883058470769"/>
+            <point key="canvasLocation" x="70" y="139"/>
         </scene>
         <!--Reptree Add Skills-->
         <scene sceneID="1W1-Y7-330">
@@ -401,7 +401,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C59-v5-nub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="422"/>
+            <point key="canvasLocation" x="727" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="o64-ek-7LL">
@@ -525,7 +525,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uVk-0b-hlZ">
-                                <rect key="frame" x="16" y="91" width="343" height="43"/>
+                                <rect key="frame" x="16" y="135" width="343" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="NNY-DD-k5N"/>
                                 </constraints>
@@ -534,7 +534,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place of Business" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4VM-ml-ivf">
-                                <rect key="frame" x="16" y="133" width="343" height="42"/>
+                                <rect key="frame" x="16" y="177" width="343" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="Xwy-UZ-Mib"/>
                                 </constraints>
@@ -543,7 +543,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNk-rM-gHH">
-                                <rect key="frame" x="16" y="46" width="343" height="37"/>
+                                <rect key="frame" x="16" y="90" width="343" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="njx-qN-8ze"/>
                                 </constraints>
@@ -552,7 +552,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skills" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUO-Gt-SNr">
-                                <rect key="frame" x="16" y="198" width="343" height="21"/>
+                                <rect key="frame" x="16" y="242" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -815,7 +815,7 @@
         <image name="profile.png" width="240" height="220"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iZN-qr-Dry"/>
+        <segue reference="5Bj-bg-Bus"/>
         <segue reference="JZY-qp-KIL"/>
     </inferredMetricsTieBreakers>
 </document>

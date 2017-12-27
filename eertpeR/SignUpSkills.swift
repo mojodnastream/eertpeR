@@ -56,6 +56,8 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
             for skill in arrSkillsForUser {
                 addSkillToProfile(skill: skill)
             }
+            resultSearchController.isActive = false
+            resultSearchController.searchBar.isHidden = true
             self.performSegue(withIdentifier: "skillsToProfile", sender: self)
         }
         else {
