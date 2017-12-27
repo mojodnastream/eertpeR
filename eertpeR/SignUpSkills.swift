@@ -57,12 +57,10 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
                 addSkillToProfile(skill: skill)
             }
             self.performSegue(withIdentifier: "skillsToProfile", sender: self)
-            
         }
         else {
             print("you must choose at least one skill")
         }
-        
     }
     
     func addSkillToProfile(skill: String) {
@@ -93,8 +91,6 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         arrSkills = ["swift", "objective-c", "mysql", "java", "iOS", "Javascript", "react.js", "data modeling", "data mining", "machine learning"]
     }
     
-    
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -124,28 +120,27 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //print("didselectrow at row \(indexPath.row)")
         //if indexPath.row > 0 {
-            let cell = tableView.cellForRow(at: indexPath)
-            let itemString = (cell?.textLabel?.text)! as String
-            if !itemString.contains("Your Skills") {
-                if let index = arrSkillsForUser.index(of: itemString) {
-                    arrSkillsForUser.remove(at: index)
-                    cell?.textLabel?.textColor = UIColor.black
-                    cell?.backgroundColor = UIColor.white
-                    cell?.contentView.backgroundColor = UIColor.white
-                }
-                else {
-                    if !itemString.isEmpty {
-                        arrSkillsForUser.append(itemString)
-                        cell?.textLabel?.textColor = UIColor.white
-                        cell?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
-                        cell?.contentView.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
-                    }
-                }
-                if(!resultSearchController.isActive) {
-                    tableView.reloadData()
+        let cell = tableView.cellForRow(at: indexPath)
+        let itemString = (cell?.textLabel?.text)! as String
+        if !itemString.contains("Your Skills") {
+            if let index = arrSkillsForUser.index(of: itemString) {
+                arrSkillsForUser.remove(at: index)
+                cell?.textLabel?.textColor = UIColor.black
+                cell?.backgroundColor = UIColor.white
+                cell?.contentView.backgroundColor = UIColor.white
+            }
+            else {
+                if !itemString.isEmpty {
+                    arrSkillsForUser.append(itemString)
+                    cell?.textLabel?.textColor = UIColor.white
+                    cell?.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00) //"#251362"
+                    cell?.contentView.backgroundColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
                 }
             }
-        
+            if(!resultSearchController.isActive) {
+                tableView.reloadData()
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
