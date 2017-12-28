@@ -56,6 +56,7 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
             for skill in arrSkillsForUser {
                 addSkillToProfile(skill: skill)
             }
+            //This was added to make sure the search bar goes away before the segue
             resultSearchController.isActive = false
             resultSearchController.searchBar.isHidden = true
             self.performSegue(withIdentifier: "skillsToProfile", sender: self)
