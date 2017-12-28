@@ -23,7 +23,13 @@ var arrSkillsSignUp = [String]()
 var arrBadges = [String]()
 var arrSearchResults = [String]()
 
+//User Basics
 var userRealName = ""
 var userEmail = ""
 var userID = ""
+
+//User Rep Factors
+var userBadges = 0
+var userReps = 0
+var userSkills = 0
 

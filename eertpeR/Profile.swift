@@ -63,7 +63,17 @@ class profile: UIViewController {
     
     func loadUserInfo() {
         userFullName.text = userRealName
+    }
+    
+    func loadBadges() {
         
+    }
+    
+    func loadUserGig() {
+
+    }
+    
+    func loadSkills() {
         //user = User(uid: userID, email: FIRAuth.auth()?.currentUser?.email)
         userProfileDetailRef.child("Skills").observe(.value, with: {
             snapshot in
@@ -77,7 +87,19 @@ class profile: UIViewController {
                 }
                 return
             }
-            print(snapshot)
+            
+            for child in (snapshot.children) {
+                
+                let snap = child as! FIRDataSnapshot //each child is a snapshot
+                let dict = snap.value as! [String: String] // the value is a dict
+                
+                let skillID = dict["id"]
+                let skill = dict["skill"]
+                arrSkillsForUser.append(skill!)
+                print("\(skillID ?? "no id") loves \(skill ?? "no skill")")
+            }
+            userSkills = arrSkillsForUser.count
+            print("This user has \(userSkills) skills")
         })
         
         userProfileDetailRef.observe(.value) {
@@ -85,22 +107,10 @@ class profile: UIViewController {
             let values = snapshot.value as! [String: AnyObject]
             let company = values["company"] as! String
             let title = values["title"] as! String
-
+            
             self.userTitleRole.text = title
             self.userCompany.text = company
         }
-    }
-    
-    func loadBadges() {
-
-    }
-    
-    func loadUserGig() {
-
-    }
-    
-    func loadSkills() {
-
     }
     
      override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -111,10 +121,10 @@ class profile: UIViewController {
         super.viewDidLoad()
         
         print("made it to profile with user id \(userID)")
-        //arrSkillsForUser.removeAll()
+        arrSkillsForUser.removeAll()
         //arrSkills.removeAll()
         loadProfile()
-        getSkills.loadSkillInfo()
+        //getSkills.loadSkillInfo()
         //loadUserInfo()
     }
     override func viewWillAppear(_ animated: Bool) {
