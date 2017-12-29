@@ -56,6 +56,8 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
             for skill in arrSkillsForUser {
                 addSkillToProfile(skill: skill)
             }
+            //add initial badge
+            addBadgeToProfile()
             //This was added to make sure the search bar goes away before the segue
             resultSearchController.isActive = false
             resultSearchController.searchBar.isHidden = true
@@ -68,8 +70,8 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     
     func addSkillToProfile(skill: String) {
         print("the user id: \(userID)")
-        let fbUserProfileId = FIRAuth.auth()?.currentUser?.uid
-        let refUserSkill = FIRDatabase.database().reference().child("Profiles").child(fbUserProfileId!);
+        //let fbUserProfileId = FIRAuth.auth()?.currentUser?.uid
+        let refUserSkill = FIRDatabase.database().reference().child("Profiles").child(userID);
         
         let newSkill = skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
         let key = refUserSkill.childByAutoId().key //newSkill.addingPercentEncoding(withAllowedCharacters: .alphanumerics)  //
@@ -79,7 +81,7 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
                           "skill": newSkill
         ]
         
-        //adding the artist inside the generated unique key
+        //adding the skill inside the generated unique key
         refUserSkill.child("Skills").child(key).setValue(skillToAdd, withCompletionBlock: { (error, snapshot) in
             if error != nil {
                 print(error?.localizedDescription ?? "No error description available")
@@ -88,6 +90,27 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
                 arrSkillsSignUp.append(newSkill.lowercased())
             }
         })
+    }
+    
+    func addBadgeToProfile() {
+        let refUserBadge = FIRDatabase.database().reference().child("Profiles").child(userID);
+        let newBadge = "Reptree Noob"
+        let key = refUserBadge.childByAutoId().key //newSkill.addingPercentEncoding(withAllowedCharacters: .alphanumerics)  //
+        
+        //creating artist with the given values
+        let badgeToAdd = ["id": key,
+                          "badge": newBadge
+        ]
+        
+        refUserBadge.child("Badges").child(key).setValue(badgeToAdd, withCompletionBlock: { (error, snapshot) in
+            if error != nil {
+                print(error?.localizedDescription ?? "No error description available")
+            } else {
+                print("added badge \(newBadge) to profile")
+                arrBadges.append(newBadge.lowercased())
+            }
+        })
+        
     }
     
     func loadSkills() {

@@ -65,12 +65,47 @@ class profile: UIViewController {
         userFullName.text = userRealName
     }
     
-    func loadBadges() {
+    func loadUserGig(){
         
     }
     
-    func loadUserGig() {
-
+    func loadBadges() {
+        userProfileDetailRef.child("Badges").observe(.value, with: {
+            snapshot in
+            guard snapshot.exists() else {
+                print("no data yet - grab badges from the array is this is the initial sign up load")
+                if arrBadges.count > 0 {
+                    print("Badges I sugned Up with \(arrBadges.count)")
+                }
+                else {
+                    print("no badges from sign up")
+                }
+                return
+            }
+            
+            for child in (snapshot.children) {
+                
+                let snap = child as! FIRDataSnapshot //each child is a snapshot
+                let dict = snap.value as! [String: String] // the value is a dict
+                
+                let badgeID = dict["id"]
+                let badge = dict["badge"]
+                arrBadges.append(badge!)
+                print("\(badgeID ?? "no id") loves \(badge ?? "no badge")")
+            }
+            let userBadgesCounter = arrBadges.count
+            print("This user has \(userBadgesCounter) badges")
+        })
+        
+        userProfileDetailRef.observe(.value) {
+            snapshot in
+            let values = snapshot.value as! [String: AnyObject]
+            let company = values["company"] as! String
+            let title = values["title"] as! String
+            
+            self.userTitleRole.text = title
+            self.userCompany.text = company
+        }
     }
     
     func loadSkills() {
