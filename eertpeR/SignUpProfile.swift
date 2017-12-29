@@ -48,7 +48,7 @@ class signUpProfile: UIViewController {
         userEmail = (FIRAuth.auth()?.currentUser?.email)!
         userID = (FIRAuth.auth()?.currentUser?.uid)!
         
-        //creating artist with the given values
+        //creating profile with the given values
         let profile = ["id": FIRAuth.auth()?.currentUser?.email,
                       "title": userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces),
                       "company": userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
@@ -59,6 +59,7 @@ class signUpProfile: UIViewController {
             if error != nil {
                 print(error?.localizedDescription ?? "No error description available")
             } else {
+                
                 self.performSegue(withIdentifier: "jumpToSkillsScreen", sender: self)
             }
         })
