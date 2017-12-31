@@ -9,14 +9,19 @@
 import UIKit
 import Firebase
 
-class profile: UIViewController {
+class profile: UITableViewController {
     
-    @IBOutlet var userBadgesCount: UILabel!
-    @IBOutlet var userSkillsCount: UILabel!
-    @IBOutlet var userFullName: UILabel!
-    @IBOutlet var userLine: UILabel!
+//    @IBOutlet var userBadgesCount: UILabel!
+//    @IBOutlet var userSkillsCount: UILabel!
+//    @IBOutlet var userLine: UILabel!
+//    @IBOutlet weak var userCompany: UILabel!
+    
+    @IBOutlet weak var circBadges: UILabel!
+    @IBOutlet weak var circRep: UILabel!
+    @IBOutlet weak var circSkills: UILabel!
+    @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userTitleRole: UILabel!
-    @IBOutlet weak var userCompany: UILabel!
+    @IBOutlet weak var userFullName: UILabel!
     var arrUserSkills = [String]()
     var arrUserBadges = [String]()
     
@@ -25,8 +30,18 @@ class profile: UIViewController {
     
     //use this for the profile pic
     override func viewDidLayoutSubviews() {
-        //profileImage.layer.cornerRadius = profileImage.frame.size.width/2
-        //profileImage.clipsToBounds = true
+        profileImage.layer.cornerRadius = profileImage.frame.size.width/2
+        profileImage.clipsToBounds = true
+        circSkills.layer.cornerRadius = circSkills.frame.size.height/2.0
+        circSkills.layer.masksToBounds = true
+        circSkills.layer.borderWidth = 2
+        circSkills.layer.borderColor = UIColor.gray.cgColor
+        
+        circBadges.layer.cornerRadius = circBadges.frame.size.height/2.0
+        circBadges.layer.masksToBounds = true
+        circBadges.layer.borderWidth = 2
+        circBadges.layer.borderColor = UIColor.gray.cgColor
+        
         //userFullName.layer.zPosition = 1.0
         //userCompany.sizeToFit()
         //userTitleRole.sizeToFit()
@@ -63,6 +78,15 @@ class profile: UIViewController {
     
     func loadUserInfo() {
         userFullName.text = userRealName
+        userProfileDetailRef.observe(.value) {
+            snapshot in
+            let values = snapshot.value as! [String: AnyObject]
+            //let company = values["company"] as! String
+            let title = values["title"] as! String
+            
+            self.userTitleRole.text = title
+            //self.userCompany.text = company
+        }
     }
     
     func loadUserGig(){
@@ -90,22 +114,13 @@ class profile: UIViewController {
                 
                 let badgeID = dict["id"]
                 let badge = dict["badge"]
-                arrBadges.append(badge!)
+                self.arrUserBadges.append(badge!)
                 print("\(badgeID ?? "no id") loves \(badge ?? "no badge")")
             }
-            let userBadgesCounter = arrBadges.count
+            let userBadgesCounter = self.arrUserBadges.count
             print("This user has \(userBadgesCounter) badges")
+            self.circBadges.text = String(userBadgesCounter)
         })
-        
-        userProfileDetailRef.observe(.value) {
-            snapshot in
-            let values = snapshot.value as! [String: AnyObject]
-            let company = values["company"] as! String
-            let title = values["title"] as! String
-            
-            self.userTitleRole.text = title
-            self.userCompany.text = company
-        }
     }
     
     func loadSkills() {
@@ -135,34 +150,29 @@ class profile: UIViewController {
             }
             userSkills = arrSkillsForUser.count
             print("This user has \(userSkills) skills")
+            self.circSkills.text = String(userSkills)
         })
-        
-        userProfileDetailRef.observe(.value) {
-            snapshot in
-            let values = snapshot.value as! [String: AnyObject]
-            let company = values["company"] as! String
-            let title = values["title"] as! String
-            
-            self.userTitleRole.text = title
-            self.userCompany.text = company
-        }
     }
     
-     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("made it to profile with user id \(userID)")
+        navigationController?.isNavigationBarHidden = false
+        navigationController?.navigationBar.barTintColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
+        navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
+        navigationController?.navigationBar.barStyle = .blackTranslucent
+        //navigationController?.navigationBar.title = "Reptree"
+        //print("made it to profile with user id \(userID)")
         arrSkillsForUser.removeAll()
-        //arrSkills.removeAll()
         loadProfile()
-        //getSkills.loadSkillInfo()
-        //loadUserInfo()
+
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
+       
     }
 }

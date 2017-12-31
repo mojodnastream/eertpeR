@@ -59,7 +59,6 @@ class signUpProfile: UIViewController {
             if error != nil {
                 print(error?.localizedDescription ?? "No error description available")
             } else {
-                
                 self.performSegue(withIdentifier: "jumpToSkillsScreen", sender: self)
             }
         })
