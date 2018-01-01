@@ -22,6 +22,8 @@ class profile: UITableViewController {
     var arrUserBadges = [String]()
     
     let userProfileDetailRef = FIRDatabase.database().reference(withPath: "Profiles").child(userID)
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 
     override func viewDidLayoutSubviews() {
         profileImage.layer.cornerRadius = profileImage.frame.size.width/2
@@ -35,6 +37,8 @@ class profile: UITableViewController {
         circBadges.layer.masksToBounds = true
         circBadges.layer.borderWidth = 2
         circBadges.layer.borderColor = UIColor.gray.cgColor
+        
+       
     }
     
     @IBAction func goToSearch(_ sender: UIButton) {
@@ -150,11 +154,14 @@ class profile: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setNeedsStatusBarAppearanceUpdate()
         arrSkillsForUser.removeAll()
         loadProfile()
 
     }
     override func viewWillAppear(_ animated: Bool) {
-       navigationController?.isNavigationBarHidden = true
+       navigationController?.isNavigationBarHidden = false
     }
+    
 }
+

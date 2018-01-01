@@ -10,13 +10,16 @@ import UIKit
 import Firebase
 
 class Settings: UITableViewController {
-    
+    override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+
     @IBAction func btnGoBack(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "goBackToProfile", sender: self)
     }
+
     @IBAction func btnLogout(_ sender: UIButton) {
         doLogOut()
     }
+    
     func doLogOut() {
         let firebaseAuth = FIRAuth.auth()
         do {
@@ -32,7 +35,7 @@ class Settings: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setNeedsStatusBarAppearanceUpdate()
         
     }
     override func viewWillAppear(_ animated: Bool) {

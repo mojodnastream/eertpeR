@@ -51,7 +51,7 @@ class logIn: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.isNavigationBarHidden = true
         loginButtonStyle.layer.cornerRadius = 5
         loginButtonStyle.layer.borderWidth = 1
         loginButtonStyle.layer.borderColor = UIColor.purple.cgColor
