@@ -430,6 +430,7 @@
                                     <barButtonItem key="leftBarButtonItem" systemItem="done" id="2Po-3w-oJV">
                                         <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
+                                            <action selector="btnGoBack:" destination="7ee-W7-gGZ" id="fK4-pf-RnA"/>
                                             <segue destination="kvj-mL-xsJ" kind="show" identifier="goBackToProfile" id="atZ-Wi-CBo"/>
                                         </connections>
                                     </barButtonItem>
@@ -497,7 +498,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1l-Ds-Gf1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-529" y="212"/>
+            <point key="canvasLocation" x="-434" y="260"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="o64-ek-7LL">
@@ -678,7 +679,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEJ-Ul-6A2">
-                                                            <rect key="frame" x="112" y="8" width="200" height="30"/>
+                                                            <rect key="frame" x="112" y="5" width="200" height="30"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="19"/>
                                                             <nil key="textColor"/>
@@ -699,7 +700,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Current Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zpb-dk-dDr">
-                                                            <rect key="frame" x="112" y="37" width="200" height="27"/>
+                                                            <rect key="frame" x="112" y="36" width="200" height="27"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -716,6 +717,13 @@
                                                             <rect key="frame" x="141" y="112" width="60" height="21"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Company" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adJ-pJ-e9F">
+                                                            <rect key="frame" x="112" y="69" width="223" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -755,13 +763,14 @@
                         <outlet property="circRep" destination="MLS-9f-fxX" id="KBy-1b-2uG"/>
                         <outlet property="circSkills" destination="6QC-Ff-mIE" id="iXA-mx-IdX"/>
                         <outlet property="profileImage" destination="1sx-jc-yf0" id="heW-G3-MpV"/>
+                        <outlet property="userCompany" destination="adJ-pJ-e9F" id="FH0-u3-WMH"/>
                         <outlet property="userFullName" destination="hEJ-Ul-6A2" id="sdp-lG-1aN"/>
                         <outlet property="userTitleRole" destination="Zpb-dk-dDr" id="rHQ-dC-HzU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1i-7b-Cgy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1534" y="770"/>
+            <point key="canvasLocation" x="-1535.2" y="769.56521739130437"/>
         </scene>
         <!--User Search-->
         <scene sceneID="MJq-Hp-BYZ">
@@ -966,6 +975,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2Xp-Gf-Kau"/>
+        <segue reference="ed4-6l-DRc"/>
         <segue reference="atZ-Wi-CBo"/>
         <segue reference="uFg-kg-SbQ"/>
     </inferredMetricsTieBreakers>

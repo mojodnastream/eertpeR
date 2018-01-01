@@ -11,6 +11,9 @@ import Firebase
 
 class Settings: UITableViewController {
     
+    @IBAction func btnGoBack(_ sender: UIBarButtonItem) {
+        self.performSegue(withIdentifier: "goBackToProfile", sender: self)
+    }
     @IBAction func btnLogout(_ sender: UIButton) {
         doLogOut()
     }

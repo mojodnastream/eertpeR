@@ -11,6 +11,7 @@ import Firebase
 
 class profile: UITableViewController {
   
+    @IBOutlet weak var userCompany: UILabel!
     @IBOutlet weak var circBadges: UILabel!
     @IBOutlet weak var circRep: UILabel!
     @IBOutlet weak var circSkills: UILabel!
@@ -70,11 +71,11 @@ class profile: UITableViewController {
         userProfileDetailRef.observe(.value) {
             snapshot in
             let values = snapshot.value as! [String: AnyObject]
-            //let company = values["company"] as! String
+            let company = values["company"] as! String
             let title = values["title"] as! String
             
             self.userTitleRole.text = title
-            //self.userCompany.text = company
+            self.userCompany.text = company
         }
     }
     
