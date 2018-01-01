@@ -32,6 +32,9 @@
 		48E4D3221D50FC9F00F3EC76 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D3211D50FC9F00F3EC76 /* APIManager.swift */; };
 		48E4D3241D50FDD400F3EC76 /* RepStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D3231D50FDD400F3EC76 /* RepStory.swift */; };
 		48E4D3261D50FE0400F3EC76 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D3251D50FE0400F3EC76 /* User.swift */; };
+		7980EBE81FF9E576009208B0 /* icons8-settings-filled-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 7980EBE71FF9E575009208B0 /* icons8-settings-filled-40.png */; };
+		7980EBEA1FF9E8D3009208B0 /* icons8-settings-filled-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 7980EBE91FF9E8D2009208B0 /* icons8-settings-filled-20.png */; };
+		7980EBEC1FF9EFFD009208B0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980EBEB1FF9EFFD009208B0 /* Settings.swift */; };
 		79D068E81FE988A30059B23C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79D068E71FE988A20059B23C /* GoogleService-Info.plist */; };
 		7B13E993B1DC046EF0EE48B0 /* libPods-eertpeR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 729CFF212E2B7C29D91DBB0B /* libPods-eertpeR.a */; };
 /* End PBXBuildFile section */
@@ -65,6 +68,9 @@
 		48E4D3231D50FDD400F3EC76 /* RepStory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepStory.swift; sourceTree = "<group>"; };
 		48E4D3251D50FE0400F3EC76 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		729CFF212E2B7C29D91DBB0B /* libPods-eertpeR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-eertpeR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7980EBE71FF9E575009208B0 /* icons8-settings-filled-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-settings-filled-40.png"; sourceTree = "<group>"; };
+		7980EBE91FF9E8D2009208B0 /* icons8-settings-filled-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-settings-filled-20.png"; sourceTree = "<group>"; };
+		7980EBEB1FF9EFFD009208B0 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		79D068E71FE988A20059B23C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99E3EEF8BF54A076FB42F0A3 /* Pods-eertpeR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eertpeR.release.xcconfig"; path = "Pods/Target Support Files/Pods-eertpeR/Pods-eertpeR.release.xcconfig"; sourceTree = "<group>"; };
 		BE14C4FB754C16E153172F7E /* Pods-eertpeR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eertpeR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eertpeR/Pods-eertpeR.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +104,8 @@
 		484AAD771EE212DE00766430 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				7980EBE71FF9E575009208B0 /* icons8-settings-filled-40.png */,
+				7980EBE91FF9E8D2009208B0 /* icons8-settings-filled-20.png */,
 				484AAD781EE2134100766430 /* profile.png */,
 			);
 			name = Assets;
@@ -179,6 +187,7 @@
 				482135DF1EC7BDBE00296104 /* Search.swift */,
 				482135E11EC833AF00296104 /* SearchDetail.swift */,
 				484AAD7A1EE61B9100766430 /* SearchDetailSkills.swift */,
+				7980EBEB1FF9EFFD009208B0 /* Settings.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -268,8 +277,10 @@
 			files = (
 				48E4D3131D50F9B000F3EC76 /* LaunchScreen.storyboard in Resources */,
 				48E4D3101D50F9B000F3EC76 /* Assets.xcassets in Resources */,
+				7980EBEA1FF9E8D3009208B0 /* icons8-settings-filled-20.png in Resources */,
 				79D068E81FE988A30059B23C /* GoogleService-Info.plist in Resources */,
 				48E4D30B1D50F9B000F3EC76 /* Main.storyboard in Resources */,
+				7980EBE81FF9E576009208B0 /* icons8-settings-filled-40.png in Resources */,
 				484AAD791EE2134100766430 /* profile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +349,7 @@
 				482399B31E956DD00031892C /* SignUpOne.swift in Sources */,
 				482399B91E96D4DD0031892C /* Profile.swift in Sources */,
 				482399B51E95DC030031892C /* Utils.swift in Sources */,
+				7980EBEC1FF9EFFD009208B0 /* Settings.swift in Sources */,
 				482135E21EC833AF00296104 /* SearchDetail.swift in Sources */,
 				482399B71E96C9C40031892C /* SignUpProfile.swift in Sources */,
 				48E4D3221D50FC9F00F3EC76 /* APIManager.swift in Sources */,

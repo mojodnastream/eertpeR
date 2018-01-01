@@ -10,12 +10,7 @@ import UIKit
 import Firebase
 
 class profile: UITableViewController {
-    
-//    @IBOutlet var userBadgesCount: UILabel!
-//    @IBOutlet var userSkillsCount: UILabel!
-//    @IBOutlet var userLine: UILabel!
-//    @IBOutlet weak var userCompany: UILabel!
-    
+  
     @IBOutlet weak var circBadges: UILabel!
     @IBOutlet weak var circRep: UILabel!
     @IBOutlet weak var circSkills: UILabel!
@@ -27,8 +22,6 @@ class profile: UITableViewController {
     
     let userProfileDetailRef = FIRDatabase.database().reference(withPath: "Profiles").child(userID)
 
-    
-    //use this for the profile pic
     override func viewDidLayoutSubviews() {
         profileImage.layer.cornerRadius = profileImage.frame.size.width/2
         profileImage.clipsToBounds = true
@@ -41,10 +34,6 @@ class profile: UITableViewController {
         circBadges.layer.masksToBounds = true
         circBadges.layer.borderWidth = 2
         circBadges.layer.borderColor = UIColor.gray.cgColor
-        
-        //userFullName.layer.zPosition = 1.0
-        //userCompany.sizeToFit()
-        //userTitleRole.sizeToFit()
     }
     
     @IBAction func goToSearch(_ sender: UIButton) {
@@ -97,9 +86,9 @@ class profile: UITableViewController {
         userProfileDetailRef.child("Badges").observe(.value, with: {
             snapshot in
             guard snapshot.exists() else {
-                print("no data yet - grab badges from the array is this is the initial sign up load")
+                //print("no data yet - grab badges from the array is this is the initial sign up load")
                 if arrBadges.count > 0 {
-                    print("Badges I sugned Up with \(arrBadges.count)")
+                    //print("Badges I sugned Up with \(arrBadges.count)")
                 }
                 else {
                     print("no badges from sign up")
@@ -115,10 +104,10 @@ class profile: UITableViewController {
                 let badgeID = dict["id"]
                 let badge = dict["badge"]
                 self.arrUserBadges.append(badge!)
-                print("\(badgeID ?? "no id") loves \(badge ?? "no badge")")
+                //print("\(badgeID ?? "no id") loves \(badge ?? "no badge")")
             }
             let userBadgesCounter = self.arrUserBadges.count
-            print("This user has \(userBadgesCounter) badges")
+            //print("This user has \(userBadgesCounter) badges")
             self.circBadges.text = String(userBadgesCounter)
         })
     }
@@ -128,9 +117,9 @@ class profile: UITableViewController {
         userProfileDetailRef.child("Skills").observe(.value, with: {
             snapshot in
             guard snapshot.exists() else {
-                print("no data yet - grab skills from the array is this is the initial sign up load")
+                //print("no data yet - grab skills from the array is this is the initial sign up load")
                 if arrSkillsSignUp.count > 0 {
-                    print("Skills I sugned Up with \(arrSkillsSignUp.count)")
+                    //print("Skills I sugned Up with \(arrSkillsSignUp.count)")
                 }
                 else {
                     print("no skills from sign up")
@@ -146,10 +135,10 @@ class profile: UITableViewController {
                 let skillID = dict["id"]
                 let skill = dict["skill"]
                 arrSkillsForUser.append(skill!)
-                print("\(skillID ?? "no id") loves \(skill ?? "no skill")")
+                //print("\(skillID ?? "no id") loves \(skill ?? "no skill")")
             }
             userSkills = arrSkillsForUser.count
-            print("This user has \(userSkills) skills")
+            //print("This user has \(userSkills) skills")
             self.circSkills.text = String(userSkills)
         })
     }
@@ -160,19 +149,11 @@ class profile: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        navigationController?.isNavigationBarHidden = false
-        navigationController?.navigationBar.barTintColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-        navigationController?.navigationBar.barStyle = .blackTranslucent
-        //navigationController?.navigationBar.title = "Reptree"
-        //print("made it to profile with user id \(userID)")
         arrSkillsForUser.removeAll()
         loadProfile()
 
     }
     override func viewWillAppear(_ animated: Bool) {
-       
+       navigationController?.isNavigationBarHidden = true
     }
 }
