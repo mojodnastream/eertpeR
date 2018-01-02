@@ -34,6 +34,7 @@
 		7980EBE81FF9E576009208B0 /* icons8-settings-filled-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 7980EBE71FF9E575009208B0 /* icons8-settings-filled-40.png */; };
 		7980EBEA1FF9E8D3009208B0 /* icons8-settings-filled-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 7980EBE91FF9E8D2009208B0 /* icons8-settings-filled-20.png */; };
 		7980EBEC1FF9EFFD009208B0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980EBEB1FF9EFFD009208B0 /* Settings.swift */; };
+		7980EC0F1FFC3B27009208B0 /* SettingsEditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980EC0E1FFC3B27009208B0 /* SettingsEditProfile.swift */; };
 		79D068E81FE988A30059B23C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79D068E71FE988A20059B23C /* GoogleService-Info.plist */; };
 		7B13E993B1DC046EF0EE48B0 /* libPods-eertpeR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 729CFF212E2B7C29D91DBB0B /* libPods-eertpeR.a */; };
 /* End PBXBuildFile section */
@@ -69,6 +70,7 @@
 		7980EBE71FF9E575009208B0 /* icons8-settings-filled-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-settings-filled-40.png"; sourceTree = "<group>"; };
 		7980EBE91FF9E8D2009208B0 /* icons8-settings-filled-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-settings-filled-20.png"; sourceTree = "<group>"; };
 		7980EBEB1FF9EFFD009208B0 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		7980EC0E1FFC3B27009208B0 /* SettingsEditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEditProfile.swift; sourceTree = "<group>"; };
 		79D068E71FE988A20059B23C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99E3EEF8BF54A076FB42F0A3 /* Pods-eertpeR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eertpeR.release.xcconfig"; path = "Pods/Target Support Files/Pods-eertpeR/Pods-eertpeR.release.xcconfig"; sourceTree = "<group>"; };
 		BE14C4FB754C16E153172F7E /* Pods-eertpeR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eertpeR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eertpeR/Pods-eertpeR.debug.xcconfig"; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 				482135E11EC833AF00296104 /* SearchDetail.swift */,
 				484AAD7A1EE61B9100766430 /* SearchDetailSkills.swift */,
 				7980EBEB1FF9EFFD009208B0 /* Settings.swift */,
+				7980EC0E1FFC3B27009208B0 /* SettingsEditProfile.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			files = (
 				48E4D30E1D50F9B000F3EC76 /* eertpeR.xcdatamodeld in Sources */,
 				482399AF1E9569C50031892C /* Skill.swift in Sources */,
+				7980EC0F1FFC3B27009208B0 /* SettingsEditProfile.swift in Sources */,
 				482399B31E956DD00031892C /* SignUpOne.swift in Sources */,
 				482399B91E96D4DD0031892C /* Profile.swift in Sources */,
 				482399B51E95DC030031892C /* Utils.swift in Sources */,
