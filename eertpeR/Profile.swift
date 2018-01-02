@@ -28,10 +28,16 @@ class profile: UITableViewController {
     override func viewDidLayoutSubviews() {
         profileImage.layer.cornerRadius = profileImage.frame.size.width/2
         profileImage.clipsToBounds = true
+        
         circSkills.layer.cornerRadius = circSkills.frame.size.height/2.0
         circSkills.layer.masksToBounds = true
         circSkills.layer.borderWidth = 2
         circSkills.layer.borderColor = UIColor.gray.cgColor
+        
+        circRep.layer.cornerRadius = circRep.frame.size.height/2.0
+        circRep.layer.masksToBounds = true
+        circRep.layer.borderWidth = 2
+        circRep.layer.borderColor = UIColor.gray.cgColor
         
         circBadges.layer.cornerRadius = circBadges.frame.size.height/2.0
         circBadges.layer.masksToBounds = true
@@ -65,26 +71,32 @@ class profile: UITableViewController {
     func loadProfile() {
         //eventually use the User Class, for now we favor speed to market
         loadUserInfo()
-        loadUserGig()
+        //loadUserGig()
         loadSkills()
         loadBadges()
     }
     
     func loadUserInfo() {
         userFullName.text = userRealName
-        userProfileDetailRef.observe(.value) {
+        userProfileDetailRef.observe(.value, with: {
             snapshot in
+            guard snapshot.exists() else {
+                print("no user info")
+                self.userTitleRole.text = ""
+                self.userCompany.text = ""
+                self.circBadges.text = "0"
+                self.circSkills.text = "0"
+                self.circRep.text = "Noob"
+                return
+            }
+            
             let values = snapshot.value as! [String: AnyObject]
             let company = values["company"] as! String
             let title = values["title"] as! String
             
             self.userTitleRole.text = title
             self.userCompany.text = company
-        }
-    }
-    
-    func loadUserGig(){
-        
+      })
     }
     
     func loadBadges() {
@@ -106,13 +118,11 @@ class profile: UITableViewController {
                 let snap = child as! FIRDataSnapshot //each child is a snapshot
                 let dict = snap.value as! [String: String] // the value is a dict
                 
-                let badgeID = dict["id"]
+                //let badgeID = dict["id"]
                 let badge = dict["badge"]
                 self.arrUserBadges.append(badge!)
-                //print("\(badgeID ?? "no id") loves \(badge ?? "no badge")")
             }
             let userBadgesCounter = self.arrUserBadges.count
-            //print("This user has \(userBadgesCounter) badges")
             self.circBadges.text = String(userBadgesCounter)
         })
     }
@@ -137,13 +147,11 @@ class profile: UITableViewController {
                 let snap = child as! FIRDataSnapshot //each child is a snapshot
                 let dict = snap.value as! [String: String] // the value is a dict
                 
-                let skillID = dict["id"]
+                //let skillID = dict["id"]
                 let skill = dict["skill"]
                 arrSkillsForUser.append(skill!)
-                //print("\(skillID ?? "no id") loves \(skill ?? "no skill")")
             }
             userSkills = arrSkillsForUser.count
-            //print("This user has \(userSkills) skills")
             self.circSkills.text = String(userSkills)
         })
     }

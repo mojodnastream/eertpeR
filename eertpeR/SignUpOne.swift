@@ -13,19 +13,18 @@ import FirebaseAuth
 class signUpOne: UIViewController {
     
     @IBOutlet weak var errorText: UILabel!
-    @IBOutlet weak var signUpButtonStyle: UIButton!
     @IBOutlet weak var lastname: UITextField!
     @IBOutlet weak var firstname: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var passwordConfirm: UITextField!
     @IBOutlet weak var username: UITextField!
-    @IBAction func alreadySignedUp(_ sender: UIButton) {
-        performSegue(withIdentifier: "alreadySignedUp", sender: self)
-    }
-    @IBAction func signUpBtn(_ sender: UIButton) {
+
+    @IBAction func btnSignUpNext(_ sender: UIBarButtonItem) {
         signUp()
     }
-    
+    @IBAction func btnBackToLogin(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "signUpToLogin", sender: self)
+    }
     func signUp() {
         //var error = ""
         errorText.text = ""
@@ -81,8 +80,6 @@ class signUpOne: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signUpButtonStyle.layer.cornerRadius = 5
-        signUpButtonStyle.layer.borderWidth = 1
-        signUpButtonStyle.layer.borderColor = UIColor.purple.cgColor
+       
     }
 }
