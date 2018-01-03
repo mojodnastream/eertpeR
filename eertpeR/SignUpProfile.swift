@@ -17,7 +17,9 @@ class signUpProfile: UIViewController {
     @IBOutlet weak var userTitleRole: UITextField!
     @IBOutlet weak var userCompany: UITextField!
     @IBOutlet weak var userLocation: UITextField!
-    @IBAction func signUpProfileBtn(_ sender: UIBarButtonItem) {
+
+    
+    @IBAction func signUpProf(_ sender: UIBarButtonItem) {
         validate()
     }
     
@@ -28,6 +30,10 @@ class signUpProfile: UIViewController {
         refUserProfile = FIRDatabase.database().reference().child("Profiles");
         
         self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true;
     }
     
     func validate() {
@@ -51,7 +57,8 @@ class signUpProfile: UIViewController {
         //creating profile with the given values
         let profile = ["id": FIRAuth.auth()?.currentUser?.email,
                       "title": userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces),
-                      "company": userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+                      "company": userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces),
+                      "location": userLocation.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
                       ]
         
         //adding the artist inside the generated unique key

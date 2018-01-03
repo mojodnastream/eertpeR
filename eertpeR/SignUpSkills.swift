@@ -16,7 +16,7 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     @IBAction func btnComplete(_ sender: UIBarButtonItem) {
         finalizeSignUp()
     }
-   
+ 
     override func viewDidLoad() {
         
         self.setNeedsStatusBarAppearanceUpdate()
@@ -32,6 +32,7 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         navigationController?.navigationBar.barStyle = .blackTranslucent
+        navigationController?.isNavigationBarHidden = false
         
         //set up the search box
         resultSearchController.searchResultsUpdater = self
@@ -69,9 +70,9 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     }
     
     func addSkillToProfile(skill: String) {
-        print("the user id: \(userID)")
-        //let fbUserProfileId = FIRAuth.auth()?.currentUser?.uid
-        let refUserSkill = FIRDatabase.database().reference().child("Profiles").child(userID);
+        print("the user id: \(FIRAuth.auth()?.currentUser?.uid)")
+        let fbUserProfileId = FIRAuth.auth()?.currentUser?.uid
+        let refUserSkill = FIRDatabase.database().reference().child("Profiles").child(fbUserProfileId!);
         
         let newSkill = skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
         let key = refUserSkill.childByAutoId().key //newSkill.addingPercentEncoding(withAllowedCharacters: .alphanumerics)  //
