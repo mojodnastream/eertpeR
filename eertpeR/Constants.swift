@@ -27,6 +27,9 @@ var arrSearchResults = [String]()
 var userRealName = ""
 var userEmail = ""
 var userID = ""
+var constUserCompany = ""
+var constUserTitleRole = ""
+var constUserLocation = ""
 
 //User Rep Factors
 var userBadges = 0

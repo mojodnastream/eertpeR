@@ -47,27 +47,6 @@ class profile: UITableViewController {
        
     }
     
-    @IBAction func goToSearch(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "showSearch", sender: self)
-    }
-
-    @IBAction func logOut(_ sender: UIButton) {
-        doLogOut()
-    }
-    
-    func doLogOut() {
-        let firebaseAuth = FIRAuth.auth()
-        do {
-            try firebaseAuth?.signOut()
-            userID = ""
-            userEmail = ""
-            userRealName = ""
-            self.performSegue(withIdentifier: "jumpToLogin", sender: self)
-        } catch let signOutError as NSError {
-            print ("Error signing out: %@", signOutError)
-        }
-    }
-    
     func loadProfile() {
         //eventually use the User Class, for now we favor speed to market
         loadUserInfo()
@@ -91,11 +70,12 @@ class profile: UITableViewController {
             }
             
             let values = snapshot.value as! [String: AnyObject]
-            let company = values["company"] as! String
-            let title = values["title"] as! String
+            constUserCompany = values["company"] as! String
+            constUserTitleRole = values["title"] as! String
+            constUserLocation = values["location"] as! String
             
-            self.userTitleRole.text = title
-            self.userCompany.text = company
+            self.userTitleRole.text = constUserTitleRole
+            self.userCompany.text = constUserCompany
       })
     }
     
@@ -168,7 +148,8 @@ class profile: UITableViewController {
 
     }
     override func viewWillAppear(_ animated: Bool) {
-       navigationController?.isNavigationBarHidden = false
+        navigationController?.isNavigationBarHidden = false
+        loadUserInfo()
     }
     
 }
