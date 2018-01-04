@@ -8,16 +8,53 @@
 
 import UIKit
 import Firebase
+import MessageUI
 
-class Settings: UITableViewController {
+class Settings: UITableViewController, MFMailComposeViewControllerDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 
+    
+    @IBAction func btnFeedback(_ sender: UIButton) {
+        if MFMailComposeViewController.canSendMail() {
+            sendEmail()
+        }
+        else {
+            doAlert(title: "No Email Services Available", message: "Please configure at least one email account to send feedback.")
+        }
+    }
     @IBAction func btnGoBack(_ sender: UIBarButtonItem) {
         self.performSegue(withIdentifier: "goBackToProfile", sender: self)
     }
 
     @IBAction func btnLogout(_ sender: UIButton) {
         doLogOut()
+    }
+    
+    func sendEmail() {
+        let mail = MFMailComposeViewController()
+        mail.mailComposeDelegate = self as MFMailComposeViewControllerDelegate
+        mail.setToRecipients([feedbackEmail])
+        mail.setSubject("Feedback From Reptree iOS App")
+        //mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
+        present(mail, animated: true)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        //controller.dismiss(animated: true)
+        controller.dismiss(animated: true, completion: {
+            if result == .sent {
+                self.doAlert(title: "Thank You", message: "Your feedback is appreciated")
+            }
+        })
+    }
+    
+    func doAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
     
     func doLogOut() {

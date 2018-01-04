@@ -16,6 +16,7 @@ let WIFI = "WIFI Available"
 let NOACCESS = "No Internet Access"
 let WWAN = "Cellular Access Available"
 
+var feedbackEmail = "gnothom@gmail.com"
 var arrSkills = [String]()
 var arrSkillsSearchResults = [String]()
 var arrSkillsForUser = [String]()
