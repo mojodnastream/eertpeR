@@ -147,6 +147,8 @@ class profile: UITableViewController {
         loadProfile()
 
     }
+    
+    //THIS RUNS EVERY TIME THE VC IS SHOWN
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
         loadUserInfo()
