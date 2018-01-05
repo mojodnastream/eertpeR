@@ -56,9 +56,9 @@ class Settings: UITableViewController, MFMailComposeViewControllerDelegate {
     }
     
     func doLogOut() {
-        let firebaseAuth = FIRAuth.auth()
+        let firebaseAuth = Auth.auth()
         do {
-            try firebaseAuth?.signOut()
+            try firebaseAuth.signOut()
             userID = ""
             userEmail = ""
             userRealName = ""
@@ -76,5 +76,7 @@ class Settings: UITableViewController, MFMailComposeViewControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }

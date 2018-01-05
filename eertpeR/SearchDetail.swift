@@ -33,7 +33,7 @@ class SearchDetail: UIViewController {
         print(passUserName)
         print(passType)
         
-            getUsers.getMemberProfile(userId: passUserID)
+            //getUsers.getMemberProfile(userId: passUserID)
             setUserVars();
 
         //self.entityName.text = passUserName

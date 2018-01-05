@@ -43,9 +43,9 @@ class settingsChangePassword: UIViewController {
     func changePassword() {
         let currPassword = currentPassword.text
         let password = newPassword.text
-        let email = FIRAuth.auth()?.currentUser?.email
-        let user = FIRAuth.auth()?.currentUser
-        let credential = FIREmailPasswordAuthProvider.credential(withEmail: email!, password: currPassword!)
+        let email = Auth.auth().currentUser?.email
+        let user = Auth.auth().currentUser
+        let credential = EmailAuthProvider.credential(withEmail: email!, password: currPassword!)
         
         user?.reauthenticate(with: credential, completion: { (error) in
             if error != nil{
@@ -54,7 +54,7 @@ class settingsChangePassword: UIViewController {
                 self.txtErrorMsg.text = "Please re-enter your current password.  if you continue to see this message, please use the Password Reset function."
             }
             else {
-                user?.updatePassword(password!) { error in
+                user?.updatePassword(to: password!) { error in
                     if let error = error {
                         print(error)
                         self.txtErrorMsg.textColor = UIColor.red
@@ -75,5 +75,9 @@ class settingsChangePassword: UIViewController {
         super.viewDidLoad()
         txtErrorMsg.textColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
         txtErrorMsg.text = ""
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

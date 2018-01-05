@@ -44,7 +44,7 @@ class signUpOne: UIViewController {
         }
         else
         {
-            FIRAuth.auth()?.createUser(withEmail: username.text!, password: password.text!, completion: { (user: FIRUser?, error) in
+            Auth.auth().createUser(withEmail: username.text!, password: password.text!, completion: { (user: User?, error) in
                 if error == nil {
                     print("registration successful")
                     self.beginProfile()
@@ -57,9 +57,9 @@ class signUpOne: UIViewController {
     
     func beginProfile() {
         
-        let user = FIRAuth.auth()?.currentUser
+        let user = Auth.auth().currentUser
         if let user = user {
-            let changeRequest = user.profileChangeRequest()
+            let changeRequest = user.createProfileChangeRequest()
             
             changeRequest.displayName = "\(firstname.text!) \(lastname.text!)"
             //changeRequest.photoURL = NSURL(string: "https://example.com/jane-q-user/profile.jpg")

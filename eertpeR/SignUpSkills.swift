@@ -52,6 +52,10 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         resultSearchController.searchBar.isHidden = false
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     func finalizeSignUp() {
         if arrSkillsForUser.count > 0 {
             for skill in arrSkillsForUser {
@@ -70,9 +74,9 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     }
     
     func addSkillToProfile(skill: String) {
-        print("the user id: \(FIRAuth.auth()?.currentUser?.uid)")
-        let fbUserProfileId = FIRAuth.auth()?.currentUser?.uid
-        let refUserSkill = FIRDatabase.database().reference().child("Profiles").child(fbUserProfileId!);
+        print("the user id: \(Auth.auth().currentUser?.uid)")
+        let fbUserProfileId = Auth.auth().currentUser?.uid
+        let refUserSkill = Database.database().reference().child("Profiles").child(fbUserProfileId!);
         
         let newSkill = skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
         let key = refUserSkill.childByAutoId().key //newSkill.addingPercentEncoding(withAllowedCharacters: .alphanumerics)  //
@@ -94,7 +98,7 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     }
     
     func addBadgeToProfile() {
-        let refUserBadge = FIRDatabase.database().reference().child("Profiles").child(userID);
+        let refUserBadge = Database.database().reference().child("Profiles").child(userID);
         let newBadge = "Reptree Noob"
         let key = refUserBadge.childByAutoId().key //newSkill.addingPercentEncoding(withAllowedCharacters: .alphanumerics)  //
         

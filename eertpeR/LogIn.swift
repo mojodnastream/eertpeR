@@ -30,13 +30,13 @@ class logIn: UIViewController {
     }
     
     func doLogin() {
-        FIRAuth.auth()?.signIn(withEmail: userLoginEmail.text!, password: userLoginPass.text!) { (user, error) in
+        Auth.auth().signIn(withEmail: userLoginEmail.text!, password: userLoginPass.text!) { (user, error) in
             if error == nil {
                 //Print into the console if successfully logged in
                 print("You have successfully logged in")
-                userRealName = (FIRAuth.auth()?.currentUser?.displayName)!
-                userEmail = (FIRAuth.auth()?.currentUser?.email)!
-                userID = (FIRAuth.auth()?.currentUser?.uid)!
+                userRealName = (Auth.auth().currentUser?.displayName)!
+                userEmail = (Auth.auth().currentUser?.email)!
+                userID = (Auth.auth().currentUser?.uid)!
                 self.performSegue(withIdentifier: "loggedInGo", sender: self)
             }
             else {
@@ -65,11 +65,11 @@ class logIn: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         //FIREBASE User Check
-        if FIRAuth.auth()?.currentUser != nil {
+        if Auth.auth().currentUser != nil {
             print("user is signed in")
-            userRealName = (FIRAuth.auth()?.currentUser?.displayName)!
-            userEmail = (FIRAuth.auth()?.currentUser?.email)!
-            userID = (FIRAuth.auth()?.currentUser?.uid)!
+            userRealName = (Auth.auth().currentUser?.displayName)!
+            userEmail = (Auth.auth().currentUser?.email)!
+            userID = (Auth.auth().currentUser?.uid)!
             performSegue(withIdentifier: "loggedInGo", sender: self)
         } else {
             print("No user is signed in")

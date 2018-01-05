@@ -46,14 +46,14 @@ class settingsEditProfile: UIViewController {
     }
     
     func updateProfileInfo() {
-        let userProfileDetailRef = FIRDatabase.database().reference(withPath: "Profiles").child(userID)
+        let userProfileDetailRef = Database.database().reference(withPath: "Profiles").child(userID)
         let update = ["title":currentTitle, "company":currentCompany,"location":currentLoc]
 
         userProfileDetailRef.updateChildValues(update)
     }
     
     func changeDisplayName() {
-        let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
+        let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
         changeRequest?.displayName = currentDisplayName
         changeRequest?.commitChanges { (error) in
             if error != nil {
@@ -78,6 +78,10 @@ class settingsEditProfile: UIViewController {
         super.viewDidLoad()
         txtErrorConfirm.text = ""
         loadFieldData()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
 }

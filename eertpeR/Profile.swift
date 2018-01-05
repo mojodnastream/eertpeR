@@ -21,7 +21,7 @@ class profile: UITableViewController {
     var arrUserSkills = [String]()
     var arrUserBadges = [String]()
     
-    let userProfileDetailRef = FIRDatabase.database().reference(withPath: "Profiles").child(userID)
+    let userProfileDetailRef = Database.database().reference(withPath: "Profiles").child(userID)
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 
@@ -31,20 +31,18 @@ class profile: UITableViewController {
         
         circSkills.layer.cornerRadius = circSkills.frame.size.height/2.0
         circSkills.layer.masksToBounds = true
-        circSkills.layer.borderWidth = 2
+        circSkills.layer.borderWidth = 4
         circSkills.layer.borderColor = UIColor.gray.cgColor
         
         circRep.layer.cornerRadius = circRep.frame.size.height/2.0
         circRep.layer.masksToBounds = true
-        circRep.layer.borderWidth = 2
+        circRep.layer.borderWidth = 4
         circRep.layer.borderColor = UIColor.gray.cgColor
         
         circBadges.layer.cornerRadius = circBadges.frame.size.height/2.0
         circBadges.layer.masksToBounds = true
-        circBadges.layer.borderWidth = 2
+        circBadges.layer.borderWidth = 4
         circBadges.layer.borderColor = UIColor.gray.cgColor
-        
-       
     }
     
     func loadProfile() {
@@ -95,7 +93,7 @@ class profile: UITableViewController {
             
             for child in (snapshot.children) {
                 
-                let snap = child as! FIRDataSnapshot //each child is a snapshot
+                let snap = child as! DataSnapshot //each child is a snapshot
                 let dict = snap.value as! [String: String] // the value is a dict
                 
                 //let badgeID = dict["id"]
@@ -124,7 +122,7 @@ class profile: UITableViewController {
             
             for child in (snapshot.children) {
                 
-                let snap = child as! FIRDataSnapshot //each child is a snapshot
+                let snap = child as! DataSnapshot //each child is a snapshot
                 let dict = snap.value as! [String: String] // the value is a dict
                 
                 //let skillID = dict["id"]

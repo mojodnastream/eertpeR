@@ -11,7 +11,7 @@ import Firebase
 
 class signUpProfile: UIViewController {
     
-    var refUserProfile: FIRDatabaseReference!
+    var refUserProfile: DatabaseReference!
     
     @IBOutlet weak var userSignUpIssues: UILabel!
     @IBOutlet weak var userTitleRole: UITextField!
@@ -27,7 +27,7 @@ class signUpProfile: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        refUserProfile = FIRDatabase.database().reference().child("Profiles");
+        refUserProfile = Database.database().reference().child("Profiles");
         
         self.setNeedsStatusBarAppearanceUpdate()
     }
@@ -49,13 +49,13 @@ class signUpProfile: UIViewController {
         
         //generating a new key inside artists node
         //and also getting the generated key
-        let key = FIRAuth.auth()?.currentUser?.uid
-        userRealName = (FIRAuth.auth()?.currentUser?.displayName)!
-        userEmail = (FIRAuth.auth()?.currentUser?.email)!
-        userID = (FIRAuth.auth()?.currentUser?.uid)!
+        let key = Auth.auth().currentUser?.uid
+        userRealName = (Auth.auth().currentUser?.displayName)!
+        userEmail = (Auth.auth().currentUser?.email)!
+        userID = (Auth.auth().currentUser?.uid)!
         
         //creating profile with the given values
-        let profile = ["id": FIRAuth.auth()?.currentUser?.email,
+        let profile = ["id": Auth.auth().currentUser?.email,
                       "title": userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces),
                       "company": userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces),
                       "location": userLocation.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
