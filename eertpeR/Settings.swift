@@ -35,12 +35,10 @@ class Settings: UITableViewController, MFMailComposeViewControllerDelegate {
         mail.mailComposeDelegate = self as MFMailComposeViewControllerDelegate
         mail.setToRecipients([feedbackEmail])
         mail.setSubject("Feedback From Reptree iOS App")
-        //mail.setMessageBody("<p>You're so awesome!</p>", isHTML: true)
         present(mail, animated: true)
     }
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        //controller.dismiss(animated: true)
         controller.dismiss(animated: true, completion: {
             if result == .sent {
                 self.doAlert(title: "Thank You", message: "Your feedback is appreciated")
