@@ -11,22 +11,22 @@ import Photos
 import Firebase
 import FirebaseStorage
 
-@objc(ViewController)
-class theViewController: UIViewController,
+@objc(settingsProfilePhoto)
+class settingsProfilePhoto: UIViewController,
 UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var takePicButton: UIButton!
-    @IBOutlet weak var downloadPicButton: UIButton!
-    @IBOutlet weak var urlTextView: UITextField!
+    @IBOutlet weak var urlTextView: UITextView!
+    @IBOutlet weak var dowloadPicButton: UIButton!
     
-    var storageRef: StorageReference!
+    let storageRef = Storage.storage().reference()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // [START configurestorage]
-        storageRef = storageRef.storage.reference()
+        //storageRef = storageRef.storage.reference()
         // [END configurestorage]
         // [START storageauth]
         // Using Cloud Storage for Firebase requires the user be authenticated. Here we are using
@@ -46,7 +46,8 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     }
     
     // MARK: - Image Picker
-    @IBAction func didTapTakePicture(_: AnyObject) {
+    
+    @IBAction func didTapTakePicture(_ sender: UIButton) {
         let picker = UIImagePickerController()
         picker.delegate = self
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -57,6 +58,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         
         present(picker, animated: true, completion:nil)
     }
+  
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -104,9 +106,10 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func uploadSuccess(_ metadata: StorageMetadata, storagePath: String) {
         print("Upload Succeeded!")
         self.urlTextView.text = metadata.downloadURL()?.absoluteString
+        print(metadata.downloadURL()?.absoluteString)
         UserDefaults.standard.set(storagePath, forKey: "storagePath")
         UserDefaults.standard.synchronize()
-        self.downloadPicButton.isEnabled = true
+        self.dowloadPicButton.isEnabled = true
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
