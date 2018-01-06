@@ -31,6 +31,7 @@ var userID = ""
 var constUserCompany = ""
 var constUserTitleRole = ""
 var constUserLocation = ""
+var constProfilePicUrl = ""
 
 //User Rep Factors
 var userBadges = 0

@@ -26,9 +26,7 @@ class profile: UITableViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
 
     override func viewDidLayoutSubviews() {
-        profileImage.layer.cornerRadius = profileImage.frame.size.width/2
-        profileImage.clipsToBounds = true
-        
+
         circSkills.layer.cornerRadius = circSkills.frame.size.height/2.0
         circSkills.layer.masksToBounds = true
         circSkills.layer.borderWidth = 4
@@ -71,9 +69,20 @@ class profile: UITableViewController {
             constUserCompany = values["company"] as! String
             constUserTitleRole = values["title"] as! String
             constUserLocation = values["location"] as! String
+            constProfilePicUrl = values["profilePic"] as! String
             
             self.userTitleRole.text = constUserTitleRole
             self.userCompany.text = constUserCompany
+            if !constProfilePicUrl.isEmpty {
+                let imageUrlString = constProfilePicUrl
+                let imageUrl:URL = URL(string: imageUrlString)!
+                let imageData:NSData = NSData(contentsOf: imageUrl)!
+                let image = UIImage(data: imageData as Data)
+                self.profileImage.image = image
+            }
+            self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2
+            self.profileImage.clipsToBounds = true
+           
       })
     }
     

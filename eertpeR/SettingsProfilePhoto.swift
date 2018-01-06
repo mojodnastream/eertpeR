@@ -20,6 +20,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var dowloadPicButton: UIButton!
     
     let storageRef = Storage.storage().reference()
+    let picToRemove = constProfilePicUrl
 
     
     override func viewDidLoad() {
@@ -106,13 +107,50 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func uploadSuccess(_ metadata: StorageMetadata, storagePath: String) {
         print("Upload Succeeded!")
         self.urlTextView.text = metadata.downloadURL()?.absoluteString
-        print(metadata.downloadURL()?.absoluteString)
         UserDefaults.standard.set(storagePath, forKey: "storagePath")
         UserDefaults.standard.synchronize()
+        updateProfileWithPicPath(thePath: (metadata.downloadURL()?.absoluteString)!)
         self.dowloadPicButton.isEnabled = true
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion:nil)
+    }
+    
+    func updateProfileWithPicPath(thePath: String) {
+        let userProfileDetailRef = Database.database().reference(withPath: "Profiles").child(userID)
+        userProfileDetailRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if snapshot.hasChild("profilePic"){
+                let update = ["profilePic":thePath]
+                userProfileDetailRef.updateChildValues(update, withCompletionBlock: { (err, ref) in
+                    if err != nil {
+                        print("profile update error: \(String(describing: err))")
+                        return
+                    }
+                    else {
+                        //upon successfull uplaod, reset the constant path to the new pic
+                         constProfilePicUrl = thePath
+                        
+                        //if there is an existing profile pic, then delete it from storage
+                        if !self.picToRemove.isEmpty {
+                            let picStorageRef = Storage.storage().reference(forURL: self.picToRemove)
+                        
+                            //Removes old image from storage
+                            picStorageRef.delete { error in
+                                if let error = error {
+                                    print(error)
+                                } else {
+                                    print("File deleted successfully")
+                                }
+                            }
+                        }
+                    }
+                })
+            }
+            else {
+                print("no profilePic key exists")
+            }
+        })
     }
 }

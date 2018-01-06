@@ -58,7 +58,8 @@ class signUpProfile: UIViewController {
         let profile = ["id": Auth.auth().currentUser?.email,
                       "title": userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces),
                       "company": userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces),
-                      "location": userLocation.text?.trimmingCharacters(in: NSCharacterSet.whitespaces)
+                      "location": userLocation.text?.trimmingCharacters(in: NSCharacterSet.whitespaces),
+                      "profilePic": ""
                       ]
         
         //adding the artist inside the generated unique key
