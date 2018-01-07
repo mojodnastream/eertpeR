@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Reptree would like to access your camera so you can choose a profile picture from your photo library.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This photo will be saved to your account and used as your profile image.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>

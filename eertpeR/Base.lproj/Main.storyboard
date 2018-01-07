@@ -98,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1196" y="842"/>
+            <point key="canvasLocation" x="-1190" y="861"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="iC4-7w-Sfy">
@@ -119,7 +119,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L5o-a9-6Ha" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2009" y="8"/>
+            <point key="canvasLocation" x="-1782" y="88"/>
         </scene>
         <!--Reptree Sign Up-->
         <scene sceneID="iHD-fk-G4b">
@@ -224,7 +224,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KRV-0m-d4k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1196" y="64"/>
+            <point key="canvasLocation" x="-889" y="88"/>
         </scene>
         <!--Reptree-->
         <scene sceneID="mAc-yz-Rs7">
@@ -380,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w1B-u0-fVL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-193" y="64"/>
+            <point key="canvasLocation" x="-9" y="88"/>
         </scene>
         <!--Reptree Add Skills-->
         <scene sceneID="1W1-Y7-330">
@@ -420,7 +420,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C59-v5-nub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="852" y="65"/>
+            <point key="canvasLocation" x="852" y="88"/>
         </scene>
         <!--Settings-->
         <scene sceneID="POf-t9-fl6">
@@ -546,7 +546,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1l-Ds-Gf1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818" y="1608"/>
+            <point key="canvasLocation" x="769" y="1638"/>
         </scene>
         <!--Change Password-->
         <scene sceneID="fZf-Fa-dqj">
@@ -635,7 +635,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ya-E4-kaZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1678" y="2118"/>
+            <point key="canvasLocation" x="1678" y="2019"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="wzq-c6-lfU">
@@ -760,30 +760,16 @@
                                     <action selector="didTapTakePicture:" destination="vhI-NE-Rky" eventType="touchUpInside" id="W5z-rC-IPh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZl-n8-aDh">
-                                <rect key="frame" x="134" y="147" width="107" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Pick Photo"/>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="what evs" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="j1P-ru-g5c">
-                                <rect key="frame" x="67" y="229" width="240" height="92"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <connections>
-                        <outlet property="dowloadPicButton" destination="QZl-n8-aDh" id="XPH-BL-kTd"/>
                         <outlet property="takePicButton" destination="dbs-nB-tB5" id="2fQ-iM-FcF"/>
-                        <outlet property="urlTextView" destination="j1P-ru-g5c" id="Ljg-OE-19d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0d-KT-9yD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2429.5999999999999" y="1686.2068965517242"/>
+            <point key="canvasLocation" x="2455" y="1661"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="o64-ek-7LL">
@@ -822,7 +808,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6PU-14-jr8" id="I2m-Kj-J0x">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="218"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="217.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JS-7x-qAh">
@@ -1158,6 +1144,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ogF-Wc-w2f"/>
-        <segue reference="kN8-35-bYO"/>
+        <segue reference="7fP-Po-cwJ"/>
     </inferredMetricsTieBreakers>
 </document>

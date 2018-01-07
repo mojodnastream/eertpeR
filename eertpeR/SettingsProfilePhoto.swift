@@ -16,8 +16,6 @@ class settingsProfilePhoto: UIViewController,
 UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var takePicButton: UIButton!
-    @IBOutlet weak var urlTextView: UITextView!
-    @IBOutlet weak var dowloadPicButton: UIButton!
     
     let storageRef = Storage.storage().reference()
     let picToRemove = constProfilePicUrl
@@ -27,28 +25,23 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
         if Auth.auth().currentUser == nil {
             Auth.auth().signInAnonymously(completion: { (user: User?, error: Error?) in
-                if let error = error {
-                    self.urlTextView.text = error.localizedDescription
+                if error != nil {
                     self.takePicButton.isEnabled = false
                 } else {
-                    self.urlTextView.text = ""
                     self.takePicButton.isEnabled = true
                 }
             })
         }
-        // [END storageauth]
     }
-    
-    // MARK: - Image Picker
     
     @IBAction func didTapTakePicture(_ sender: UIButton) {
         let picker = UIImagePickerController()
         picker.delegate = self
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            picker.sourceType = .camera
-        } else {
+        //if UIImagePickerController.isSourceTypeAvailable(.camera) {
+        //    picker.sourceType = .camera
+        //} else {
             picker.sourceType = .photoLibrary
-        }
+        //}
         
         present(picker, animated: true, completion:nil)
     }
@@ -58,28 +51,26 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true, completion:nil)
         
-        urlTextView.text = "Beginning Upload"
         // if it's a photo from the library, not an image from the camera
-        if #available(iOS 8.0, *), let referenceUrl = info[UIImagePickerControllerReferenceURL] as? URL {
-            let assets = PHAsset.fetchAssets(withALAssetURLs: [referenceUrl], options: nil)
-            let asset = assets.firstObject
-            asset?.requestContentEditingInput(with: nil, completionHandler: { (contentEditingInput, info) in
-                let imageFile = contentEditingInput?.fullSizeImageURL
-                let filePath = Auth.auth().currentUser!.uid +
-                "/\(Int(Date.timeIntervalSinceReferenceDate * 1000))/\(imageFile!.lastPathComponent)"
-                // [START uploadimage]
-                self.storageRef.child(filePath)
-                    .putFile(from: imageFile!, metadata: nil) { (metadata, error) in
-                        if let error = error {
-                            print("Error uploading: \(error)")
-                            self.urlTextView.text = "Upload Failed"
-                            return
-                        }
-                        self.uploadSuccess(metadata!, storagePath: filePath)
-                }
-                // [END uploadimage]
-            })
-        } else {
+//        if #available(iOS 8.0, *), let referenceUrl = info[UIImagePickerControllerReferenceURL] as? URL {
+//            let assets = PHAsset.fetchAssets(withALAssetURLs: [referenceUrl], options: nil)
+//            let asset = assets.firstObject
+//            asset?.requestContentEditingInput(with: nil, completionHandler: { (contentEditingInput, info) in
+//                let imageFile = contentEditingInput?.fullSizeImageURL
+//                let filePath = Auth.auth().currentUser!.uid +
+//                "/\(Int(Date.timeIntervalSinceReferenceDate * 1000))/\(imageFile!.lastPathComponent)"
+//                // [START uploadimage]
+//                self.storageRef.child(filePath)
+//                    .putFile(from: imageFile!, metadata: nil) { (metadata, error) in
+//                        if let error = error {
+//                            print("Error uploading: \(error)")
+//                            return
+//                        }
+//                        self.uploadSuccess(metadata!, storagePath: filePath)
+//                }
+//                // [END uploadimage]
+//            })
+//        } else {
             guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
             guard let imageData = UIImageJPEGRepresentation(image, 0.8) else { return }
             let imagePath = Auth.auth().currentUser!.uid +
@@ -89,21 +80,18 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
             self.storageRef.child(imagePath).putData(imageData, metadata: metadata) { (metadata, error) in
                 if let error = error {
                     print("Error uploading: \(error)")
-                    self.urlTextView.text = "Upload Failed"
                     return
                 }
                 self.uploadSuccess(metadata!, storagePath: imagePath)
             }
-        }
+        //}
     }
     
     func uploadSuccess(_ metadata: StorageMetadata, storagePath: String) {
         print("Upload Succeeded!")
-        self.urlTextView.text = metadata.downloadURL()?.absoluteString
         UserDefaults.standard.set(storagePath, forKey: "storagePath")
         UserDefaults.standard.synchronize()
         updateProfileWithPicPath(thePath: (metadata.downloadURL()?.absoluteString)!)
-        self.dowloadPicButton.isEnabled = true
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
