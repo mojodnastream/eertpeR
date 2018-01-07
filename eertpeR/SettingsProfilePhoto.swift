@@ -22,16 +22,9 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     let storageRef = Storage.storage().reference()
     let picToRemove = constProfilePicUrl
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // [START configurestorage]
-        //storageRef = storageRef.storage.reference()
-        // [END configurestorage]
-        // [START storageauth]
-        // Using Cloud Storage for Firebase requires the user be authenticated. Here we are using
-        // anonymous authentication.
+
         if Auth.auth().currentUser == nil {
             Auth.auth().signInAnonymously(completion: { (user: User?, error: Error?) in
                 if let error = error {
@@ -137,11 +130,14 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
                             let picStorageRef = Storage.storage().reference(forURL: self.picToRemove)
                         
                             //Removes old image from storage
-                            picStorageRef.delete { error in
-                                if let error = error {
-                                    print(error)
-                                } else {
-                                    print("File deleted successfully")
+                            DispatchQueue.global(qos: .background).async {
+                                picStorageRef.delete { error in
+                                    if let error = error {
+                                        print(error)
+                                    }
+                                }
+                                DispatchQueue.main.async {
+                                    print("deletion method has completed")
                                 }
                             }
                         }
