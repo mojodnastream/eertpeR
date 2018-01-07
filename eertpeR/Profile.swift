@@ -11,6 +11,7 @@ import Firebase
 
 class profile: UITableViewController {
   
+    @IBOutlet weak var lblNoProfilePic: UILabel!
     @IBOutlet weak var userCompany: UILabel!
     @IBOutlet weak var circBadges: UILabel!
     @IBOutlet weak var circRep: UILabel!
@@ -73,16 +74,26 @@ class profile: UITableViewController {
             
             self.userTitleRole.text = constUserTitleRole
             self.userCompany.text = constUserCompany
-            if !constProfilePicUrl.isEmpty {
+            if constProfilePicUrl.isEmpty {
+                self.lblNoProfilePic.isHidden = false
+                self.profileImage.isHidden = true
+                self.lblNoProfilePic.layer.cornerRadius = self.lblNoProfilePic.frame.size.height/2.0
+                self.lblNoProfilePic.layer.masksToBounds = true
+                self.lblNoProfilePic.layer.borderWidth = 4
+                self.lblNoProfilePic.layer.borderColor = UIColor.black.cgColor
+                self.lblNoProfilePic.text = utils.getInitials(theName: userRealName)
+            }
+            else {
+                self.lblNoProfilePic.isHidden = true
+                self.profileImage.isHidden = false
                 let imageUrlString = constProfilePicUrl
                 let imageUrl:URL = URL(string: imageUrlString)!
                 let imageData:NSData = NSData(contentsOf: imageUrl)!
                 let image = UIImage(data: imageData as Data)
                 self.profileImage.image = image
+                self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2
+                self.profileImage.clipsToBounds = true
             }
-            self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2
-            self.profileImage.clipsToBounds = true
-           
       })
     }
     
@@ -149,6 +160,8 @@ class profile: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.lblNoProfilePic.isHidden = true
+        self.profileImage.isHidden = true
         self.setNeedsStatusBarAppearanceUpdate()
         arrSkillsForUser.removeAll()
         loadProfile()
