@@ -172,7 +172,13 @@ class profile: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
         loadUserInfo()
+        userFullName.text = userRealName
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        profileImage.layer.cornerRadius = profileImage.frame.height / 2.0
+        profileImage.clipsToBounds = true
+    }
 }
 

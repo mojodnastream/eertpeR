@@ -38,8 +38,9 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         resultSearchController.searchResultsUpdater = self
         resultSearchController.dimsBackgroundDuringPresentation = false
         resultSearchController.searchBar.sizeToFit()
-        resultSearchController.searchBar.tintColor = UIColor.white
-        resultSearchController.searchBar.barTintColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
+        resultSearchController.searchBar.tintColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)   // UIColor.white
+        resultSearchController.searchBar.barTintColor =  UIColor.white //UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
+        resultSearchController.searchBar.isOpaque = true
         resultSearchController.hidesNavigationBarDuringPresentation = false
         resultSearchController.searchBar.placeholder = "Add a Few Skills"
         resultSearchController.searchBar.showsCancelButton = false

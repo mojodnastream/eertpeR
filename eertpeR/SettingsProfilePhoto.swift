@@ -16,6 +16,8 @@ class settingsProfilePhoto: UIViewController,
 UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var takePicButton: UIButton!
+    @IBOutlet weak var profilePicImageView: UIImageView!
+    @IBOutlet weak var profilePicPlaceHolder: UILabel!
     
     let storageRef = Storage.storage().reference()
     let picToRemove = constProfilePicUrl
@@ -32,8 +34,17 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
                 }
             })
         }
+        
+        self.profilePicPlaceHolder.isHidden = true
+        self.profilePicImageView.isHidden = true
+        
+        updateProfPic()
     }
-    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        profilePicImageView.layer.cornerRadius = profilePicImageView.frame.height / 2.0
+        profilePicImageView.clipsToBounds = true
+    }
     @IBAction func didTapTakePicture(_ sender: UIButton) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -46,7 +57,26 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         present(picker, animated: true, completion:nil)
     }
   
-    
+    func updateProfPic() {
+        if constProfilePicUrl.isEmpty {
+            self.profilePicPlaceHolder.isHidden = false
+            self.profilePicImageView.isHidden = true
+            self.profilePicPlaceHolder.layer.cornerRadius = self.profilePicPlaceHolder.frame.size.height/2.0
+            self.profilePicPlaceHolder.layer.masksToBounds = true
+            self.profilePicPlaceHolder.layer.borderWidth = 4
+            self.profilePicPlaceHolder.layer.borderColor = UIColor.black.cgColor
+            self.profilePicPlaceHolder.text = utils.getInitials(theName: userRealName)
+        }
+        else {
+            self.profilePicPlaceHolder.isHidden = true
+            self.profilePicImageView.isHidden = false
+            let imageUrlString = constProfilePicUrl
+            let imageUrl:URL = URL(string: imageUrlString)!
+            let imageData:NSData = NSData(contentsOf: imageUrl)!
+            let image = UIImage(data: imageData as Data)
+            self.profilePicImageView.image = image
+        }
+    }
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true, completion:nil)
@@ -112,7 +142,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
                     else {
                         //upon successfull uplaod, reset the constant path to the new pic
                          constProfilePicUrl = thePath
-                        
+                         self.updateProfPic()
                         //if there is an existing profile pic, then delete it from storage
                         if !self.picToRemove.isEmpty {
                             let picStorageRef = Storage.storage().reference(forURL: self.picToRemove)

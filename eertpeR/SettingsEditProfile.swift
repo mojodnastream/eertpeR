@@ -63,6 +63,7 @@ class settingsEditProfile: UIViewController {
             else {
                 self.txtErrorConfirm.text = "Your profile was updated."
                 self.txtErrorConfirm.textColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
+                userRealName = self.txtDisplayName.text!
             }
         }
     }
