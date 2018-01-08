@@ -160,6 +160,7 @@ class profile: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         self.lblNoProfilePic.isHidden = true
         self.profileImage.isHidden = true
         self.setNeedsStatusBarAppearanceUpdate()
