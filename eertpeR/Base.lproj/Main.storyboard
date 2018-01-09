@@ -1001,7 +1001,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="Ff6-Ds-CNp">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="C7A-iO-msR">
                             <connections>
-                                <segue destination="mhQ-cG-fza" kind="show" identifier="showSearchVC" id="PRL-D0-QN2"/>
+                                <segue destination="DJ4-Dp-JL6" kind="show" id="Mx4-lv-yN6"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="icons8-settings-filled-20.png" id="zhO-1q-wBv">
@@ -1031,7 +1031,7 @@
             <objects>
                 <tableViewController title="Search" id="DJ4-Dp-JL6" customClass="search" customModule="eertpeR" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="RTh-8M-jm0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -1065,9 +1065,7 @@
                             <outlet property="delegate" destination="DJ4-Dp-JL6" id="ibO-gO-0FO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search" id="8r5-SO-CSm">
-                        <barButtonItem key="leftBarButtonItem" title="Home" id="Obn-kN-tlx"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Search" id="8r5-SO-CSm"/>
                     <connections>
                         <segue destination="Tng-Yb-f7a" kind="show" identifier="showDetails" id="89c-J2-tFa"/>
                         <segue destination="JOo-dD-mnA" kind="show" identifier="showSkillDetails" id="vTs-su-de8"/>
@@ -1075,26 +1073,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtM-6n-XKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3819" y="-531"/>
-        </scene>
-        <!--Search-->
-        <scene sceneID="i5k-7j-vob">
-            <objects>
-                <navigationController title="Search" id="mhQ-cG-fza" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2So-jx-z6L">
-                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="ZXG-aC-dfo">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
-                    <connections>
-                        <segue destination="DJ4-Dp-JL6" kind="relationship" relationship="rootViewController" id="2Xp-Gf-Kau"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jui-M6-osx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1497" y="861"/>
+            <point key="canvasLocation" x="1623" y="863"/>
         </scene>
         <!--Detail-->
         <scene sceneID="cJG-sl-2PA">
@@ -1105,7 +1084,7 @@
                         <viewControllerLayoutGuide type="bottom" id="w0J-Za-21d"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ws0-Tq-Cew">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile.png" highlightedImage="profile.png" translatesAutoresizingMaskIntoConstraints="NO" id="Znp-xd-07U">
@@ -1155,7 +1134,7 @@
                         <viewControllerLayoutGuide type="bottom" id="nnR-6H-xgI"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="23l-vQ-p9r">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
