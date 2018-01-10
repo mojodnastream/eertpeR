@@ -141,6 +141,12 @@ class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
         }
     }
     
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        tabBar.delegate = self
+        resultSearchController.isActive = false
+        resultSearchController.searchBar.isHidden = true
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         resultSearchController.searchBar.isHidden = false
     }
@@ -152,13 +158,14 @@ class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
     
     override func viewDidLoad() {
         //getUsers.loadUserInfo()
+        
         getSkills.loadSkillInfo()
         
         resultSearchController.searchResultsUpdater = self
         resultSearchController.dimsBackgroundDuringPresentation = false
         resultSearchController.searchBar.sizeToFit()
-        resultSearchController.searchBar.tintColor = UIColor.white
-        resultSearchController.searchBar.barTintColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
+        resultSearchController.searchBar.tintColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
+        resultSearchController.searchBar.barTintColor = UIColor.white
         resultSearchController.hidesNavigationBarDuringPresentation = false
         resultSearchController.searchBar.placeholder = "Search the Reptree"
         resultSearchController.searchBar.showsCancelButton = false
