@@ -18,7 +18,7 @@ class profile: UITableViewController {
     @IBOutlet weak var circSkills: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userTitleRole: UILabel!
-    @IBOutlet weak var userFullName: UILabel!
+    //@IBOutlet weak var userFullName: UILabel!
     var arrUserSkills = [String]()
     var arrUserBadges = [String]()
     
@@ -53,7 +53,7 @@ class profile: UITableViewController {
     }
     
     func loadUserInfo() {
-        userFullName.text = userRealName
+        //userFullName.text = userRealName
         userProfileDetailRef.observe(.value, with: {
             snapshot in
             guard snapshot.exists() else {
@@ -86,13 +86,15 @@ class profile: UITableViewController {
             else {
                 self.lblNoProfilePic.isHidden = true
                 self.profileImage.isHidden = false
+                self.profileImage.layer.borderWidth = 2
+                self.profileImage.layer.borderColor = UIColor.black.cgColor
                 let imageUrlString = constProfilePicUrl
                 let imageUrl:URL = URL(string: imageUrlString)!
                 let imageData:NSData = NSData(contentsOf: imageUrl)!
                 let image = UIImage(data: imageData as Data)
                 self.profileImage.image = image
-                self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2
-                self.profileImage.clipsToBounds = true
+//                self.profileImage.layer.cornerRadius = self.profileImage.frame.size.width/2
+//                self.profileImage.clipsToBounds = true
             }
       })
     }
@@ -173,7 +175,8 @@ class profile: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.isNavigationBarHidden = false
         loadUserInfo()
-        userFullName.text = userRealName
+        //userFullName.text = userRealName
+        self.title = userRealName
     }
     
     override func viewWillLayoutSubviews() {
