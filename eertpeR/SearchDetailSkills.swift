@@ -20,7 +20,7 @@ class SearchDetailSkills: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            getSkills.getSkillProfile(skill: passSkillID)
+            //getSkills.getSkillProfile(skill: passSkillID)
             print(passSkillID)
         
         self.title = passSkillID

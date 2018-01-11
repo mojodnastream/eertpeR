@@ -157,7 +157,7 @@ class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
     }
     
     override func viewDidLoad() {
-        //getUsers.loadUserInfo()
+        getUsers.loadUserInfo()
         
         getSkills.loadSkillInfo()
         
