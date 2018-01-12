@@ -21,14 +21,28 @@ class getUsers {
                     return
                 }
                 
-                for child in snapshot.children {
-                    let dict = child as! [String: Any]
-                    let name = dict["company"] as! String
-                    let id = dict["id"] as! String
-
-                    arrSearchResults.append("Member~\(name)*\(id)")
-                    print("name/key: \(name) : \(id)")
+                if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                    for child in snapshots {
+                        //print("Child: ", child)
+                        //print(child.key)
+                        let id = child.key
+                        var name = "bobb"
+                        let values = child.value as! [String: AnyObject]
+                        name = values["fullname"] as! String
+                        
+                       
+                        arrSearchResults.append("Member~\(name)*\(id)")
+                    }
                 }
+                
+//                for child in snapshot.children {
+//                    let dict = child as! [String: Any]
+//                    let name = dict["company"] as! String
+//                    let id = dict["id"] as! String
+//
+//                    arrSearchResults.append("Member~\(name)*\(id)")
+//                    print("name/key: \(name) : \(id)")
+//                }
                 
 //                let values = snapshot.value as! [String: AnyObject]
 //                //            constUserCompany = values["company"] as! String
