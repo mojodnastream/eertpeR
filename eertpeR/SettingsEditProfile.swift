@@ -47,7 +47,7 @@ class settingsEditProfile: UIViewController {
     
     func updateProfileInfo() {
         let userProfileDetailRef = Database.database().reference(withPath: "Profiles").child(userID)
-        let update = ["title":currentTitle, "company":currentCompany,"location":currentLoc]
+        let update = ["title":currentTitle, "company":currentCompany,"location":currentLoc,"fullname":currentDisplayName]
 
         userProfileDetailRef.updateChildValues(update)
     }
