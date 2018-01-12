@@ -67,6 +67,7 @@ class signUpOne: UIViewController {
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
+                    userRealName = "\(self.firstname.text!) \(self.lastname.text!)"
                     print("Profile updated with \(self.firstname.text!) \(self.lastname.text!)")
                     self.performSegue(withIdentifier: "jumpToCreateProfile", sender: self)
                 }

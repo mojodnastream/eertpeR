@@ -156,6 +156,12 @@ class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
         recordType = ""
     }
     
+    override func viewWillDisappear(_ animated : Bool) {
+        super.viewWillDisappear(animated)
+        resultSearchController.isActive = false
+        resultSearchController.searchBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         getUsers.loadUserInfo()
         

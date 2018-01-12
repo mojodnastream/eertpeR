@@ -59,7 +59,8 @@ class signUpProfile: UIViewController {
                       "title": userTitleRole.text?.trimmingCharacters(in: NSCharacterSet.whitespaces),
                       "company": userCompany.text?.trimmingCharacters(in: NSCharacterSet.whitespaces),
                       "location": userLocation.text?.trimmingCharacters(in: NSCharacterSet.whitespaces),
-                      "profilePic": ""
+                      "profilePic": "",
+                      "fullname" : userRealName
                       ]
         
         //adding the artist inside the generated unique key
