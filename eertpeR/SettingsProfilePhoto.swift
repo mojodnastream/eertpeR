@@ -70,6 +70,8 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         else {
             self.profilePicPlaceHolder.isHidden = true
             self.profilePicImageView.isHidden = false
+            self.profilePicImageView.layer.borderColor = UIColor.black.cgColor
+            self.profilePicImageView.layer.borderWidth = 3
             let imageUrlString = constProfilePicUrl
             let imageUrl:URL = URL(string: imageUrlString)!
             let imageData:NSData = NSData(contentsOf: imageUrl)!
