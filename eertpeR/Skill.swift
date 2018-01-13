@@ -9,21 +9,45 @@
  //let Skill = ["MATH"]
 
 import Foundation
+import Firebase
 
 class getSkills {
     
     static func loadSkillInfo() {
         arrSkillsSearchResults.removeAll()
         var skill = ""
-        var skillID = ""
-
-            skill = "" //(object["name"] as? String!)!
-            skillID = "" //(object["objectId"] as? String!)!
-            //arrSearchResults.append("Skill~\(skill)*\(skill)")
-         arrSearchResults.append("Skill~Swift*Swift")
-         arrSearchResults.append("Skill~Java*Java")
+        arrSearchResults.removeAll()
+        let userDBRef = Database.database().reference(withPath: "Skills")
+        
+        userDBRef.observe(.value, with: {
+            snapshot in
+            guard snapshot.exists() else {
+                print("no user info")
+                return
+            }
+            
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for child in snapshots {
+                    //var skill = "bobb"
+                    //let values = child.value as! [String: AnyObject]
+                    let skill = child.key
+                    //skill = values["fullname"] as! String
+                    
+                    
+                    arrSearchResults.append("Skill~\(skill)*\(skill)")
+                }
+            }
+        })
     }
 }
+        //var skillID = ""
+            //skill = "" //(object["name"] as? String!)!
+            //skillID = "" //(object["objectId"] as? String!)!
+            //arrSearchResults.append("Skill~\(skill)*\(skill)")
+         //arrSearchResults.append("Skill~Swift*Swift")
+         //arrSearchResults.append("Skill~Java*Java")
+    //}
+//}
     
 //    static func loadSkills() {
 //        var arrSkills = [""]
