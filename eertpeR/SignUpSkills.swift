@@ -24,9 +24,7 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         //clear array in case the app crashed in the middle of sign up
         arrSkillsForUser.removeAll()
         arrSkills.removeAll()
-        
-        //style the button
-        loadSkills()
+        getSkills.loadSkillsOnSignUp()
         
         navigationController?.navigationBar.barTintColor = UIColor(red:0.145, green:0.075, blue:0.384, alpha:1.00)
         navigationController?.navigationBar.isTranslucent = false
@@ -117,10 +115,6 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
             }
         })
         
-    }
-    
-    func loadSkills() {
-        arrSkills = ["swift", "objective-c", "mysql", "java", "iOS", "Javascript", "react.js", "data modeling", "data mining", "machine learning"]
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
