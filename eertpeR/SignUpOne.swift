@@ -48,7 +48,8 @@ class signUpOne: UIViewController {
                 if error == nil {
                     print("registration successful")
                     self.beginProfile()
-                }else{
+                } else {
+                    self.errorText.text = error?.localizedDescription
                     print("\(error?.localizedDescription ?? "an error occurred, and there was not lcoal description")")
                 }
             })
