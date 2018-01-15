@@ -59,6 +59,14 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         if arrSkillsForUser.count > 0 {
             for skill in arrSkillsForUser {
                 addSkillToProfile(skill: skill)
+                if !arrSkills.contains(where: {$0.caseInsensitiveCompare(skill) == ComparisonResult.orderedSame}){
+                    print(true)  // true
+                    addToSkillNode(skill: skill)
+                }
+                else {
+                    print(false)
+                }
+                
             }
             //add initial badge
             addBadgeToProfile()
@@ -70,6 +78,10 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
         else {
             print("you must choose at least one skill")
         }
+    }
+    
+    func addToSkillNode(skill: String) {
+        print("add this skill to main node: \(skill)")
     }
     
     func addSkillToProfile(skill: String) {
