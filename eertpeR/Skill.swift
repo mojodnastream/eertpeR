@@ -29,6 +29,10 @@ class getSkills {
                 for child in snapshots {
                     let values = child.value as! [String: AnyObject]
                     let skill = values["id"] as! String
+                    let skill2 = values["id2"] as! String
+                    if !skill2.isEmpty {
+                        arrSearchResults.append("Skill~\(skill2)*\(skill2)")
+                    }
                     //let skill = child.key
                     //let count = values["count"] as! String
                     arrSearchResults.append("Skill~\(skill)*\(skill)")
