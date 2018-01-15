@@ -12,6 +12,7 @@ import Firebase
 class signUpSkills: UITableViewController, UISearchResultsUpdating {
     
     var resultSearchController = UISearchController(searchResultsController: nil)
+    let fbUserProfileId = Auth.auth().currentUser?.uid
     
     @IBAction func btnComplete(_ sender: UIBarButtonItem) {
         finalizeSignUp()
@@ -82,11 +83,28 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     
     func addToSkillNode(skill: String) {
         print("add this skill to main node: \(skill)")
+        let refUserSkill = Database.database().reference().child("Skills");
+        let newSkill = skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
+        let key = refUserSkill.childByAutoId().key
+        
+        let skillToAdd = ["id": newSkill,
+                          "count": 1,
+                          "createdby": fbUserProfileId!,
+                          "id2": ""
+            ] as [String : Any]
+        //adding the skill inside the generated unique key
+        refUserSkill.child(key).setValue(skillToAdd, withCompletionBlock: { (error, snapshot) in
+            if error != nil {
+                print(error?.localizedDescription ?? "No error description available")
+            } else {
+                print("added skill \(newSkill) to profile")
+                //arrSkillsSignUp.append(newSkill.lowercased())
+            }
+        })
     }
     
     func addSkillToProfile(skill: String) {
         print("the user id: \(String(describing: Auth.auth().currentUser?.uid))")
-        let fbUserProfileId = Auth.auth().currentUser?.uid
         let refUserSkill = Database.database().reference().child("Profiles").child(fbUserProfileId!);
         
         let newSkill = skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
