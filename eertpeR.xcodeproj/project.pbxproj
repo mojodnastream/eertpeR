@@ -36,6 +36,7 @@
 		7980EC15200001C3009208B0 /* SettingsProfilePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980EC14200001C3009208B0 /* SettingsProfilePhoto.swift */; };
 		79D068E81FE988A30059B23C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79D068E71FE988A20059B23C /* GoogleService-Info.plist */; };
 		79FDEA8D200804D500016606 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEA8C200804D500016606 /* User.swift */; };
+		79FDEA8F200EB88D00016606 /* UserProfileSkillList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEA8E200EB88D00016606 /* UserProfileSkillList.swift */; };
 		7B13E993B1DC046EF0EE48B0 /* libPods-eertpeR.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 729CFF212E2B7C29D91DBB0B /* libPods-eertpeR.a */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		7980EC14200001C3009208B0 /* SettingsProfilePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProfilePhoto.swift; sourceTree = "<group>"; };
 		79D068E71FE988A20059B23C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		79FDEA8C200804D500016606 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		79FDEA8E200EB88D00016606 /* UserProfileSkillList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSkillList.swift; sourceTree = "<group>"; };
 		99E3EEF8BF54A076FB42F0A3 /* Pods-eertpeR.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eertpeR.release.xcconfig"; path = "Pods/Target Support Files/Pods-eertpeR/Pods-eertpeR.release.xcconfig"; sourceTree = "<group>"; };
 		BE14C4FB754C16E153172F7E /* Pods-eertpeR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eertpeR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-eertpeR/Pods-eertpeR.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -188,6 +190,7 @@
 				7980EC0E1FFC3B27009208B0 /* SettingsEditProfile.swift */,
 				7980EC101FFEBC95009208B0 /* SettingsChangePassword.swift */,
 				7980EC14200001C3009208B0 /* SettingsProfilePhoto.swift */,
+				79FDEA8E200EB88D00016606 /* UserProfileSkillList.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				7980EC0F1FFC3B27009208B0 /* SettingsEditProfile.swift in Sources */,
 				7980EC15200001C3009208B0 /* SettingsProfilePhoto.swift in Sources */,
 				482399B31E956DD00031892C /* SignUpOne.swift in Sources */,
+				79FDEA8F200EB88D00016606 /* UserProfileSkillList.swift in Sources */,
 				482399B91E96D4DD0031892C /* Profile.swift in Sources */,
 				482399B51E95DC030031892C /* Utils.swift in Sources */,
 				7980EBEC1FF9EFFD009208B0 /* Settings.swift in Sources */,
