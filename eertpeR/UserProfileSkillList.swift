@@ -20,6 +20,7 @@ class customSkillCell: UITableViewCell {
 
 
 class userSkillList: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -43,7 +44,7 @@ class userSkillList: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return 65.0;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return arrSkillsProfileUsage.count
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

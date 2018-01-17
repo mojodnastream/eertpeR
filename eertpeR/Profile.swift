@@ -149,9 +149,9 @@ class profile: UITableViewController {
                 
                 //let skillID = dict["id"]
                 let skill = dict["skill"]
-                arrSkillsForUser.append(skill!)
+                arrSkillsProfileUsage.append(skill!)
             }
-            userSkills = arrSkillsForUser.count
+            userSkills = arrSkillsProfileUsage.count
             self.circSkills.text = String(userSkills)
         })
     }
