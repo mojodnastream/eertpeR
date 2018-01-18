@@ -142,15 +142,25 @@ class profile: UITableViewController {
                 return
             }
             
-            for child in (snapshot.children) {
-                
-                let snap = child as! DataSnapshot //each child is a snapshot
-                let dict = snap.value as! [String: String] // the value is a dict
-                
-                //let skillID = dict["id"]
-                let skill = dict["skill"]
-                arrSkillsProfileUsage.append(skill!)
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for child in snapshots {
+                    let values = child.value as! [String: AnyObject]
+                    let skill = values["skill"] as! String
+                    arrSkillsProfileUsage.append(skill)
+                }
             }
+            
+//            for child in (snapshot.children) {
+//
+//
+//
+//                let snap = child as! DataSnapshot //each child is a snapshot
+//                let dict = snap.value as! [String: String] // the value is a dict
+//
+//                //let skillID = dict["id"]
+//                let skill = dict["skill"]
+//                arrSkillsProfileUsage.append(skill!)
+//            }
             userSkills = arrSkillsProfileUsage.count
             self.circSkills.text = String(userSkills)
         })

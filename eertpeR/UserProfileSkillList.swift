@@ -16,6 +16,7 @@ class customSkillCell: UITableViewCell {
 //    @IBOutlet weak var qDesc: UILabel!
 //    @IBOutlet weak var qTimeAgo: UILabel!
     
+    @IBOutlet weak var skillLbl: UILabel!
 }
 
 
@@ -37,7 +38,7 @@ class userSkillList: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
@@ -46,15 +47,12 @@ class userSkillList: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrSkillsProfileUsage.count
     }
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        trackIndexRowForCallout = indexPath.row
-//        let object = objects?.features[trackIndexRowForCallout]
-//        centerMap(lat: (object?.geometry.latitude)!, long: (object?.geometry.longitude)!)
+
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! customSkillCell
-        
+        cell.skillLbl.text = arrSkillsProfileUsage[indexPath.row]
         return cell
     }
     
@@ -67,13 +65,10 @@ class userSkillList: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //print("view did appear")
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         //ReachabilityManager.shared.removeListener(listener: self as NetworkStatusListener)
     }
-    
-    
 }
