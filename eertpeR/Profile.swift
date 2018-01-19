@@ -120,9 +120,9 @@ class profile: UITableViewController {
                 
                 //let badgeID = dict["id"]
                 let badge = dict["badge"]
-                self.arrUserBadges.append(badge!)
+                arrBadgesProfileUsage.append(badge!)
             }
-            let userBadgesCounter = self.arrUserBadges.count
+            let userBadgesCounter = arrBadgesProfileUsage.count
             self.circBadges.text = String(userBadgesCounter)
         })
     }
