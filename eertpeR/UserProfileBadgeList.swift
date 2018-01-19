@@ -45,7 +45,7 @@ class userBadgeList: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return 65.0;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrSkillsProfileUsage.count
+        return arrBadgesProfileUsage.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
