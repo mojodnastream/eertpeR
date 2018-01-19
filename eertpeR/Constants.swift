@@ -22,6 +22,7 @@ var arrSkillsSearchResults = [String]()
 var arrSkillsForUser = [String]()
 var arrSkillsSignUp = [String]()
 var arrSkillsProfileUsage = [String]()
+var arrBadgesProfileUsage = [String]()
 var arrBadges = [String]()
 var arrSearchResults = [String]()
 
