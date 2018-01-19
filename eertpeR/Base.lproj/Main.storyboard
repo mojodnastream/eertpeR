@@ -1008,7 +1008,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="Ff6-Ds-CNp">
                         <barButtonItem key="leftBarButtonItem" systemItem="search" id="C7A-iO-msR">
                             <connections>
-                                <segue destination="DJ4-Dp-JL6" kind="show" id="Mx4-lv-yN6"/>
+                                <segue destination="DJ4-Dp-JL6" kind="show" identifier="showAddSkills" id="Mx4-lv-yN6"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="icons8-settings-filled-20.png" id="zhO-1q-wBv">
@@ -1082,7 +1082,7 @@
             </objects>
             <point key="canvasLocation" x="2462" y="1104"/>
         </scene>
-        <!--User Skill List-->
+        <!--Your Skills-->
         <scene sceneID="4Lk-Q2-U6D">
             <objects>
                 <viewController id="ibp-d4-MxO" customClass="userSkillList" customModule="eertpeR" customModuleProvider="target" sceneMemberID="viewController">
@@ -1129,6 +1129,13 @@
                             <constraint firstItem="nQx-W8-zZm" firstAttribute="leading" secondItem="Go9-y3-YDx" secondAttribute="leading" id="skg-zT-MRE"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Your Skills" id="K6v-UG-4rg">
+                        <barButtonItem key="rightBarButtonItem" title="Add Skills" id="p1k-em-Uht">
+                            <connections>
+                                <segue destination="DJ4-Dp-JL6" kind="show" id="89e-BG-TQ9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="nQx-W8-zZm" id="8Xl-cy-o7i"/>
                     </connections>
@@ -1184,7 +1191,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtM-6n-XKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1732" y="448"/>
+            <point key="canvasLocation" x="2686" y="789"/>
         </scene>
         <!--Detail-->
         <scene sceneID="cJG-sl-2PA">
@@ -1260,6 +1267,7 @@
         <image name="profile.png" width="240" height="220"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Mx4-lv-yN6"/>
         <segue reference="ogF-Wc-w2f"/>
         <segue reference="kN8-35-bYO"/>
     </inferredMetricsTieBreakers>
