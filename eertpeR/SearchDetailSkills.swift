@@ -8,21 +8,29 @@
 
 
 import UIKit
-//import Parse
+import Firebase
 
 class SearchDetailSkills: UIViewController {
     
     var passSkillID:String!
+    @IBOutlet weak var skllName: UILabel!
+    @IBOutlet weak var skillCategory: UILabel!
+    @IBOutlet weak var usersWithSkill: UILabel!
+    @IBOutlet weak var skillAddRemove: UIButton!
+    
+    @IBAction func skillAddRemoveAction(_ sender: UIButton) {
+    }
     
     func setSkillVars() {
-        //what to show when a skill is selected from the search page
+       self.skllName.text = passSkillID
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setSkillVars() 
             //getSkills.getSkillProfile(skill: passSkillID)
-            print(passSkillID)
+            //print(passSkillID)
         
-        self.title = passSkillID
+        //self.title = passSkillID
     }
 }
