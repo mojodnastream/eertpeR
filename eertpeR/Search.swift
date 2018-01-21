@@ -13,7 +13,6 @@
 //
 
 import UIKit
-//import Parse
 
 class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
     
