@@ -18,6 +18,7 @@ class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
     
     var userID:String!
     var userName:String!
+    var skillUserCount:String!
     var recordType = ""
     var resultSearchController = UISearchController(searchResultsController: nil)
     var arrFilteredSearchResults = [String]()
@@ -34,6 +35,7 @@ class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
         userID = utils.getResultID(arrayString: arrFilteredSearchResults[indexPath.row])
         userName = utils.getResultName(arrayString: arrFilteredSearchResults[indexPath.row])
         recordType = utils.getResultType(arrayString: arrFilteredSearchResults[indexPath.row])
+        skillUserCount = utils.getResultTail(arrayString: arrFilteredSearchResults[indexPath.row])
         
         print("the row is \(indexPath.row)")
         
@@ -71,6 +73,7 @@ class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
             else if recordType == "Skill" {
                 let vcDetailSkills = segue.destination as! SearchDetailSkills
                 vcDetailSkills.passSkillID = userName
+                vcDetailSkills.passSkillUserCount = skillUserCount
             }
         }
     }

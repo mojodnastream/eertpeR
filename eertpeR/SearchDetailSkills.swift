@@ -13,6 +13,7 @@ import Firebase
 class SearchDetailSkills: UIViewController {
     
     var passSkillID:String!
+    var passSkillUserCount:String!
     @IBOutlet weak var skllName: UILabel!
     @IBOutlet weak var skillCategory: UILabel!
     @IBOutlet weak var usersWithSkill: UILabel!
@@ -22,7 +23,8 @@ class SearchDetailSkills: UIViewController {
     }
     
     func setSkillVars() {
-       self.skllName.text = passSkillID
+        self.skllName.text = passSkillID
+        self.usersWithSkill.text = "\(passSkillUserCount!) Reptree users have this skill"
     }
     
     override func viewDidLoad() {

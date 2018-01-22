@@ -39,6 +39,13 @@ class utils {
     
     static func getResultID(arrayString:String) -> String {
         var index = arrayString.indexDistance(of: "*")
+        let theEnd = arrayString.indexDistance(of: "^")
+        index = index! + 1
+        let theResult = arrayString.substring(start:index!,end: theEnd!)
+        return theResult
+    }
+    static func getResultTail(arrayString:String) -> String {
+        var index = arrayString.indexDistance(of: "^")
         index = index! + 1
         let theResult = arrayString.substring(start:index!,end: arrayString.count)
         return theResult

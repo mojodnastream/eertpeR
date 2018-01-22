@@ -28,10 +28,12 @@ class getSkills {
                     let values = child.value as! [String: AnyObject]
                     let skill = values["id"] as! String
                     let skill2 = values["id2"] as! String
+                    let count = values["count"] as! Int
+                    let userCount = String(describing: count)
                     if !skill2.isEmpty {
-                        arrSearchResults.append("Skill~\(skill2)*\(skill2)")
+                        arrSearchResults.append("Skill~\(skill2)*\(skill2)^\(userCount)")
                     }
-                    arrSearchResults.append("Skill~\(skill)*\(skill)")
+                    arrSearchResults.append("Skill~\(skill)*\(skill)^\(userCount)")
                 }
             }
         })

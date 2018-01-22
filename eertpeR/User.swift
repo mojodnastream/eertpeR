@@ -31,7 +31,7 @@ class getUsers {
                         name = values["fullname"] as! String
                         
                        
-                        arrSearchResults.append("Member~\(name)*\(id)")
+                        arrSearchResults.append("Member~\(name)*\(id)^placeholder")
                     }
                 }
                 
