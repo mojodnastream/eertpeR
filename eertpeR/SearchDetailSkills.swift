@@ -23,8 +23,38 @@ class SearchDetailSkills: UIViewController {
     }
     
     func setSkillVars() {
+        
         self.skllName.text = passSkillID
         self.usersWithSkill.text = "\(passSkillUserCount!) Reptree users have this skill"
+        
+        let userDBRef = Database.database().reference(withPath: "Skills").child(passSkillID)
+        
+        userDBRef.observe(.value, with: {
+            snapshot in
+            guard snapshot.exists() else {
+                print("no skill info")
+                return
+            }
+            
+            if let snap = snapshot.value as? [String: AnyObject] {
+                let category1 = snap["category"] as! String
+                let category2 = snap["category2"] as! String
+                let category3 = snap["category3"] as! String
+                self.skillCategory.text = category1
+            }
+            
+//            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+//               //for child in snapshots {
+//                    let values = snapshots. as! [String: AnyObject]
+//                    var category1 = values["category"] as! String
+//                    //category1 = "\(category1) \(values["category2"] ?? "Uncategorized" as AnyObject)"
+//                    self.skillCategory.text = category1
+//
+//                //}
+//            }
+        })
+        
+       
     }
     
     override func viewDidLoad() {
