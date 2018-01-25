@@ -45,6 +45,7 @@ class getUsers {
                         user.name = name
                         user.location = values["location"] as? String
                         user.title = values["title"] as? String
+                        user.company = values["company"] as? String
                         user.profilePic = values["profilePic"] as? String
                         arrUserClassArray.append(user)
                     }
