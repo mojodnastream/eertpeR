@@ -8,10 +8,20 @@
 import Foundation
 import Firebase
 
+class RTUser {
+    var userID: String?
+    var name: String?
+    var company: String?
+    var location: String?
+    var profilePic: String?
+    var title: String?
+}
+
 class getUsers {
     
         static func loadUserInfo() {
             arrSearchResults.removeAll()
+            arrUserClassArray.removeAll()
             let userDBRef = Database.database().reference(withPath: "Profiles")
             
             userDBRef.observe(.value, with: {
@@ -23,15 +33,20 @@ class getUsers {
                 
                 if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                     for child in snapshots {
-                        //print("Child: ", child)
-                        //print(child.key)
+                       
                         let id = child.key
                         var name = "bobb"
                         let values = child.value as! [String: AnyObject]
                         name = values["fullname"] as! String
-                        
-                       
                         arrSearchResults.append("Member~\(name)*\(id)^placeholder")
+                        
+                        let user = RTUser()
+                        user.userID = id
+                        user.name = name
+                        user.location = values["location"] as? String
+                        user.title = values["title"] as? String
+                        user.profilePic = values["profilePic"] as? String
+                        arrUserClassArray.append(user)
                     }
                 }
                 
