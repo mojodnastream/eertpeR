@@ -14,29 +14,40 @@ class SearchDetail: UIViewController {
     var passUserName:String!
     var passType:String!
     
+    @IBOutlet weak var userLocation: UILabel!
+    @IBOutlet weak var userCompany: UILabel!
+    @IBOutlet weak var userTitle: UILabel!
     @IBOutlet var userProfileIMG: UIImageView!
     @IBOutlet weak var entityName: UILabel!
     
-    //use this for the profile pic
-    override func viewDidLayoutSubviews() {
-        userProfileIMG.layer.cornerRadius = userProfileIMG.frame.size.width/2
-        userProfileIMG.clipsToBounds = true
-    }
-    
     func setUserVars() {
-        //what to show when a member is loaded from the search page
+        self.title = passUserName
+        for user in arrUserClassArray {
+            
+            if user.userID == passUserID {
+                
+                userTitle.text = user.title
+                userLocation.text = user.location
+                userCompany.text = user.company
+                let imageUrlString = user.profilePic!
+                let imageUrl:URL = URL(string: imageUrlString)!
+                let imageData:NSData = NSData(contentsOf: imageUrl)!
+                let image = UIImage(data: imageData as Data)
+                self.userProfileIMG.image = image
+            }
+            
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(passUserID)
-        print(passUserName)
-        print(passType)
-        
-            //getUsers.getMemberProfile(userId: passUserID)
-            setUserVars();
-
-        //self.entityName.text = passUserName
-        self.title = passUserName
+        setUserVars();
+    }
+    
+    //use this for the profile pic
+    override func viewDidLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        userProfileIMG.layer.cornerRadius = userProfileIMG.frame.size.width/2
+        userProfileIMG.clipsToBounds = true
     }
 }
