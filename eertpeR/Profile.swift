@@ -149,18 +149,6 @@ class profile: UITableViewController {
                     arrSkillsProfileUsage.append(skill)
                 }
             }
-            
-//            for child in (snapshot.children) {
-//
-//
-//
-//                let snap = child as! DataSnapshot //each child is a snapshot
-//                let dict = snap.value as! [String: String] // the value is a dict
-//
-//                //let skillID = dict["id"]
-//                let skill = dict["skill"]
-//                arrSkillsProfileUsage.append(skill!)
-//            }
             userSkills = arrSkillsProfileUsage.count
             self.circSkills.text = String(userSkills)
         })
