@@ -25,6 +25,7 @@ var arrSkillsProfileUsage = [String]()
 var arrBadgesProfileUsage = [String]()
 var arrBadges = [String]()
 var arrSearchResults = [String]()
+var arrSkillClassArray = [Skill()]
 
 //User Basics
 var userRealName = ""
