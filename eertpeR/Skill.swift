@@ -23,6 +23,7 @@ class getSkills {
     static func loadSkillInfo() {
         arrSkillsSearchResults.removeAll()
         arrSearchResults.removeAll()
+        arrSkillClassArray.removeAll()
         let userDBRef = Database.database().reference(withPath: "Skills")
         
         userDBRef.observe(.value, with: {
