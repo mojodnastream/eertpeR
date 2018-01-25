@@ -10,6 +10,10 @@ import Foundation
 
 class utils {
     
+    func isKeyPresentInUserDefaults(key: String) -> Bool {
+        return UserDefaults.standard.object(forKey: key) != nil
+    }
+    
     static func getInitials(theName: String) -> String {
         let initials = theName.components(separatedBy: " ").reduce("") { ($0 == "" ? "" : "\($0.first!)") + "\($1.first!)" }
         return initials
