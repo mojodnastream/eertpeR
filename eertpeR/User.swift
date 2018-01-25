@@ -33,21 +33,22 @@ class getUsers {
                 
                 if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                     for child in snapshots {
-                       
                         let id = child.key
-                        var name = "bobb"
-                        let values = child.value as! [String: AnyObject]
-                        name = values["fullname"] as! String
-                        arrSearchResults.append("Member~\(name)*\(id)^placeholder")
-                        
-                        let user = RTUser()
-                        user.userID = id
-                        user.name = name
-                        user.location = values["location"] as? String
-                        user.title = values["title"] as? String
-                        user.company = values["company"] as? String
-                        user.profilePic = values["profilePic"] as? String
-                        arrUserClassArray.append(user)
+                        if id != userID {
+                            var name = "bobb"
+                            let values = child.value as! [String: AnyObject]
+                            name = values["fullname"] as! String
+                            arrSearchResults.append("Member~\(name)*\(id)^placeholder")
+                            
+                            let user = RTUser()
+                            user.userID = id
+                            user.name = name
+                            user.location = values["location"] as? String
+                            user.title = values["title"] as? String
+                            user.company = values["company"] as? String
+                            user.profilePic = values["profilePic"] as? String
+                            arrUserClassArray.append(user)
+                        }
                     }
                 }
                 
