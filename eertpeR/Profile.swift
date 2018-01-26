@@ -175,6 +175,11 @@ class profile: UITableViewController {
         loadUserInfo()
         //userFullName.text = userRealName
         self.title = userRealName
+        ReachabilityManager.shared.addListener(listener: self as NetworkStatusListener)
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        ReachabilityManager.shared.removeListener(listener: self as NetworkStatusListener)
     }
     
     override func viewWillLayoutSubviews() {
@@ -185,7 +190,7 @@ class profile: UITableViewController {
     
     func doAlert() {
         
-        let alert = UIAlertController(title: "No Connectivity", message: "What's Skakin requires an internet connection to work correctly", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "No Connectivity", message: "Reptree requires an internet connection to work correctly", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
         }))
         
@@ -201,9 +206,9 @@ extension profile: NetworkStatusListener {
             //debugPrint("ViewController: Network became unreachable")
             doAlert()
         case .wifi:
-            debugPrint("QuakeMapList: Network reachable through WiFi")
+            debugPrint("Reptree: Network reachable through WiFi")
         case .cellular:
-            debugPrint("QuakeMapList: Network reachable through Cellular Data")
+            debugPrint("Reptree: Network reachable through Cellular Data")
         }
     }
 }
