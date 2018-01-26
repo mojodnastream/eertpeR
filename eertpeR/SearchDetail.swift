@@ -27,7 +27,6 @@ class SearchDetail: UIViewController {
         for user in arrUserClassArray {
             
             if user.userID == passUserID {
-                
                 userTitle.text = user.title
                 userLocation.text = user.location
                 userCompany.text = user.company
@@ -37,7 +36,6 @@ class SearchDetail: UIViewController {
                 let image = UIImage(data: imageData as Data)
                 self.userProfileIMG.image = image
             }
-            
         }
     }
     
