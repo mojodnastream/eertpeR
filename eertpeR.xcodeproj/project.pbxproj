@@ -28,6 +28,8 @@
 		48E4D3101D50F9B000F3EC76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48E4D30F1D50F9B000F3EC76 /* Assets.xcassets */; };
 		48E4D3131D50F9B000F3EC76 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E4D3111D50F9B000F3EC76 /* LaunchScreen.storyboard */; };
 		48E4D3201D50FAE900F3EC76 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D31F1D50FAE900F3EC76 /* Constants.swift */; };
+		79308F6B201BCFC0008DF8CD /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79308F69201BCFBF008DF8CD /* Reachability.swift */; };
+		79308F6C201BCFC0008DF8CD /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79308F6A201BCFC0008DF8CD /* ReachabilityManager.swift */; };
 		7980EBE81FF9E576009208B0 /* icons8-settings-filled-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 7980EBE71FF9E575009208B0 /* icons8-settings-filled-40.png */; };
 		7980EBEA1FF9E8D3009208B0 /* icons8-settings-filled-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 7980EBE91FF9E8D2009208B0 /* icons8-settings-filled-20.png */; };
 		7980EBEC1FF9EFFD009208B0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980EBEB1FF9EFFD009208B0 /* Settings.swift */; };
@@ -66,6 +68,8 @@
 		48E4D3141D50F9B000F3EC76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48E4D31F1D50FAE900F3EC76 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		729CFF212E2B7C29D91DBB0B /* libPods-eertpeR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-eertpeR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		79308F69201BCFBF008DF8CD /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		79308F6A201BCFC0008DF8CD /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
 		7980EBE71FF9E575009208B0 /* icons8-settings-filled-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-settings-filled-40.png"; sourceTree = "<group>"; };
 		7980EBE91FF9E8D2009208B0 /* icons8-settings-filled-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-settings-filled-20.png"; sourceTree = "<group>"; };
 		7980EBEB1FF9EFFD009208B0 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 		48E4D31E1D50FAC900F3EC76 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				79308F69201BCFBF008DF8CD /* Reachability.swift */,
+				79308F6A201BCFC0008DF8CD /* ReachabilityManager.swift */,
 				48E4D31F1D50FAE900F3EC76 /* Constants.swift */,
 				482399B41E95DC030031892C /* Utils.swift */,
 			);
@@ -361,8 +367,10 @@
 				7980EBEC1FF9EFFD009208B0 /* Settings.swift in Sources */,
 				482135E21EC833AF00296104 /* SearchDetail.swift in Sources */,
 				482399B71E96C9C40031892C /* SignUpProfile.swift in Sources */,
+				79308F6C201BCFC0008DF8CD /* ReachabilityManager.swift in Sources */,
 				48E4D3061D50F9B000F3EC76 /* AppDelegate.swift in Sources */,
 				482399BB1EA3CEC00031892C /* SignUpSkills.swift in Sources */,
+				79308F6B201BCFC0008DF8CD /* Reachability.swift in Sources */,
 				482399B11E956A300031892C /* LogIn.swift in Sources */,
 				482135E01EC7BDBE00296104 /* Search.swift in Sources */,
 				79FDEA8D200804D500016606 /* User.swift in Sources */,
