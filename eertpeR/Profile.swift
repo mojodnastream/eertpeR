@@ -182,5 +182,29 @@ class profile: UITableViewController {
         profileImage.layer.cornerRadius = profileImage.frame.height / 2.0
         profileImage.clipsToBounds = true
     }
+    
+    func doAlert() {
+        
+        let alert = UIAlertController(title: "No Connectivity", message: "What's Skakin requires an internet connection to work correctly", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action: UIAlertAction!) in
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
+}
+extension profile: NetworkStatusListener {
+    
+    func networkStatusDidChange(status: Reachability.Connection) {
+        
+        switch status {
+        case .none:
+            //debugPrint("ViewController: Network became unreachable")
+            doAlert()
+        case .wifi:
+            debugPrint("QuakeMapList: Network reachable through WiFi")
+        case .cellular:
+            debugPrint("QuakeMapList: Network reachable through Cellular Data")
+        }
+    }
 }
 
