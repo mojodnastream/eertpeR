@@ -18,7 +18,7 @@ class profile: UITableViewController {
     @IBOutlet weak var circSkills: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var userTitleRole: UILabel!
-    //@IBOutlet weak var userFullName: UILabel!
+
     var arrUserSkills = [String]()
     var arrUserBadges = [String]()
     

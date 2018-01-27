@@ -62,6 +62,8 @@ class Settings: UITableViewController, MFMailComposeViewControllerDelegate {
             userID = ""
             userEmail = ""
             userRealName = ""
+            arrBadgesProfileUsage.removeAll()
+            arrSkillsProfileUsage.removeAll()
             self.performSegue(withIdentifier: "jumpToLogin", sender: self)
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
