@@ -30,6 +30,7 @@
 		48E4D3201D50FAE900F3EC76 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E4D31F1D50FAE900F3EC76 /* Constants.swift */; };
 		79308F6B201BCFC0008DF8CD /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79308F69201BCFBF008DF8CD /* Reachability.swift */; };
 		79308F6C201BCFC0008DF8CD /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79308F6A201BCFC0008DF8CD /* ReachabilityManager.swift */; };
+		79308F6E201D4A49008DF8CD /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79308F6D201D4A49008DF8CD /* Follow.swift */; };
 		7980EBE81FF9E576009208B0 /* icons8-settings-filled-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 7980EBE71FF9E575009208B0 /* icons8-settings-filled-40.png */; };
 		7980EBEA1FF9E8D3009208B0 /* icons8-settings-filled-20.png in Resources */ = {isa = PBXBuildFile; fileRef = 7980EBE91FF9E8D2009208B0 /* icons8-settings-filled-20.png */; };
 		7980EBEC1FF9EFFD009208B0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980EBEB1FF9EFFD009208B0 /* Settings.swift */; };
@@ -70,6 +71,7 @@
 		729CFF212E2B7C29D91DBB0B /* libPods-eertpeR.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-eertpeR.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		79308F69201BCFBF008DF8CD /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		79308F6A201BCFC0008DF8CD /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		79308F6D201D4A49008DF8CD /* Follow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
 		7980EBE71FF9E575009208B0 /* icons8-settings-filled-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-settings-filled-40.png"; sourceTree = "<group>"; };
 		7980EBE91FF9E8D2009208B0 /* icons8-settings-filled-20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icons8-settings-filled-20.png"; sourceTree = "<group>"; };
 		7980EBEB1FF9EFFD009208B0 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				482399AE1E9569C50031892C /* Skill.swift */,
 				79FDEA8C200804D500016606 /* User.swift */,
+				79308F6D201D4A49008DF8CD /* Follow.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				79FDEA9120128BE700016606 /* UserProfileBadgeList.swift in Sources */,
 				482399B31E956DD00031892C /* SignUpOne.swift in Sources */,
 				79FDEA8F200EB88D00016606 /* UserProfileSkillList.swift in Sources */,
+				79308F6E201D4A49008DF8CD /* Follow.swift in Sources */,
 				482399B91E96D4DD0031892C /* Profile.swift in Sources */,
 				482399B51E95DC030031892C /* Utils.swift in Sources */,
 				7980EBEC1FF9EFFD009208B0 /* Settings.swift in Sources */,
