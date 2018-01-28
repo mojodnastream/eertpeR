@@ -154,7 +154,7 @@ class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("i did appear")
+        //print("i did appear")
         recordType = ""
     }
     

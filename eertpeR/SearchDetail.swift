@@ -13,14 +13,47 @@ class SearchDetail: UIViewController {
     var passUserID:String!
     var passUserName:String!
     var passType:String!
+    var isConnected:Bool!
+    let userProfileDetailRef = Database.database().reference(withPath: "Profiles")
     
+   
     @IBOutlet weak var userLocation: UILabel!
     @IBOutlet weak var userCompany: UILabel!
     @IBOutlet weak var userTitle: UILabel!
     @IBOutlet var userProfileIMG: UIImageView!
     @IBOutlet weak var entityName: UILabel!
+    @IBOutlet weak var userConnect: UIButton!
+    @IBAction func userConnectBtn(_ sender: UIButton) {
+        
+        if isConnected {
+            removeConnection()
+        } else {
+            addConnection()
+        }
+    }
     
-    let userProfileDetailRef = Database.database().reference(withPath: "Profiles")
+   
+    func addConnection() {
+        let refUserConn = userProfileDetailRef.child(userID);
+        let key = passUserID
+        let timeStamp = NSNumber(value: Int(NSDate().timeIntervalSince1970))
+        //creating artist with the given values
+        let badgeToAdd = ["id": key!,
+                          "followdate": timeStamp
+            ] as [String : Any]
+        
+        refUserConn.child("Following").child(key!).setValue(badgeToAdd, withCompletionBlock: { (error, snapshot) in
+            if error != nil {
+                print(error?.localizedDescription ?? "No error description available")
+            } else {
+                print("added follow \(self.passUserID) to profile")
+            }
+        })
+    }
+    
+    func removeConnection() {
+        
+    }
     
     func setUserVars() {
         self.title = passUserName
@@ -31,10 +64,12 @@ class SearchDetail: UIViewController {
                 userLocation.text = user.location
                 userCompany.text = user.company
                 let imageUrlString = user.profilePic!
-                let imageUrl:URL = URL(string: imageUrlString)!
-                let imageData:NSData = NSData(contentsOf: imageUrl)!
-                let image = UIImage(data: imageData as Data)
-                self.userProfileIMG.image = image
+                if !imageUrlString.isEmpty {
+                    let imageUrl:URL = URL(string: imageUrlString)!
+                    let imageData:NSData = NSData(contentsOf: imageUrl)!
+                    let image = UIImage(data: imageData as Data)
+                    self.userProfileIMG.image = image
+                }
             }
         }
     }
@@ -96,6 +131,7 @@ class SearchDetail: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        isConnected = false
         setUserVars();
     }
     
