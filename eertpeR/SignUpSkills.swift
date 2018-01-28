@@ -104,7 +104,7 @@ class signUpSkills: UITableViewController, UISearchResultsUpdating {
     }
     
     func addSkillToProfile(skill: String) {
-        print("the user id: \(String(describing: Auth.auth().currentUser?.uid))")
+        //print("the user id: \(String(describing: Auth.auth().currentUser?.uid))")
         let refUserSkill = Database.database().reference().child("Profiles").child(fbUserProfileId!);
         
         let newSkill = skill.trimmingCharacters(in: NSCharacterSet.whitespaces)
