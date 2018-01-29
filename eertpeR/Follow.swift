@@ -14,6 +14,11 @@ class Follow {
     var sinceWhen: NSNumber?
 }
 
+class Following {
+    var userID: String?
+    var sinceWhen: NSNumber?
+}
+
 class getFollows {
     
     static func loadUserInfo() {
@@ -24,7 +29,7 @@ class getFollows {
         userDBRef.observe(.value, with: {
             snapshot in
             guard snapshot.exists() else {
-                print("no user info")
+                print("no follow info")
                 return
             }
             
@@ -32,15 +37,17 @@ class getFollows {
                 for child in snapshots {
                     let id = child.key
                     if id != userID {
-                        var id = "bobb"
-                        var since = 0
+                        var ferID = "bobb"
+                        var ferSince = 0
+                        //var fingID = "bobb"
+                        //var fingSince = 0
                         let values = child.value as! [String: AnyObject]
-                        id = values["id"] as! String
-                        since = values["sinceWhen"] as! Int
+                        ferID = values["id"] as! String
+                        ferSince = values["sinceWhen"] as! Int
                         
                         let follow = Follow()
-                        follow.userID = id
-                        follow.sinceWhen = since as NSNumber
+                        follow.userID = ferID
+                        follow.sinceWhen = ferSince as NSNumber
                         arrFollowingClassArray.append(follow)
                     }
                 }
