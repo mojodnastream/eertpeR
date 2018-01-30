@@ -21,10 +21,10 @@ class Following {
 
 class getFollows {
     
-    static func loadUserInfo() {
+    static func loadFollowerInfo() {
         arrSearchResults.removeAll()
         arrUserClassArray.removeAll()
-        let userDBRef = Database.database().reference(withPath: "Profiles")
+        let userDBRef = Database.database().reference(withPath: "Profiles").child("Following")
         
         userDBRef.observe(.value, with: {
             snapshot in
