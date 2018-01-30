@@ -9,7 +9,7 @@
 import Foundation
 import Firebase
 
-class Follow {
+class Follower {
     var userID: String?
     var sinceWhen: NSNumber?
 }
@@ -19,12 +19,12 @@ class Following {
     var sinceWhen: NSNumber?
 }
 
-class getFollows {
+class getFollowing {
     
     static func loadFollowerInfo() {
-        arrSearchResults.removeAll()
-        arrUserClassArray.removeAll()
-        let userDBRef = Database.database().reference(withPath: "Profiles").child("Following")
+       arrFollowing.removeAll()
+        let followerDbRef = Database.database().reference(withPath: "Profiles")
+        let userDBRef = followerDbRef.child("Following")
         
         userDBRef.observe(.value, with: {
             snapshot in
@@ -37,18 +37,40 @@ class getFollows {
                 for child in snapshots {
                     let id = child.key
                     if id != userID {
-                        var ferID = "bobb"
-                        var ferSince = 0
+                        var fingID = ""
+                        var fingSince = 0
                         //var fingID = "bobb"
                         //var fingSince = 0
                         let values = child.value as! [String: AnyObject]
-                        ferID = values["id"] as! String
-                        ferSince = values["sinceWhen"] as! Int
+                        fingID = values["id"] as! String
+                        fingSince = values["sinceWhen"] as! Int
+                        arrFollowing.append("\(fingID)*\(fingSince)")
+                    }
+                }
+            }
+        })
+        
+        arrUserClassArray.removeAll()
+       
+        followerDbRef.observe(.value, with: {
+            snapshot in
+            guard snapshot.exists() else {
+                print("no follow info")
+                return
+            }
+            
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for child in snapshots {
+                    let id = child.key
+                    if id != userID {
+                        let values = child.value as! [String: AnyObject]
+                        let fingName = values["name"] as! String
+                        let fingTitle = values["title"] as! Int
+                        let following = Following()
+                        following.userID = fingID
+                        following.sinceWhen = fingSince as NSNumber
+                        arrFollowingClassArray.append(following)
                         
-                        let follow = Follow()
-                        follow.userID = ferID
-                        follow.sinceWhen = ferSince as NSNumber
-                        arrFollowingClassArray.append(follow)
                     }
                 }
             }

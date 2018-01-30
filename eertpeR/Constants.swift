@@ -27,7 +27,8 @@ var arrBadges = [String]()
 var arrSearchResults = [String]()
 var arrSkillClassArray = [Skill()]
 var arrUserClassArray = [RTUser()]
-var arrFollowingClassArray = [Follow()]
+var arrFollowingClassArray = [Following()]
+var arrFollowing [String]()
 
 //User Basics
 var userRealName = ""
