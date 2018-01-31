@@ -25,10 +25,10 @@ class Following {
 
 class getFollowing {
     
-    static func loadFollowerInfo() {
+    static func loadFollowInfo() {
        arrFollowing.removeAll()
         let followerDbRef = Database.database().reference(withPath: "Profiles")
-        let userDBRef = followerDbRef.child("Following")
+        let userDBRef = followerDbRef.child(userID).child("Following")
         
         userDBRef.observe(.value, with: {
             snapshot in
@@ -47,7 +47,7 @@ class getFollowing {
                         //var fingSince = 0
                         let values = child.value as! [String: AnyObject]
                         fingID = values["id"] as! String
-                        fingSince = values["sinceWhen"] as! Int
+                        fingSince = values["followdate"] as! Int
                         arrFollowing.append("\(fingID)*\(fingSince)")
                     }
                 }
@@ -66,13 +66,24 @@ class getFollowing {
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in snapshots {
                     let id = child.key
-                        let values = child.value as! [String: AnyObject]
-                        let fingName = values["name"] as! String
-                        let fingTitle = values["title"] as! Int
-                        let following = Following()
-                        //following.userID = fingName
-                        //following.sinceWhen =  as NSNumber
+                    var count = 0
+                    for item in arrFollowing {
+                        let fID = utils.getResultFollowID(arrayString: arrFollowing[count])
+                        let fSince = utils.getResultNumber(arrayString: arrFollowing[count]) 
+                        
+                        if fID == id {
+                            count = count + 1
+                            let values = child.value as! [String: AnyObject]
+                            let fingName = values["fullname"] as! String
+                            let fingTitle = values["title"] as! String
+                            let following = Following()
+                            following.userID = fID
+                            following.sinceWhen = fSince as NSNumber
+                            following.namme = fingName
+                            following.title = fingTitle
                         arrFollowingClassArray.append(following)
+                        }
+                    }
                         
                 }
             }
