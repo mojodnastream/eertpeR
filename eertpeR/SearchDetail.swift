@@ -47,6 +47,27 @@ class SearchDetail: UIViewController {
                 print(error?.localizedDescription ?? "No error description available")
             } else {
                 print("added follow \(self.passUserID) to profile")
+                self.sendToFollowed()
+            }
+        })
+    }
+    
+    func sendToFollowed() {
+        //once the follow is added to a users profile, send a market to the followee's profile
+        let refUserConn = userProfileDetailRef.child(passUserID);
+        let key = userID
+        let timeStamp = NSNumber(value: Int(NSDate().timeIntervalSince1970))
+        //creating artist with the given values
+        let badgeToAdd = ["id": key,
+                          "followdate": timeStamp
+            ] as [String : Any]
+        
+        refUserConn.child("Followers").child(key).setValue(badgeToAdd, withCompletionBlock: { (error, snapshot) in
+            if error != nil {
+                print(error?.localizedDescription ?? "No error description available")
+            } else {
+                print("added follow \(userID) as a follower to \(self.passUserID)'s profile")
+                //self.sendToFollowed()
             }
         })
     }
