@@ -50,6 +50,7 @@ class profile: UITableViewController {
         //loadUserGig()
         loadSkills()
         loadBadges()
+        loadFollows()
     }
     
     func loadUserInfo() {
@@ -97,6 +98,10 @@ class profile: UITableViewController {
 //                self.profileImage.clipsToBounds = true
             }
       })
+    }
+    
+    func loadFollows() {
+        getFollowing.loadFollowInfo()
     }
     
     func loadBadges() {
