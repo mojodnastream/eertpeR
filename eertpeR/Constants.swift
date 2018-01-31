@@ -28,7 +28,7 @@ var arrSearchResults = [String]()
 var arrSkillClassArray = [Skill()]
 var arrUserClassArray = [RTUser()]
 var arrFollowingClassArray = [Following()]
-var arrFollowing [String]()
+var arrFollowing = [String]()
 
 //User Basics
 var userRealName = ""

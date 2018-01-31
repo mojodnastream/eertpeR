@@ -12,11 +12,15 @@ import Firebase
 class Follower {
     var userID: String?
     var sinceWhen: NSNumber?
+    var title: String?
+    var namme: String?
 }
 
 class Following {
     var userID: String?
     var sinceWhen: NSNumber?
+    var title: String?
+    var namme: String?
 }
 
 class getFollowing {
@@ -62,16 +66,14 @@ class getFollowing {
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in snapshots {
                     let id = child.key
-                    if id != userID {
                         let values = child.value as! [String: AnyObject]
                         let fingName = values["name"] as! String
                         let fingTitle = values["title"] as! Int
                         let following = Following()
-                        following.userID = fingID
-                        following.sinceWhen = fingSince as NSNumber
+                        //following.userID = fingName
+                        //following.sinceWhen =  as NSNumber
                         arrFollowingClassArray.append(following)
                         
-                    }
                 }
             }
         })
