@@ -54,6 +54,19 @@ class utils {
         let theResult = arrayString.substring(start:index!,end: arrayString.count)
         return theResult
     }
+    static func getResultFollowID(arrayString:String) -> String {
+        //var index = arrayString.indexDistance(of: "*")
+        let theEnd = arrayString.indexDistance(of: "*")
+        //index = index! + 1
+        let theResult = arrayString.substring(start:0,end: theEnd!)
+        return theResult
+    }
+    static func getResultNumber(arrayString:String) -> Int {
+        var index = arrayString.indexDistance(of: "*")
+        index = index! + 1
+        let theResult = Int(arrayString.substring(start:index!,end: arrayString.count))
+        return theResult!
+    }
 }
 extension String {
     func indexDistance(of character: Character) -> Int? {
