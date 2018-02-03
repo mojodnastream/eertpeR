@@ -150,9 +150,23 @@ class SearchDetail: UIViewController {
         })
     }
     
+    func checkUser() {
+        var theRow = 0
+        for item in arrFollowing {
+            let fID = utils.getResultFollowID(arrayString: arrFollowing[theRow])
+            
+            if fID == passUserID {
+                isConnected = true
+                userConnect.setTitle("Unfollow", for: UIControlState.normal)
+            }
+            theRow = theRow + 1
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         isConnected = false
+        checkUser()
         setUserVars();
     }
     
