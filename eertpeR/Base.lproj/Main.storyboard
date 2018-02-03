@@ -1191,7 +1191,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WtM-6n-XKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2686" y="789"/>
+            <point key="canvasLocation" x="2662" y="633"/>
         </scene>
         <!--Detail-->
         <scene sceneID="cJG-sl-2PA">
@@ -1231,10 +1231,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ehw-jp-z3t">
-                                <rect key="frame" x="151" y="355" width="111" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="151" y="357" width="111" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Connect"/>
+                                <state key="normal" title="Follow"/>
                                 <connections>
                                     <action selector="userConnectBtn:" destination="Tng-Yb-f7a" eventType="touchUpInside" id="Sbl-xN-8X7"/>
                                 </connections>
