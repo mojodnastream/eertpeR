@@ -48,6 +48,9 @@ class SearchDetail: UIViewController {
             } else {
                 print("added follow \(self.passUserID) to profile")
                 self.sendToFollowed()
+                getFollowing.loadFollowInfo()
+                self.isConnected = true
+                self.userConnect.setTitle("Unfollow", for: UIControlState.normal)
             }
         })
     }
@@ -74,6 +77,37 @@ class SearchDetail: UIViewController {
     
     func removeConnection() {
         
+        var checkErr = 0
+        
+        var ref = userProfileDetailRef.child(userID).child("Following").child(passUserID)
+        ref.removeValue { error, _ in
+            if error != nil {
+                checkErr = 1
+                print(error ?? "error occurred while deleting a followee")
+            }
+            else {
+                print("followee \(self.passUserID) removed")
+            }
+        }
+        
+        if checkErr == 0 {
+            ref = userProfileDetailRef.child(passUserID).child("Followers").child(userID)
+            ref.removeValue { error, _ in
+                if error != nil {
+                    checkErr = 1
+                    print(error ?? "error occurred while deleting follower")
+                }
+                else {
+                    print("follower \(userID) removed")
+                }
+            }
+        }
+        
+        if checkErr == 0 {
+            getFollowing.loadFollowInfo()
+            isConnected = false
+            userConnect.setTitle("Follow", for: UIControlState.normal)
+        }
     }
     
     func setUserVars() {
@@ -161,11 +195,15 @@ class SearchDetail: UIViewController {
             }
             theRow = theRow + 1
         }
+        if theRow == 0 {
+            isConnected = false
+            userConnect.setTitle("Follow", for: UIControlState.normal)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        isConnected = false
+        //isConnected = false
         checkUser()
         setUserVars();
     }
