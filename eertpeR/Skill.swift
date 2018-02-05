@@ -36,7 +36,7 @@ class getSkills {
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in snapshots {
                     let values = child.value as! [String: AnyObject]
-                    
+                    let nodeName = child.key
                     let name = values["id"] as! String
                     let name2 = values["id2"] as! String
                     let cat1 = values["category"] as! String
@@ -52,10 +52,10 @@ class getSkills {
                     skill.count = userCount
                     skill.name = name
                     if !name2.isEmpty {
-                        arrSearchResults.append("Skill~\(name2)*\(name2)^\(userCount)")
+                        arrSearchResults.append("Skill~\(name2)*\(nodeName)^\(userCount)")
                         skill.name2 = name2
                     }
-                    arrSearchResults.append("Skill~\(name)*\(name)^\(userCount)")
+                    arrSearchResults.append("Skill~\(name)*\(nodeName)^\(userCount)")
                     arrSkillClassArray.append(skill)
                     
                 }

@@ -40,7 +40,7 @@ class SearchDetailSkills: UIViewController {
                          "followdate": timeStamp
             ] as [String : Any]
         
-        refUserConn.child("Following").child(key!).setValue(skillToAdd, withCompletionBlock: { (error, snapshot) in
+        refUserConn.child("Skills").child(key!).setValue(skillToAdd, withCompletionBlock: { (error, snapshot) in
             if error != nil {
                 print(error?.localizedDescription ?? "No error description available")
             } else {
