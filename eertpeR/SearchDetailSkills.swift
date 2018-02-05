@@ -32,10 +32,32 @@ class SearchDetailSkills: UIViewController {
     }
     
     func addSkill() {
+        let refUserConn = userProfileDetailRef.child(userID);
+        let key = passSkillID
+        let timeStamp = NSNumber(value: Int(NSDate().timeIntervalSince1970))
+        //creating artist with the given values
+        let skillToAdd = ["id": key!,
+                         "followdate": timeStamp
+            ] as [String : Any]
         
+        refUserConn.child("Following").child(key!).setValue(skillToAdd, withCompletionBlock: { (error, snapshot) in
+            if error != nil {
+                print(error?.localizedDescription ?? "No error description available")
+            } else {
+                print("added follow \(self.passSkillID) to profile")
+                self.updateSkillCount()
+                getSkills.loadSkillInfo()
+                self.isConnected = true
+                self.skillAddRemove.setTitle("Remove Skill", for: UIControlState.normal)
+            }
+        })
     }
     
     func removeSkill() {
+        
+    }
+    
+    func updateSkillCount() {
         
     }
     
