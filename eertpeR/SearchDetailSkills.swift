@@ -8,17 +8,35 @@
 
 
 import UIKit
+import Firebase
 
 class SearchDetailSkills: UIViewController {
     
     var passSkillID:String!
     var passSkillUserCount:String!
+    var isConnected:Bool!
+    let userProfileDetailRef = Database.database().reference(withPath: "Profiles")
+    let skillMainNodeRef = Database.database().reference(withPath: "Skills")
+    
     @IBOutlet weak var skllName: UILabel!
     @IBOutlet weak var skillCategory: UILabel!
     @IBOutlet weak var usersWithSkill: UILabel!
     @IBOutlet weak var skillAddRemove: UIButton!
     
     @IBAction func skillAddRemoveAction(_ sender: UIButton) {
+        if isConnected {
+            removeSkill()
+        } else {
+            addSkill()
+        }
+    }
+    
+    func addSkill() {
+        
+    }
+    
+    func removeSkill() {
+        
     }
     
     func setSkillVars() {
@@ -51,12 +69,26 @@ class SearchDetailSkills: UIViewController {
         
     }
     
+    func checkSkill() {
+        var theRow = 0
+        for item in arrSkills {
+            let fID = utils.getResultFollowID(arrayString: arrFollowing[theRow])
+            
+            if fID == passSkillID {
+                isConnected = true
+                skillAddRemove.setTitle("Remove Skill", for: UIControlState.normal)
+            }
+            theRow = theRow + 1
+        }
+        if theRow == 0 {
+            isConnected = false
+            skillAddRemove.setTitle("Add Skill", for: UIControlState.normal)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setSkillVars() 
-            //getSkills.getSkillProfile(skill: passSkillID)
-            //print(passSkillID)
-        
-        //self.title = passSkillID
+        checkSkill()
+        setSkillVars()
     }
 }
