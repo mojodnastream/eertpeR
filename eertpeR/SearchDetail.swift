@@ -38,11 +38,11 @@ class SearchDetail: UIViewController {
         let key = passUserID
         let timeStamp = NSNumber(value: Int(NSDate().timeIntervalSince1970))
         //creating artist with the given values
-        let badgeToAdd = ["id": key!,
+        let userToAdd = ["id": key!,
                           "followdate": timeStamp
             ] as [String : Any]
         
-        refUserConn.child("Following").child(key!).setValue(badgeToAdd, withCompletionBlock: { (error, snapshot) in
+        refUserConn.child("Following").child(key!).setValue(userToAdd, withCompletionBlock: { (error, snapshot) in
             if error != nil {
                 print(error?.localizedDescription ?? "No error description available")
             } else {
@@ -61,11 +61,11 @@ class SearchDetail: UIViewController {
         let key = userID
         let timeStamp = NSNumber(value: Int(NSDate().timeIntervalSince1970))
         //creating artist with the given values
-        let badgeToAdd = ["id": key,
+        let userToAdd = ["id": key,
                           "followdate": timeStamp
             ] as [String : Any]
         
-        refUserConn.child("Followers").child(key).setValue(badgeToAdd, withCompletionBlock: { (error, snapshot) in
+        refUserConn.child("Followers").child(key).setValue(userToAdd, withCompletionBlock: { (error, snapshot) in
             if error != nil {
                 print(error?.localizedDescription ?? "No error description available")
             } else {
