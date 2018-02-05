@@ -24,6 +24,7 @@ class getSkills {
         arrSkillsSearchResults.removeAll()
         arrSearchResults.removeAll()
         arrSkillClassArray.removeAll()
+        arrSkillsForUser.removeAll()
         let userDBRef = Database.database().reference(withPath: "Skills")
         
         userDBRef.observe(.value, with: {

@@ -16,7 +16,7 @@ import UIKit
 
 class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
     
-    var userID:String!
+    var userIDLoc:String!
     var userName:String!
     var skillUserCount:String!
     var recordType = ""
@@ -32,7 +32,7 @@ class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //send data to the detail screen about the requested entity
-        userID = utils.getResultID(arrayString: arrFilteredSearchResults[indexPath.row])
+        userIDLoc = utils.getResultID(arrayString: arrFilteredSearchResults[indexPath.row])
         userName = utils.getResultName(arrayString: arrFilteredSearchResults[indexPath.row])
         recordType = utils.getResultType(arrayString: arrFilteredSearchResults[indexPath.row])
         skillUserCount = utils.getResultTail(arrayString: arrFilteredSearchResults[indexPath.row])
@@ -66,13 +66,14 @@ class search: UITableViewController, UISearchResultsUpdating, UITabBarDelegate {
         if segFlag == false {
             if recordType == "Member" {
                 let vcDetail = segue.destination as! SearchDetail
-                vcDetail.passUserID = userID
+                vcDetail.passUserID = userIDLoc
                 vcDetail.passUserName = userName
                 vcDetail.passType = recordType
             }
             else if recordType == "Skill" {
                 let vcDetailSkills = segue.destination as! SearchDetailSkills
-                vcDetailSkills.passSkillID = userName
+                vcDetailSkills.passSkillID = userIDLoc
+                vcDetailSkills.passSkillName = userName
                 vcDetailSkills.passSkillUserCount = skillUserCount
             }
         }

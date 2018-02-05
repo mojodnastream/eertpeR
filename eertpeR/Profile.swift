@@ -133,6 +133,7 @@ class profile: UITableViewController {
     }
     
     func loadSkills() {
+        
         //user = User(uid: userID, email: FIRAuth.auth()?.currentUser?.email)
         userProfileDetailRef.child("Skills").observe(.value, with: {
             snapshot in
@@ -146,7 +147,7 @@ class profile: UITableViewController {
                 }
                 return
             }
-            
+            arrSkillsProfileUsage.removeAll()
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in snapshots {
                     let values = child.value as! [String: AnyObject]
@@ -169,7 +170,7 @@ class profile: UITableViewController {
         self.lblNoProfilePic.isHidden = true
         self.profileImage.isHidden = true
         self.setNeedsStatusBarAppearanceUpdate()
-        arrSkillsForUser.removeAll()
+        arrSkillsProfileUsage.removeAll()
         loadProfile()
 
     }

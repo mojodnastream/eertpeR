@@ -13,6 +13,7 @@ import Firebase
 class SearchDetailSkills: UIViewController {
     
     var passSkillID:String!
+    var passSkillName:String!
     var passSkillUserCount:String!
     var isConnected:Bool!
     let userProfileDetailRef = Database.database().reference(withPath: "Profiles")
@@ -34,10 +35,11 @@ class SearchDetailSkills: UIViewController {
     func addSkill() {
         let refUserConn = userProfileDetailRef.child(userID);
         let key = passSkillID
-        let timeStamp = NSNumber(value: Int(NSDate().timeIntervalSince1970))
+        let name = passSkillName
+        //let timeStamp = NSNumber(value: Int(NSDate().timeIntervalSince1970))
         //creating artist with the given values
         let skillToAdd = ["id": key!,
-                         "followdate": timeStamp
+                          "skill": name!
             ] as [String : Any]
         
         refUserConn.child("Skills").child(key!).setValue(skillToAdd, withCompletionBlock: { (error, snapshot) in
@@ -112,5 +114,6 @@ class SearchDetailSkills: UIViewController {
         super.viewDidLoad()
         checkSkill()
         setSkillVars()
+        print(isConnected)
     }
 }
