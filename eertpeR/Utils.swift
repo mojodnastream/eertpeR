@@ -16,7 +16,7 @@ class utils {
 //        let latitude: Double
 //        let longitude: Double
 //    }
-//    
+//
 //    let locations = [
 //        Location(title: "New York, NY",    latitude: 40.713054, longitude: -74.007228),
 //        Location(title: "Los Angeles, CA", latitude: 34.052238, longitude: -118.243344),
