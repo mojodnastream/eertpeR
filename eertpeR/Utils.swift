@@ -10,6 +10,26 @@ import Foundation
 
 class utils {
     
+    //SAVE THIS
+//    struct Location {
+//        let title: String
+//        let latitude: Double
+//        let longitude: Double
+//    }
+//    
+//    let locations = [
+//        Location(title: "New York, NY",    latitude: 40.713054, longitude: -74.007228),
+//        Location(title: "Los Angeles, CA", latitude: 34.052238, longitude: -118.243344),
+//        Location(title: "Chicago, IL",     latitude: 41.883229, longitude: -87.632398)
+//    ]
+    
+//    for location in locations {
+//    let annotation = MKPointAnnotation()
+//    annotation.title = location.title
+//    annotation.coordinate = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+//    mapView.addAnnotation(annotation)
+//    }
+    
     func isKeyPresentInUserDefaults(key: String) -> Bool {
         return UserDefaults.standard.object(forKey: key) != nil
     }
