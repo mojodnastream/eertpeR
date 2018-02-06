@@ -51,6 +51,7 @@ class SearchDetailSkills: UIViewController {
                 getSkills.loadSkillInfo()
                 self.isConnected = true
                 self.skillAddRemove.setTitle("Remove Skill", for: UIControlState.normal)
+                
             }
         })
     }
@@ -59,41 +60,46 @@ class SearchDetailSkills: UIViewController {
         
     }
     
-    func getSkillCount(addOrSub: String) -> Int {
-        var newCount = Int(passSkillUserCount)
-        let detailSkillNodeRef = skillMainNodeRef.child(passSkillID)
-        
-        detailSkillNodeRef.observe(.value, with: {
-            snapshot in
-            guard snapshot.exists() else {
-                print("no user info")
-                return
-            }
-            
-            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
-                for child in snapshots {
-                    let values = child.value as! [String: AnyObject]
-                    
-                    let count = values["count"] as! Int
-                    if addOrSub == "add" {
-                        newCount = count + 1
-                    }
-                    else {
-                        newCount = count - 1
-                    }
-                }
-                
-            }
-        })
-        
-        return newCount!
-    }
+   
     
     func updateSkillCount(addOrSub: String) {
+        var loopBreak = 0
+        var newCount = Int(passSkillUserCount)
         let detailSkillNodeRef = skillMainNodeRef.child(passSkillID)
-        let update = ["count":getSkillCount(addOrSub: addOrSub)]
-        
-        detailSkillNodeRef.updateChildValues(update)
+      
+            skillMainNodeRef.observe(.value, with: {
+                snapshot in
+                guard snapshot.exists() else {
+                    print("no skill info")
+                    return
+                }
+                
+                if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                    for child in snapshots {
+                        if loopBreak == 0 {
+                        let id = child.key
+                        if id == self.passSkillID {
+                            let values = child.value as! [String: AnyObject]
+                            var update = ["count": newCount]
+                            let count = values["count"] as! Int
+                            
+                            if addOrSub == "add" {
+                                newCount = count + 1
+                                update = ["count": newCount]
+                                loopBreak = 1
+                            }
+                            else {
+                                newCount = count - 1
+                                update = ["count": newCount]
+                                loopBreak = 1
+                            }
+                            detailSkillNodeRef.updateChildValues(update)
+                            self.usersWithSkill.text = "\(newCount!) Reptree users have this skill"
+                        }
+                    }
+                }
+            }
+        })
     }
     
     func setSkillVars() {
