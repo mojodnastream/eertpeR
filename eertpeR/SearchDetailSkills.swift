@@ -47,7 +47,7 @@ class SearchDetailSkills: UIViewController {
                 print(error?.localizedDescription ?? "No error description available")
             } else {
                 print("added follow \(self.passSkillID) to profile")
-                self.updateSkillCount()
+                self.updateSkillCount(addOrSub: "add")
                 getSkills.loadSkillInfo()
                 self.isConnected = true
                 self.skillAddRemove.setTitle("Remove Skill", for: UIControlState.normal)
@@ -59,8 +59,41 @@ class SearchDetailSkills: UIViewController {
         
     }
     
-    func updateSkillCount() {
+    func getSkillCount(addOrSub: String) -> Int {
+        var newCount = Int(passSkillUserCount)
+        let detailSkillNodeRef = skillMainNodeRef.child(passSkillID)
         
+        detailSkillNodeRef.observe(.value, with: {
+            snapshot in
+            guard snapshot.exists() else {
+                print("no user info")
+                return
+            }
+            
+            if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
+                for child in snapshots {
+                    let values = child.value as! [String: AnyObject]
+                    
+                    let count = values["count"] as! Int
+                    if addOrSub == "add" {
+                        newCount = count + 1
+                    }
+                    else {
+                        newCount = count - 1
+                    }
+                }
+                
+            }
+        })
+        
+        return newCount!
+    }
+    
+    func updateSkillCount(addOrSub: String) {
+        let detailSkillNodeRef = skillMainNodeRef.child(passSkillID)
+        let update = ["count":getSkillCount(addOrSub: addOrSub)]
+        
+        detailSkillNodeRef.updateChildValues(update)
     }
     
     func setSkillVars() {
