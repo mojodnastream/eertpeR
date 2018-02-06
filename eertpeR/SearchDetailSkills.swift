@@ -57,7 +57,25 @@ class SearchDetailSkills: UIViewController {
     }
     
     func removeSkill() {
+        var checkErr = 0
         
+        let ref = userProfileDetailRef.child(userID).child("Skills").child(self.passSkillID)
+        ref.removeValue { error, _ in
+            if error != nil {
+                checkErr = 1
+                print(error ?? "error occurred while deleting a skill")
+            }
+            else {
+                print("the skill \(self.passSkillID) removed")
+            }
+        }
+        
+        if checkErr == 0 {
+            self.updateSkillCount(addOrSub: "sub")
+            getSkills.loadSkillInfo()
+            self.isConnected = false
+            self.skillAddRemove.setTitle("Add Skill", for: UIControlState.normal)
+        }
     }
     
    
@@ -134,10 +152,10 @@ class SearchDetailSkills: UIViewController {
     
     func checkSkill() {
         var theRow = 0
-        for item in arrSkills {
-            let fID = utils.getResultFollowID(arrayString: arrFollowing[theRow])
+        for item in arrSkillsProfileUsage {
+            let fID = item
             
-            if fID == passSkillID {
+            if fID == passSkillName {
                 isConnected = true
                 skillAddRemove.setTitle("Remove Skill", for: UIControlState.normal)
             }
@@ -151,8 +169,9 @@ class SearchDetailSkills: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        isConnected = false
         checkSkill()
         setSkillVars()
-        print(isConnected)
+        print("is connected? \(isConnected)")
     }
 }
