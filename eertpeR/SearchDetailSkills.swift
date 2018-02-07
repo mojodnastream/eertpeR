@@ -151,6 +151,7 @@ class SearchDetailSkills: UIViewController {
     }
     
     func checkSkill() {
+        isConnected = false
         var theRow = 0
         for item in arrSkillsProfileUsage {
             let fID = item
@@ -162,14 +163,13 @@ class SearchDetailSkills: UIViewController {
             theRow = theRow + 1
         }
         if theRow == 0 {
-            isConnected = false
             skillAddRemove.setTitle("Add Skill", for: UIControlState.normal)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        isConnected = false
+       
         checkSkill()
         setSkillVars()
         print("is connected? \(isConnected)")
