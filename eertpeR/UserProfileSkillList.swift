@@ -11,20 +11,20 @@ import Firebase
 
 class customSkillCell: UITableViewCell {
     
-//    @IBOutlet weak var qMagBox: UILabel!
-//    @IBOutlet weak var qDateTime: UILabel!
-//    @IBOutlet weak var qDesc: UILabel!
-//    @IBOutlet weak var qTimeAgo: UILabel!
-    
+
     @IBOutlet weak var skillLbl: UILabel!
 }
 
 
 class userSkillList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    var sendSkillID:String!
+    var sendSkillName:String!
+    var sendSkillUserCount:String!
+    
     @IBOutlet weak var tableView: UITableView!
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "showQuakeDetail" {
 //            let object = objects?.features[trackIndexRowForCallout]
 //            let controller = segue.destination as! QuakeListDetail
@@ -35,8 +35,19 @@ class userSkillList: UIViewController, UITableViewDelegate, UITableViewDataSourc
 //            backItem.title = "Back"
 //            navigationItem.backBarButtonItem = backItem
 //        }
-    }
+//    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // get stuff ready for the detail page
+        //connect to the detail vc and send any needed data
+
+        let vcDetailSkills = segue.destination as! SearchDetailSkills
+        vcDetailSkills.passSkillID = sendSkillID
+        vcDetailSkills.passSkillName = sendSkillName
+        vcDetailSkills.passSkillUserCount = "0"
+        //self.performSegue(withIdentifier: "showSkillDetail", sender: self)
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -48,11 +59,16 @@ class userSkillList: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return arrSkillsProfileUsage.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        sendSkillID = utils.getResultID(arrayString: arrSkillsProfileUsage[indexPath.row])
+        sendSkillName = utils.getResultName(arrayString: arrSkillsProfileUsage[indexPath.row])
+        
+       
+        self.performSegue(withIdentifier: "showSkillDetail", sender: self)
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! customSkillCell
-        cell.skillLbl.text = arrSkillsProfileUsage[indexPath.row]
+        cell.skillLbl.text = utils.getResultName(arrayString: arrSkillsProfileUsage[indexPath.row])
         return cell
     }
     

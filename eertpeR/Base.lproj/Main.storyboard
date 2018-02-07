@@ -1080,7 +1080,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Jl-F8-Day" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2462" y="1104"/>
+            <point key="canvasLocation" x="1710" y="1095"/>
         </scene>
         <!--Your Skills-->
         <scene sceneID="4Lk-Q2-U6D">
@@ -1138,11 +1138,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="nQx-W8-zZm" id="8Xl-cy-o7i"/>
+                        <segue destination="JOo-dD-mnA" kind="show" identifier="showSkillDetail" id="DMm-RY-t7Y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HAx-lf-0Hx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1767" y="1104"/>
+            <point key="canvasLocation" x="2397" y="1095"/>
         </scene>
         <!--Search-->
         <scene sceneID="z4G-jZ-YVk">
@@ -1315,7 +1316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pcO-N9-rlk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3754" y="873"/>
+            <point key="canvasLocation" x="3345" y="1152"/>
         </scene>
     </scenes>
     <resources>
@@ -1323,7 +1324,8 @@
         <image name="profile.png" width="240" height="220"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Mx4-lv-yN6"/>
+        <segue reference="DMm-RY-t7Y"/>
+        <segue reference="89e-BG-TQ9"/>
         <segue reference="ogF-Wc-w2f"/>
         <segue reference="kN8-35-bYO"/>
     </inferredMetricsTieBreakers>

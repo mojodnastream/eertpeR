@@ -152,7 +152,8 @@ class profile: UITableViewController {
                 for child in snapshots {
                     let values = child.value as! [String: AnyObject]
                     let skill = values["skill"] as! String
-                    arrSkillsProfileUsage.append(skill)
+                    let skillID = values["id"] as! String
+                    arrSkillsProfileUsage.append("Skill~\(skill)*\(skillID)^0")
                 }
             }
             userSkills = arrSkillsProfileUsage.count
