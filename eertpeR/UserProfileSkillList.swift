@@ -40,12 +40,10 @@ class userSkillList: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // get stuff ready for the detail page
         //connect to the detail vc and send any needed data
-
         let vcDetailSkills = segue.destination as! SearchDetailSkills
         vcDetailSkills.passSkillID = sendSkillID
         vcDetailSkills.passSkillName = sendSkillName
         vcDetailSkills.passSkillUserCount = "0"
-        //self.performSegue(withIdentifier: "showSkillDetail", sender: self)
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,10 +59,8 @@ class userSkillList: UIViewController, UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         sendSkillID = utils.getResultID(arrayString: arrSkillsProfileUsage[indexPath.row])
         sendSkillName = utils.getResultName(arrayString: arrSkillsProfileUsage[indexPath.row])
-        
-       
+
         self.performSegue(withIdentifier: "showSkillDetail", sender: self)
-        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! customSkillCell
