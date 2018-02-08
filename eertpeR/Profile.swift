@@ -186,6 +186,8 @@ class profile: UITableViewController {
     }
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        getUsers.loadUserInfo()
+        getSkills.loadSkillInfo()
         ReachabilityManager.shared.removeListener(listener: self as NetworkStatusListener)
     }
     
