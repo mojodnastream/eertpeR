@@ -75,12 +75,12 @@ class userSkillList: UIViewController, UITableViewDelegate, UITableViewDataSourc
         tableView.dataSource = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        //ReachabilityManager.shared.removeListener(listener: self as NetworkStatusListener)
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//    }
+//    
+//    override func viewDidDisappear(_ animated: Bool) {
+//        super.viewDidDisappear(animated)
+//        //ReachabilityManager.shared.removeListener(listener: self as NetworkStatusListener)
+//    }
 }
