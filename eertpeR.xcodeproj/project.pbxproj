@@ -37,6 +37,7 @@
 		7980EC0F1FFC3B27009208B0 /* SettingsEditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980EC0E1FFC3B27009208B0 /* SettingsEditProfile.swift */; };
 		7980EC111FFEBC95009208B0 /* SettingsChangePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980EC101FFEBC95009208B0 /* SettingsChangePassword.swift */; };
 		7980EC15200001C3009208B0 /* SettingsProfilePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980EC14200001C3009208B0 /* SettingsProfilePhoto.swift */; };
+		79949926202CD3C000E6F116 /* UserProfileFollowList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79949925202CD3C000E6F116 /* UserProfileFollowList.swift */; };
 		79D068E81FE988A30059B23C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79D068E71FE988A20059B23C /* GoogleService-Info.plist */; };
 		79FDEA8D200804D500016606 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEA8C200804D500016606 /* User.swift */; };
 		79FDEA8F200EB88D00016606 /* UserProfileSkillList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79FDEA8E200EB88D00016606 /* UserProfileSkillList.swift */; };
@@ -78,6 +79,7 @@
 		7980EC0E1FFC3B27009208B0 /* SettingsEditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEditProfile.swift; sourceTree = "<group>"; };
 		7980EC101FFEBC95009208B0 /* SettingsChangePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsChangePassword.swift; sourceTree = "<group>"; };
 		7980EC14200001C3009208B0 /* SettingsProfilePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProfilePhoto.swift; sourceTree = "<group>"; };
+		79949925202CD3C000E6F116 /* UserProfileFollowList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileFollowList.swift; sourceTree = "<group>"; };
 		79D068E71FE988A20059B23C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		79FDEA8C200804D500016606 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		79FDEA8E200EB88D00016606 /* UserProfileSkillList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSkillList.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				7980EC101FFEBC95009208B0 /* SettingsChangePassword.swift */,
 				7980EC14200001C3009208B0 /* SettingsProfilePhoto.swift */,
 				79FDEA8E200EB88D00016606 /* UserProfileSkillList.swift */,
+				79949925202CD3C000E6F116 /* UserProfileFollowList.swift */,
 				79FDEA9020128BE700016606 /* UserProfileBadgeList.swift */,
 			);
 			name = Controller;
@@ -379,6 +382,7 @@
 				482135E01EC7BDBE00296104 /* Search.swift in Sources */,
 				79FDEA8D200804D500016606 /* User.swift in Sources */,
 				7980EC111FFEBC95009208B0 /* SettingsChangePassword.swift in Sources */,
+				79949926202CD3C000E6F116 /* UserProfileFollowList.swift in Sources */,
 				48E4D3201D50FAE900F3EC76 /* Constants.swift in Sources */,
 				484AAD7B1EE61B9100766430 /* SearchDetailSkills.swift in Sources */,
 			);
