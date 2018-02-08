@@ -652,7 +652,7 @@
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="gws-JM-5kW" customClass="customFollowCell" customModule="eertpeR" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="gws-JM-5kW" customClass="customFollowCell" customModule="eertpeR" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gws-JM-5kW" id="sva-TP-a80">
@@ -679,11 +679,12 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="LtL-tw-vEl" id="edm-YE-2Nl"/>
+                        <segue destination="Tng-Yb-f7a" kind="show" identifier="showFollowDetail" id="V9a-sA-N5T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aRq-YC-Uny" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1323" y="1613"/>
+            <point key="canvasLocation" x="1542" y="1356"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="wzq-c6-lfU">
@@ -1133,7 +1134,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Jl-F8-Day" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1734.7826086956522" y="1446.1956521739132"/>
+            <point key="canvasLocation" x="2055" y="1945"/>
         </scene>
         <!--Your Skills-->
         <scene sceneID="4Lk-Q2-U6D">
@@ -1310,7 +1311,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pId-H8-wx3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3753.6231884057975" y="231.52173913043481"/>
+            <point key="canvasLocation" x="2351" y="1344"/>
         </scene>
         <!--Skillz-->
         <scene sceneID="CS3-A7-FCD">
@@ -1369,7 +1370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pcO-N9-rlk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3345" y="1152"/>
+            <point key="canvasLocation" x="3583" y="1212"/>
         </scene>
     </scenes>
     <resources>
@@ -1378,6 +1379,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DMm-RY-t7Y"/>
+        <segue reference="V9a-sA-N5T"/>
         <segue reference="89e-BG-TQ9"/>
         <segue reference="ogF-Wc-w2f"/>
         <segue reference="kN8-35-bYO"/>
