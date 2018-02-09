@@ -203,7 +203,7 @@ class SearchDetail: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //isConnected = false
+        isConnected = false
         checkUser()
         setUserVars();
     }
