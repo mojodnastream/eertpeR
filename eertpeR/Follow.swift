@@ -27,6 +27,8 @@ class getFollowing {
     
     static func loadFollowInfo() {
        arrFollowing.removeAll()
+        arrFollowProfileUsage.removeAll()
+        
         let followerDbRef = Database.database().reference(withPath: "Profiles")
         let userDBRef = followerDbRef.child(userID).child("Following")
         
@@ -43,8 +45,7 @@ class getFollowing {
                     if id != userID {
                         var fingID = ""
                         var fingSince = 0
-                        //var fingID = "bobb"
-                        //var fingSince = 0
+
                         let values = child.value as! [String: AnyObject]
                         fingID = values["id"] as! String
                         fingSince = values["followdate"] as! Int
@@ -54,8 +55,6 @@ class getFollowing {
             }
         })
         
-        arrUserClassArray.removeAll()
-       
         followerDbRef.observe(.value, with: {
             snapshot in
             guard snapshot.exists() else {
@@ -69,10 +68,10 @@ class getFollowing {
                     var count = 0
                     for item in arrFollowing {
                         let fID = utils.getResultFollowID(arrayString: arrFollowing[count])
-                        let fSince = utils.getResultNumber(arrayString: arrFollowing[count]) 
-                        
+                        let fSince = utils.getResultNumber(arrayString: arrFollowing[count])
+                        count = count + 1
                         if fID == id {
-                            count = count + 1
+                            
                             let values = child.value as! [String: AnyObject]
                             let fingName = values["fullname"] as! String
                             let fingTitle = values["title"] as! String
@@ -81,10 +80,10 @@ class getFollowing {
                             following.sinceWhen = fSince as NSNumber
                             following.namme = fingName
                             following.title = fingTitle
-                        arrFollowingClassArray.append(following)
+                            arrFollowingClassArray.append(following)
+                            arrFollowProfileUsage.append("Follow~\(fingName)*\(fID)^\(fingTitle)")
                         }
                     }
-                        
                 }
             }
         })
