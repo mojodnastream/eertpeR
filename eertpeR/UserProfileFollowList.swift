@@ -40,7 +40,9 @@ class userFollowList: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 65.0;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         print("FROM TABLE VIEW arrFollowProfileUsageCount is: \(arrFollowProfileUsage.count)")
         return arrFollowProfileUsage.count
+       
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         sendFollowID = utils.getResultID(arrayString: arrFollowProfileUsage[indexPath.row])
@@ -52,6 +54,10 @@ class userFollowList: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! customFollowCell
         cell.followLbl.text = utils.getResultName(arrayString: arrFollowProfileUsage[indexPath.row])
         return cell
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {

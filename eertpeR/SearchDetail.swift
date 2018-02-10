@@ -32,7 +32,6 @@ class SearchDetail: UIViewController {
         }
     }
     
-   
     func addConnection() {
         let refUserConn = userProfileDetailRef.child(userID);
         let key = passUserID
