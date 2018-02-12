@@ -13,7 +13,6 @@ class customFollowCell: UITableViewCell {
     @IBOutlet weak var followLbl: UILabel!
 }
 
-
 class userFollowList: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var sendFollowID:String!
@@ -40,7 +39,6 @@ class userFollowList: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 65.0;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         print("FROM TABLE VIEW arrFollowProfileUsageCount is: \(arrFollowProfileUsage.count)")
         return arrFollowProfileUsage.count
        
     }
