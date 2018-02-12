@@ -26,11 +26,26 @@ class SearchDetail: UIViewController {
     @IBAction func userConnectBtn(_ sender: UIButton) {
         
         if isConnected {
-            removeConnection()
-        } else {
-            addConnection()
+            userConnect.setTitle("Follow", for: UIControlState.normal)
+            DispatchQueue.global(qos: .background).async {
+                self.removeConnection()
+                DispatchQueue.main.async {
+                    print("removee follow method has completed")
+                }
+            }
+        }
+        else {
+            userConnect.setTitle("Unfollow", for: UIControlState.normal)
+            DispatchQueue.global(qos: .background).async {
+                self.addConnection()
+                DispatchQueue.main.async {
+                    print("add follow method has completed")
+                }
+            }
         }
     }
+    
+    
     
     func addConnection() {
         let refUserConn = userProfileDetailRef.child(userID);
@@ -49,7 +64,7 @@ class SearchDetail: UIViewController {
                 self.sendToFollowed()
                 getFollowing.loadFollowInfo()
                 self.isConnected = true
-                self.userConnect.setTitle("Unfollow", for: UIControlState.normal)
+//                self.userConnect.setTitle("Unfollow", for: UIControlState.normal)
             }
         })
     }
@@ -69,7 +84,7 @@ class SearchDetail: UIViewController {
                 print(error?.localizedDescription ?? "No error description available")
             } else {
                 print("added follow \(userID) as a follower to \(self.passUserID)'s profile")
-                //self.sendToFollowed()
+                
             }
         })
     }
@@ -105,7 +120,7 @@ class SearchDetail: UIViewController {
         if checkErr == 0 {
             getFollowing.loadFollowInfo()
             isConnected = false
-            userConnect.setTitle("Follow", for: UIControlState.normal)
+            //userConnect.setTitle("Follow", for: UIControlState.normal)
         }
     }
     
