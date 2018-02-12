@@ -26,9 +26,7 @@ class Following {
 class getFollowing {
     
     static func loadFollowInfo() {
-        print("arrfollowing before remove all: \(arrFollowing.count)")
         arrFollowing.removeAll()
-        print("arrfollowing after remove all: \(arrFollowing.count)")
         arrFollowProfileUsage.removeAll()
         arrFollowingClassArray.removeAll()
         
@@ -64,19 +62,16 @@ class getFollowing {
                 print("no follow info")
                 return
             }
-            print("The arrFollwoing Count before the second round is: \(arrFollowing.count)")
+            
             if let snapshots = snapshot.children.allObjects as? [DataSnapshot] {
                 for child in snapshots {
                     let id = child.key
                     var count = 0
-                    print("The count is: \(count)")
                     for item in arrFollowing {
                         let fID = utils.getResultFollowID(arrayString: arrFollowing[count])
                         let fSince = utils.getResultNumber(arrayString: arrFollowing[count])
-                        print("The arrFollwoing Count outside the id check is: \(arrFollowing.count)")
                         count = count + 1
                         if fID == id {
-                            print("The arrFollwoing Count inside the id check is: \(arrFollowing.count)")
                             let values = child.value as! [String: AnyObject]
                             let fingName = values["fullname"] as! String
                             let fingTitle = values["title"] as! String
@@ -86,7 +81,6 @@ class getFollowing {
                             following.namme = fingName
                             following.title = fingTitle
                             arrFollowingClassArray.append(following)
-                            print("arrFollowProfileUsage count is: \(arrFollowProfileUsage.count)")
                             arrFollowProfileUsage.append("Follow~\(fingName)*\(fID)^\(fingTitle)")
                         }
                     }
