@@ -24,21 +24,8 @@ class userBadgeList: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
     @IBOutlet weak var tableView: UITableView!
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        //        if segue.identifier == "showQuakeDetail" {
-        //            let object = objects?.features[trackIndexRowForCallout]
-        //            let controller = segue.destination as! QuakeListDetail
-        //            controller.detailItem = object
-        //        }
-        //        else if segue.identifier == "showSettings" {
-        //            let backItem = UIBarButtonItem()
-        //            backItem.title = "Back"
-        //            navigationItem.backBarButtonItem = backItem
-        //        }
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
