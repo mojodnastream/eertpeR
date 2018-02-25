@@ -25,7 +25,7 @@ class userBadgeList: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var tableView: UITableView!
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
@@ -35,7 +35,7 @@ class userBadgeList: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return arrBadgesProfileUsage.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.performSegue(withIdentifier: "showBadgeDetail", sender: self)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! customBadgeCell
@@ -43,11 +43,22 @@ class userBadgeList: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showBadgeDetail" {
+            
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+         print("badges count badges list page: \(arrBadgesProfileUsage.count)")
     }
     
     override func viewDidAppear(_ animated: Bool) {

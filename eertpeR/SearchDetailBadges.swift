@@ -10,6 +10,6 @@ import UIKit
 import Firebase
 
 class BadgeDetail: UIViewController {
-    var passUserID:String!
-    var passUserName:String!
+//    var passUserID:String!
+//    var passUserName:String!
 }
