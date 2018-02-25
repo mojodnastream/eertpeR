@@ -130,6 +130,7 @@ class profile: UITableViewController {
             let userBadgesCounter = arrBadgesProfileUsage.count
             self.circBadges.text = String(userBadgesCounter)
         })
+        print("badges count profile page: \(arrBadgesProfileUsage.count)")
     }
     
     func loadSkills() {
