@@ -159,8 +159,9 @@ class SearchDetailSkills: UIViewController {
             if fID == passSkillName {
                 isConnected = true
                 skillAddRemove.setTitle("Remove Skill", for: UIControlState.normal)
+                theRow = theRow + 1
             }
-            theRow = theRow + 1
+            
         }
         if theRow == 0 {
             isConnected = false

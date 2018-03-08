@@ -17,7 +17,6 @@ class customBadgeCell: UITableViewCell {
     //    @IBOutlet weak var qTimeAgo: UILabel!
     
     @IBOutlet weak var badgeLbl: UILabel!
-
 }
 
 class userBadgeList: UIViewController, UITableViewDelegate, UITableViewDataSource {
